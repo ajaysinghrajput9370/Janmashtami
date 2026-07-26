@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Shri Krishna Janmashtami Mahotsav · Bhavya Ratri Jagran</title>
+  <!-- SEO Meta -->
+  <meta name="description" content="Shri Krishna Janmashtami Mahotsav & Bhavya Ratri Jagran – donate, participate, and receive blessings. Premium mobile-first experience.">
+  <meta property="og:title" content="Shri Krishna Janmashtami Mahotsav & Bhavya Ratri Jagran">
+  <meta property="og:description" content="Bhagwan Shri Krishna ke divya janmotsav me apna yogdan dein.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1a0b2e">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔱</text></svg>">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #2d1545, #140a24 80%);
+      color: #f5edff;
+      min-height: 100vh;
+      padding: 0 0 80px 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- glass mix ---- */
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 215, 150, 0.15);
+      box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 215, 150, 0.08);
+      box-shadow: 0 15px 35px -8px rgba(0,0,0,0.5);
+      transition: all 0.25s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 200, 100, 0.25);
+      box-shadow: 0 25px 40px -10px rgba(180, 80, 200, 0.3);
+    }
+
+    /* ---- typography ---- */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .golden {
+      color: #f9d77e;
+      text-shadow: 0 0 20px rgba(255, 200, 100, 0.3);
+    }
+    .pink-glow {
+      color: #f9b8d4;
+      text-shadow: 0 0 30px #d46a9e55;
+    }
+
+    /* ---- loading screen ---- */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #140a24;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+    #loader.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-symbol {
+      font-size: 4.5rem;
+      animation: floatPulse 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px #f9b84a);
+    }
+    .loader-bar {
+      margin-top: 1.5rem;
+      width: 120px;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .loader-bar span {
+      display: block;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, #d97bb5, #f9d77e);
+      border-radius: 20px;
+      animation: loadSlide 1.2s infinite ease-in-out;
+    }
+    @keyframes loadSlide { 0% { transform: translateX(-20px); } 100% { transform: translateX(80px); } }
+    @keyframes floatPulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+
+    /* ---- navbar ---- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 18px;
+      background: rgba(20, 10, 36, 0.6);
+      backdrop-filter: blur(18px) saturate(200%);
+      -webkit-backdrop-filter: blur(18px) saturate(200%);
+      border-bottom: 1px solid rgba(255, 215, 150, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.2s;
+    }
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f9d77e, #e9b0d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ddd0f0;
+    }
+    .nav-links span { cursor: pointer; transition: 0.2s; padding: 6px 2px; border-bottom: 2px solid transparent; }
+    .nav-links span:hover { color: #f9d77e; border-bottom-color: #f9d77e; }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+
+    /* ---- hero ---- */
+    .hero {
+      margin: 16px 16px 28px;
+      padding: 20px 18px 30px;
+      background: linear-gradient(145deg, rgba(255, 215, 150, 0.05), rgba(180, 80, 200, 0.08));
+      backdrop-filter: blur(6px);
+      border-radius: 40px;
+      border: 1px solid rgba(255, 215, 150, 0.1);
+      box-shadow: 0 20px 50px -10px #0d0520;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(249, 215, 126, 0.15), transparent 70%);
+      top: -80px;
+      right: -60px;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+    }
+    .hero * { position: relative; z-index: 2; }
+    .hero h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 8px; }
+    .hero .sub { font-size: 1.4rem; letter-spacing: 2px; color: #e9b0d4; }
+    .hero p { margin: 14px 0 22px; opacity: 0.85; font-size: 1.05rem; }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 14px 30px;
+      border-radius: 60px;
+      font-weight: 600;
+      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 215, 150, 0.2);
+      transition: 0.25s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(145deg, #b56fc8, #8f4bb3);
+      border-color: #c98be0;
+      box-shadow: 0 6px 24px #7f3ba055;
+    }
+    .btn-primary:hover { transform: scale(1.03); background: #9f5dc2; }
+    .btn-glass { background: rgba(255, 215, 150, 0.12); border-color: rgba(255, 215, 150, 0.3); }
+    .btn-glass:hover { background: rgba(255, 215, 150, 0.2); }
+
+    /* ---- countdown ---- */
+    .countdown {
+      margin: 20px 16px;
+      padding: 20px 10px;
+      text-align: center;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .cd-item {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      padding: 8px 14px;
+      border-radius: 30px;
+      min-width: 70px;
+      border: 1px solid rgba(255, 215, 150, 0.1);
+    }
+    .cd-item .num { font-size: 2.2rem; font-weight: 700; color: #f9d77e; }
+    .cd-item .label { font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; }
+
+    /* ---- cards & sections ---- */
+    .section-title {
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 30px 0 16px;
+    }
+    .container {
+      padding: 0 16px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .info-card {
+      padding: 18px 14px;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 215, 150, 0.06);
+      text-align: center;
+    }
+
+    /* timeline */
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      border-left: 4px solid #f9d77e;
+    }
+    .timeline-item .time { font-weight: 600; color: #f9d77e; min-width: 70px; }
+
+    /* donation cards */
+    .donation-amounts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 18px 0;
+    }
+    .donation-amounts .amt {
+      padding: 14px 22px;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      border: 1px solid rgba(255, 215, 150, 0.1);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      min-width: 70px;
+      text-align: center;
+    }
+    .donation-amounts .amt.active {
+      background: rgba(249, 215, 126, 0.2);
+      border-color: #f9d77e;
+      box-shadow: 0 0 30px #f9d77e44;
+    }
+
+    /* form */
+    .donor-form input, .donor-form textarea {
+      width: 100%;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 215, 150, 0.1);
+      border-radius: 40px;
+      color: #f5edff;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    .donor-form input:focus, .donor-form textarea:focus {
+      border-color: #f9d77e;
+      box-shadow: 0 0 20px #f9d77e22;
+    }
+    .donor-form textarea { border-radius: 28px; min-height: 80px; resize: vertical; }
+
+    .qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 10px;
+    }
+    .qr-section img { width: 200px; height: 200px; border-radius: 32px; background: white; padding: 6px; }
+    .upi-box {
+      background: rgba(255,255,255,0.04);
+      padding: 10px 18px;
+      border-radius: 60px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid rgba(255,215,150,0.06);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover { transform: scale(1.02); border-color: #f9d77e; }
+
+    /* testimonial, faq */
+    .faq-item {
+      padding: 18px 16px;
+      border-bottom: 1px solid rgba(255, 215, 150, 0.06);
+      cursor: pointer;
+    }
+    .faq-item .q { font-weight: 600; display: flex; justify-content: space-between; }
+    .faq-item .a { max-height: 0; overflow: hidden; transition: 0.3s; opacity: 0.6; }
+    .faq-item.open .a { max-height: 200px; padding-top: 12px; opacity: 1; }
+
+    /* floating */
+    .floating {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .floating .fbtn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 215, 150, 0.15);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 215, 150, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #f9d77e;
+      box-shadow: 0 8px 30px #00000055;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .floating .fbtn:hover { transform: scale(1.05); background: rgba(249, 215, 126, 0.25); }
+
+    /* footer */
+    .footer {
+      margin-top: 40px;
+      padding: 30px 16px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,215,150,0.06);
+    }
+
+    /* progress */
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 40px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 68%;
+      background: linear-gradient(90deg, #d97bb5, #f9d77e);
+      border-radius: 40px;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero h1 { font-size: 1.8rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .countdown-grid { gap: 8px; }
+    }
+    @media (min-width: 768px) {
+      body { padding: 0 20px 80px; }
+      .container { max-width: 700px; margin: 0 auto; }
+    }
+
+    /* micro */
+    .fade-in { animation: fadeIn 0.6s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .glow-pulse { animation: glowPulse 3s infinite; }
+    @keyframes glowPulse { 0% { filter: drop-shadow(0 0 8px #f9d77e33); } 50% { filter: drop-shadow(0 0 25px #f9d77e77); } 100% { filter: drop-shadow(0 0 8px #f9d77e33); } }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-symbol">🕉️</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">🙏 Krishna</div>
+  <div class="nav-links">
+    <span>Home</span><span>About</span><span>Donate</span><span>Gallery</span><span>Contact</span>
+  </div>
+  <div class="hamburger">☰</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-glow"></div>
+  <h1 class="golden glow-pulse">Shri Krishna Janmashtami</h1>
+  <div class="sub">✨ Bhavya Ratri Jagran ✨</div>
+  <p>Bhagwan Shri Krishna ke divya janmotsav me apna yogdan dein aur punya ke bhagi banein.</p>
+  <div class="btn-group">
+    <button class="btn btn-primary">Donate Now</button>
+    <button class="btn btn-glass">View Gallery</button>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown glass">
+  <h3>🕉️ Janmashtami Begins In</h3>
+  <div class="countdown-grid" id="countdown">
+    <div class="cd-item"><span class="num" id="days">12</span><div class="label">DAYS</div></div>
+    <div class="cd-item"><span class="num" id="hours">18</span><div class="label">HOURS</div></div>
+    <div class="cd-item"><span class="num" id="minutes">42</span><div class="label">MIN</div></div>
+    <div class="cd-item"><span class="num" id="seconds">36</span><div class="label">SEC</div></div>
+  </div>
+</section>
+
+<!-- EVENT INFO -->
+<section class="container">
+  <h2 class="section-title golden">📅 Event Information</h2>
+  <div class="grid-2">
+    <div class="info-card glass-card">📆 26 July 2026 · 6:00 PM</div>
+    <div class="info-card glass-card">📍 Temple, Vrindavan Dham</div>
+  </div>
+  <div class="grid-3" style="margin-top:12px;">
+    <div class="info-card">🎵 Bhajan</div><div class="info-card">🪔 Aarti</div><div class="info-card">🍛 Mahaprasad</div>
+    <div class="info-card">🌸 Jhanki</div><div class="info-card">🕉️ Kirtan</div><div class="info-card">🌙 Bhavya Jagran</div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="container">
+  <h2 class="section-title golden">⏳ Event Schedule</h2>
+  <div class="timeline-item"><span class="time">6:00 PM</span> Bhajan</div>
+  <div class="timeline-item"><span class="time">7:00 PM</span> Krishna Jhanki</div>
+  <div class="timeline-item"><span class="time">8:00 PM</span> Kirtan</div>
+  <div class="timeline-item"><span class="time">10:00 PM</span> Mahaprasad</div>
+  <div class="timeline-item"><span class="time">12:00 AM</span> Shri Krishna Janmotsav</div>
+  <div class="timeline-item"><span class="time">1:00 AM</span> Bhavya Ratri Jagran</div>
+</section>
+
+<!-- ABOUT & WHY DONATE (condensed) -->
+<section class="container">
+  <h2 class="section-title golden">About & Significance</h2>
+  <div class="glass-card" style="padding:20px;">
+    <p>Janmashtami celebrates the divine birth of Lord Krishna. Our temple has hosted this festival for over 50 years, spreading love, bhakti, and joy. Your donation supports temple decoration, bhog, prasad, and children activities.</p>
+  </div>
+  <h2 class="section-title golden" style="margin-top:30px;">🙏 Why Donate</h2>
+  <div class="grid-2">
+    <div class="glass-card" style="padding:16px;">🎨 Temple Decoration</div>
+    <div class="glass-card" style="padding:16px;">🍛 Bhog & Prasad</div>
+    <div class="glass-card" style="padding:16px;">🌸 Flowers & Lighting</div>
+    <div class="glass-card" style="padding:16px;">🧒 Children Activities</div>
+    <div class="glass-card" style="padding:16px;">🙌 Volunteer Support</div>
+    <div class="glass-card" style="padding:16px;">🎪 Festival Arrangements</div>
+  </div>
+</section>
+
+<!-- DONATION -->
+<section class="container">
+  <h2 class="section-title golden">💰 Donate Now</h2>
+  <div class="glass-card" style="padding:20px;">
+    <div class="donation-amounts" id="donationPresets">
+      <span class="amt">₹51</span><span class="amt">₹101</span><span class="amt active">₹251</span>
+      <span class="amt">₹501</span><span class="amt">₹1100</span><span class="amt">₹2100</span>
+    </div>
+    <input type="number" placeholder="Custom Amount ₹" style="width:100%;padding:16px;border-radius:60px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,150,0.1);color:white;font-size:1rem;margin-bottom:12px;">
+    <div class="donor-form">
+      <input type="text" placeholder="Full Name">
+      <input type="tel" placeholder="Mobile Number">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="City">
+      <textarea placeholder="Message (optional)"></textarea>
+      <label style="display:flex;gap:10px;align-items:center;margin:10px 0;"><input type="checkbox"> Donate anonymously</label>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;">Donate Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- QR -->
+<section class="container">
+  <h2 class="section-title golden">📱 Pay via QR</h2>
+  <div class="glass-card qr-section">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f5edff'/%3E%3Ctext x='20' y='110' font-size='32' fill='%231a0b2e' font-family='monospace'%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E" alt="QR code for UPI payment" style="background:white;">
+    <div class="upi-box"><span>🔹 krishna@upi</span> <button class="btn btn-glass" style="padding:8px 18px;">Copy</button></div>
+    <button class="btn btn-glass">Download QR</button>
+    <input type="text" placeholder="Transaction ID" style="width:100%;padding:14px;border-radius:60px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,150,0.1);color:white;">
+    <button class="btn btn-glass">Upload Screenshot</button>
+  </div>
+</section>
+
+<!-- PROGRESS & DONORS -->
+<section class="container">
+  <h2 class="section-title golden">📊 Donation Progress</h2>
+  <div class="glass-card" style="padding:20px;">
+    <div style="display:flex;justify-content:space-between;"><span>₹1,28,500 raised</span><span>Target ₹5,00,000</span></div>
+    <div class="progress-bar"><span style="width:68%;"></span></div>
+    <div style="text-align:right;">68%</div>
+  </div>
+  <h2 class="section-title golden" style="margin-top:30px;">👥 Recent Donors</h2>
+  <div class="glass-card" style="padding:16px;">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,215,150,0.05);">Radha Sharma <span>₹2100</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,215,150,0.05);">Anonymous <span>₹1100</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;">Govind Das <span>₹501</span></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="container">
+  <h2 class="section-title golden">🖼️ Previous Year Bhavya Ratri</h2>
+  <div class="gallery-grid" id="galleryGri
