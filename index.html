@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== RESET & VARIABLES ===== */
+    /* ===== RESET ===== */
     * {
       margin: 0;
       padding: 0;
@@ -17,66 +17,50 @@
     }
 
     :root {
-      /* Glassy Colors */
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.2);
-      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      --glass-blur: blur(20px);
-      
-      /* Theme Colors - Krishna inspired */
-      --primary: #1E5AA8;
-      --primary-light: #4A7FC7;
-      --primary-dark: #15407A;
-      --accent: #2A9D8F;
-      --accent-light: #4FB3A5;
-      --saffron: #FF9933;
-      --saffron-light: #FFB84D;
+      /* Pink Theme Colors */
+      --pink-dark: #D81B60;
+      --pink-primary: #EC407A;
+      --pink-light: #F48FB1;
+      --pink-lighter: #FCE4EC;
+      --pink-gradient-start: #D81B60;
+      --pink-gradient-end: #AD1457;
       --gold: #FFD700;
-      
-      /* Text Colors */
-      --text-primary: #1A1A2E;
-      --text-secondary: #4A4A6A;
+      --gold-light: #FFE082;
+      --white: #FFFFFF;
+      --text-dark: #1A1A2E;
       --text-light: #FFFFFF;
-      --text-muted: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.85);
       
-      /* Background */
-      --bg-start: #1E5AA8;
-      --bg-end: #2A9D8F;
-      
-      /* Cards */
-      --card-bg: rgba(255, 255, 255, 0.12);
-      --card-border: rgba(255, 255, 255, 0.18);
-      --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      /* Glass Effects */
+      --glass-bg: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 8px 32px rgba(214, 27, 96, 0.2);
+      --glass-blur: blur(20px);
     }
 
     /* ===== DARK MODE ===== */
     body.dark {
-      --glass-bg: rgba(20, 20, 35, 0.6);
+      --pink-gradient-start: #4A0E2E;
+      --pink-gradient-end: #2A0518;
+      --glass-bg: rgba(20, 5, 15, 0.6);
       --glass-border: rgba(255, 255, 255, 0.08);
       --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      --card-bg: rgba(20, 20, 35, 0.5);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --text-primary: #F0F0F5;
-      --text-secondary: #B0B0C8;
-      --bg-start: #0D1B3E;
-      --bg-end: #1A4A4A;
+      --text-muted: rgba(255, 255, 255, 0.7);
     }
 
     /* ===== BASE ===== */
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background: linear-gradient(135deg, var(--pink-gradient-start), var(--pink-gradient-end));
       background-attachment: fixed;
-      color: var(--text-primary);
       min-height: 100vh;
-      padding: 0;
-      margin: 0;
+      color: var(--text-light);
       transition: background 0.5s ease;
       overflow-x: hidden;
     }
 
-    /* ===== GLASSY CONTAINER ===== */
-    .glass-container {
+    /* ===== CONTAINER ===== */
+    .container {
       max-width: 480px;
       margin: 0 auto;
       padding: 16px;
@@ -85,20 +69,20 @@
 
     /* ===== GLASS CARD ===== */
     .glass-card {
-      background: var(--card-bg);
+      background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--card-border);
+      border: 1px solid var(--glass-border);
       border-radius: 24px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--glass-shadow);
       transition: all 0.3s ease;
     }
 
     .glass-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 40px rgba(214, 27, 96, 0.3);
     }
 
     /* ===== LOADING ===== */
@@ -106,7 +90,7 @@
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background: linear-gradient(135deg, var(--pink-gradient-start), var(--pink-gradient-end));
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -122,16 +106,16 @@
     }
 
     #loader i {
-      font-size: 3.5rem;
+      font-size: 4rem;
       color: var(--gold);
       animation: spin 1s infinite linear;
     }
 
     #loader span {
-      color: white;
+      color: var(--white);
       font-weight: 300;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
     }
 
     @keyframes spin {
@@ -144,7 +128,7 @@
       top: 0;
       left: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--saffron), var(--accent-light));
+      background: linear-gradient(90deg, var(--gold), var(--pink-light), var(--gold));
       z-index: 999;
       width: 0%;
       transition: width 0.1s;
@@ -155,14 +139,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(214, 27, 96, 0.2);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid var(--glass-border);
-      padding: 12px 0;
+      padding: 12px 16px;
       margin: 0 -16px 16px -16px;
-      padding-left: 16px;
-      padding-right: 16px;
     }
 
     .nav-inner {
@@ -175,9 +157,8 @@
 
     .nav-logo {
       font-weight: 700;
-      font-size: 1.1rem;
-      color: white;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+      color: var(--white);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -190,37 +171,36 @@
 
     .nav-links {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: white;
-      font-size: 0.75rem;
+      color: var(--white);
+      font-size: 0.7rem;
       font-weight: 500;
       padding: 4px 10px;
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
       text-decoration: none;
     }
 
     .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
       transform: scale(1.05);
     }
 
     .nav-actions {
       display: flex;
       gap: 8px;
-      align-items: center;
     }
 
     .dark-toggle {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      color: white;
+      color: var(--white);
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -233,46 +213,38 @@
     }
 
     .dark-toggle:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
       transform: rotate(20deg);
     }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO ===== */
     .hero {
       text-align: center;
-      padding: 20px 0 10px 0;
+      padding: 10px 0;
     }
 
-    .hero-illustration {
-      width: 120px;
-      height: 120px;
+    .hero-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 24px;
       margin: 0 auto 16px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.2), rgba(255, 153, 51, 0.1));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 2px solid rgba(255, 215, 0, 0.3);
-      box-shadow: 0 0 60px rgba(255, 215, 0, 0.1);
-    }
-
-    .hero-illustration i {
-      font-size: 4.5rem;
-      color: var(--gold);
-      filter: drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3));
+      object-fit: cover;
     }
 
     .hero h1 {
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: var(--white);
       text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
       line-height: 1.2;
       margin-bottom: 8px;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -288,7 +260,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      background: linear-gradient(135deg, var(--gold), #FFC107);
       color: #1A1A2E;
       padding: 14px 40px;
       border-radius: 50px;
@@ -306,11 +278,7 @@
 
     .btn-primary:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
-    }
-
-    .btn-primary:active {
-      transform: scale(0.98);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.5);
     }
 
     /* ===== COUNTDOWN ===== */
@@ -352,7 +320,7 @@
     .section-title {
       font-size: 1.5rem;
       font-weight: 600;
-      color: white;
+      color: var(--white);
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -364,7 +332,7 @@
       font-size: 1.3rem;
     }
 
-    /* ===== DONATION SECTION ===== */
+    /* ===== DONATION ===== */
     .donation-grid {
       display: flex;
       flex-direction: column;
@@ -377,6 +345,12 @@
       border-radius: 16px;
       padding: 24px;
       text-align: center;
+    }
+
+    .qr-placeholder img {
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto;
     }
 
     .qr-placeholder i {
@@ -407,7 +381,7 @@
       border-radius: 30px;
       font-weight: 500;
       font-size: 0.95rem;
-      color: white;
+      color: var(--white);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
@@ -419,7 +393,7 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      color: white;
+      color: var(--white);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -431,10 +405,7 @@
       transform: scale(1.05);
     }
 
-    .copy-btn:active {
-      transform: scale(0.95);
-    }
-
+    /* ===== FORM ===== */
     .donation-form {
       display: flex;
       flex-direction: column;
@@ -447,7 +418,7 @@
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.06);
-      color: white;
+      color: var(--white);
       font-family: inherit;
       font-size: 0.95rem;
       transition: all 0.3s ease;
@@ -463,7 +434,6 @@
       outline: none;
       border-color: var(--gold);
       background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
     }
 
     .donation-form textarea {
@@ -520,7 +490,7 @@
     .progress-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--gold), var(--saffron), var(--accent-light));
+      background: linear-gradient(90deg, var(--gold), var(--pink-light), var(--gold));
       border-radius: 30px;
       transition: width 0.6s ease;
     }
@@ -556,7 +526,7 @@
 
     .donor-card .name {
       font-weight: 600;
-      color: white;
+      color: var(--white);
       font-size: 0.95rem;
     }
 
@@ -576,7 +546,7 @@
     .donor-card .date {
       font-size: 0.65rem;
       opacity: 0.5;
-      color: white;
+      color: var(--white);
     }
 
     .empty-donors {
@@ -606,6 +576,8 @@
       transition: all 0.3s ease;
       padding: 8px;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
     .gallery-item:hover {
@@ -613,8 +585,15 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
     .gallery-item i {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--gold);
       margin-bottom: 4px;
     }
@@ -623,9 +602,15 @@
       font-size: 0.6rem;
       color: var(--text-muted);
       font-weight: 500;
+      position: absolute;
+      bottom: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
     }
 
-    /* ===== EVENT LIST ===== */
+    /* ===== EVENT ===== */
     .event-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -640,7 +625,7 @@
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      color: white;
+      color: var(--white);
       font-size: 0.85rem;
       display: flex;
       align-items: center;
@@ -666,7 +651,7 @@
       padding: 12px 16px;
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      color: white;
+      color: var(--white);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -690,13 +675,13 @@
       color: #25D366;
     }
 
-    /* ===== FLOATING DONATE ===== */
+    /* ===== FLOATING BUTTONS ===== */
     .floating-donate {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 50;
-      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      background: linear-gradient(135deg, var(--gold), #FFC107);
       color: #1A1A2E;
       width: 56px;
       height: 56px;
@@ -714,14 +699,9 @@
 
     .floating-donate:hover {
       transform: scale(1.1) translateY(-4px);
-      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.5);
     }
 
-    .floating-donate:active {
-      transform: scale(0.9);
-    }
-
-    /* ===== BACK TO TOP ===== */
     .back-top {
       position: fixed;
       bottom: 84px;
@@ -737,7 +717,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--white);
       font-size: 1.2rem;
       transition: all 0.3s ease;
       cursor: pointer;
@@ -751,7 +731,7 @@
     }
 
     .back-top:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
       transform: translateY(-3px);
     }
 
@@ -781,8 +761,8 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 380px) {
       .nav-links a {
-        font-size: 0.65rem;
-        padding: 3px 8px;
+        font-size: 0.6rem;
+        padding: 3px 6px;
       }
       
       .hero h1 {
@@ -816,28 +796,22 @@
     }
 
     @media (min-width: 481px) {
-      .glass-container {
+      .container {
         max-width: 600px;
         padding: 24px;
       }
       
       nav {
         margin: 0 -24px 24px -24px;
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-      
-      .hero-illustration {
-        width: 160px;
-        height: 160px;
-      }
-      
-      .hero-illustration i {
-        font-size: 5.5rem;
+        padding: 12px 24px;
       }
       
       .hero h1 {
         font-size: 2.8rem;
+      }
+      
+      .hero-image {
+        max-width: 500px;
       }
     }
 
@@ -856,16 +830,6 @@
     .fade-in {
       animation: fadeUp 0.6s ease forwards;
     }
-
-    .fade-in-delay-1 {
-      animation-delay: 0.1s;
-    }
-    .fade-in-delay-2 {
-      animation-delay: 0.2s;
-    }
-    .fade-in-delay-3 {
-      animation-delay: 0.3s;
-    }
   </style>
 </head>
 <body>
@@ -877,3 +841,508 @@
   </div>
 
   <!-- ===== SCROLL PROGRESS ===== -->
+  <div id="scroll-progress"></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <i class="fas fa-feather-alt"></i>
+        <span>Krishna</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#donate">Donate</a>
+        <a href="#donors">Donors</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#event">Event</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="container">
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero fade-in">
+      <!-- Hero Image - Replace src with your image -->
+      <img src="assets/images/hero-banner.jpg" alt="Shri Krishna" class="hero-image" onerror="this.style.display='none'">
+      <div class="hero-illustration" style="display:none;">
+        <i class="fas fa-fan"></i>
+      </div>
+      <h1>Shri Krishna <br><span>Janmashtami</span> 2026</h1>
+      <p>Celebrate the divine grace of Lord Krishna. Contribute to the festival and be part of the spiritual bliss.</p>
+      <a href="#donate" class="btn-primary">
+        <i class="fas fa-hand-holding-heart"></i> Donate Now
+      </a>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span id="days">00</span>
+          <small>Days</small>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          <small>Hrs</small>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          <small>Min</small>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">00</span>
+          <small>Sec</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DONATION ===== -->
+    <section id="donate" class="fade-in">
+      <div class="section-title">
+        <i class="fas fa-donate"></i> Donate
+      </div>
+      <div class="glass-card">
+        <div class="donation-grid">
+          <!-- UPI -->
+          <div>
+            <div class="qr-placeholder">
+              <!-- QR Code Image - Replace with your QR code -->
+              <img src="assets/images/qr-code.png" alt="UPI QR Code" onerror="this.style.display='none'">
+              <i class="fas fa-qrcode" style="display:none;"></i>
+              <span>Scan UPI QR Code</span>
+            </div>
+            <div class="upi-box">
+              <span class="upi-id" id="upiDisplay">krishna@pay</span>
+              <button class="copy-btn" id="copyUpiBtn">
+                <i class="far fa-copy"></i> Copy
+              </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 4px;">
+              <i class="fas fa-info-circle"></i> Pay using any UPI app
+            </p>
+          </div>
+
+          <!-- Form -->
+          <div>
+            <h4 style="color: var(--white); font-weight: 500; margin-bottom: 12px; font-size: 1rem;">
+              Submit Donation
+            </h4>
+            <form id="donationForm" class="donation-form">
+              <input type="text" placeholder="Your Name *" id="dName" required>
+              <input type="number" placeholder="Amount (₹) *" id="dAmount" required min="1">
+              <input type="text" placeholder="Transaction ID *" id="dTxn" required>
+              <textarea rows="2" placeholder="Message (optional)" id="dMessage"></textarea>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-check-circle"></i> Submit Donation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATISTICS ===== -->
+    <section class="fade-in">
+      <div class="glass-card">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <strong id="totalDonors">0</strong>
+            <span>Donors</span>
+          </div>
+          <div class="stat-item">
+            <strong id="totalAmount">₹0</strong>
+            <span>Raised</span>
+          </div>
+          <div class="stat-item">
+            <strong id="highestDonation">₹0</strong>
+            <span>Highest</span>
+          </div>
+        </div>
+        <div class="progress-label">
+          <span>Goal: ₹51,000</span>
+          <span id="progressLabel">0%</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DONOR WALL ===== -->
+    <section id="donors" class="fade-in">
+      <div class="section-title">
+        <i class="fas fa-users"></i> Donor Wall
+      </div>
+      <div class="glass-card">
+        <div id="donorWall" class="donor-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" class="fade-in">
+      <div class="section-title">
+        <i class="fas fa-images"></i> Gallery
+      </div>
+      <div class="glass-card">
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/images/gallery-1.jpg" alt="Aarti" onerror="this.style.display='none'">
+            <i class="fas fa-fan" style="display:none;"></i>
+            <span>Aarti</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-2.jpg" alt="Bhajan" onerror="this.style.display='none'">
+            <i class="fas fa-dharmachakra" style="display:none;"></i>
+            <span>Bhajan</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-3.jpg" alt="Jhanki" onerror="this.style.display='none'">
+            <i class="fas fa-peacock" style="display:none;"></i>
+            <span>Jhanki</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-4.jpg" alt="Prasad" onerror="this.style.display='none'">
+            <i class="fas fa-utensils" style="display:none;"></i>
+            <span>Prasad</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-5.jpg" alt="Cultural" onerror="this.style.display='none'">
+            <i class="fas fa-music" style="display:none;"></i>
+            <span>Cultural</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-6.jpg" alt="Matki" onerror="this.style.display='none'">
+            <i class="fas fa-hand-sparkles" style="display:none;"></i>
+            <span>Matki</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-7.jpg" alt="Puja" onerror="this.style.display='none'">
+            <i class="fas fa-pray" style="display:none;"></i>
+            <span>Puja</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/gallery-8.jpg" alt="Darshan" onerror="this.style.display='none'">
+            <i class="fas fa-hands-praying" style="display:none;"></i>
+            <span>Darshan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVENT ===== -->
+    <section id="event" class="fade-in">
+      <div class="section-title">
+        <i class="fas fa-calendar-alt"></i> Event Schedule
+      </div>
+      <div class="glass-card">
+        <ul class="event-list">
+          <li><i class="fas fa-sun"></i> Morning Aarti</li>
+          <li><i class="fas fa-music"></i> Bhajan</li>
+          <li><i class="fas fa-lamp"></i> Jhanki</li>
+          <li><i class="fas fa-utensils"></i> Prasad</li>
+          <li><i class="fas fa-dance"></i> Cultural Program</li>
+          <li><i class="fas fa-hand-sparkles"></i> Matki Phod</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="fade-in">
+      <div class="section-title">
+        <i class="fas fa-phone-alt"></i> Contact
+      </div>
+      <div class="glass-card">
+        <div class="contact-flex">
+          <a href="tel:+919999999999">
+            <i class="fas fa-phone"></i>
+            <span>+91 99999 99999</span>
+          </a>
+          <a href="#">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="#">
+            <i class="fas fa-map-pin"></i>
+            <span>Temple, Vrindavan</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      Made with <i class="fas fa-heart"></i> for Shri Krishna Janmashtami
+    </footer>
+  </div>
+
+  <!-- ===== FLOATING DONATE ===== -->
+  <a href="#donate" class="floating-donate" aria-label="Donate">
+    <i class="fas fa-hand-holding-heart"></i>
+  </a>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <div class="back-top" id="backTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- ===== CONFETTI CANVAS ===== -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ===== LOADING =====
+      window.addEventListener('load', function() {
+        document.getElementById('loader').classList.add('hidden');
+      });
+
+      // ===== DARK MODE =====
+      var darkToggle = document.getElementById('darkToggle');
+      var isDark = false;
+      darkToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark');
+        var icon = darkToggle.querySelector('i');
+        if (document.body.classList.contains('dark')) {
+          icon.className = 'fas fa-sun';
+        } else {
+          icon.className = 'fas fa-moon';
+        }
+      });
+
+      // ===== SCROLL PROGRESS & BACK TOP =====
+      var progress = document.getElementById('scroll-progress');
+      var backTop = document.getElementById('backTop');
+
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var prog = docHeight ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = prog + '%';
+
+        if (scrollTop > 400) {
+          backTop.classList.add('visible');
+        } else {
+          backTop.classList.remove('visible');
+        }
+      });
+
+      backTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ===== COUNTDOWN =====
+      function updateCountdown() {
+        var target = new Date('2026-08-26T00:00:00').getTime();
+        var now = Date.now();
+        var diff = Math.max(0, target - now);
+
+        var days = Math.floor(diff / 86400000);
+        diff -= days * 86400000;
+        var hours = Math.floor(diff / 3600000);
+        diff -= hours * 3600000;
+        var minutes = Math.floor(diff / 60000);
+        diff -= minutes * 60000;
+        var seconds = Math.floor(diff / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // ===== COPY UPI =====
+      document.getElementById('copyUpiBtn').addEventListener('click', function() {
+        var upi = 'krishna@pay';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(upi).then(function() {
+            alert('UPI ID copied: ' + upi);
+          }).catch(function() {
+            fallbackCopy(upi);
+          });
+        } else {
+          fallbackCopy(upi);
+        }
+      });
+
+      function fallbackCopy(text) {
+        var el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('UPI ID copied: ' + text);
+      }
+
+      // ===== LOCAL STORAGE =====
+      function getDonations() {
+        try {
+          return JSON.parse(localStorage.getItem('krishnaDonations')) || [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveDonations(list) {
+        localStorage.setItem('krishnaDonations', JSON.stringify(list));
+      }
+
+      // ===== RENDER ALL =====
+      function renderAll() {
+        var list = getDonations();
+        var wall = document.getElementById('donorWall');
+
+        if (list.length === 0) {
+          wall.innerHTML = '<div class="empty-donors">🙏 No donations yet. Be the first!</div>';
+        } else {
+          var html = '';
+          for (var i = list.length - 1; i >= 0; i--) {
+            var d = list[i];
+            html += '<div class="donor-card">';
+            html += '<div class="name">🙏 ' + (d.name || 'Anonymous') + '</div>';
+            html += '<div class="amount">₹' + (d.amount || 0) + '</div>';
+            if (d.message) {
+              html += '<div class="msg">' + d.message + '</div>';
+            }
+            html += '<div class="date">' + (d.date || '') + '</div>';
+            html += '</div>';
+          }
+          wall.innerHTML = html;
+        }
+
+        // Stats
+        var total = 0;
+        var donors = list.length;
+        var highest = 0;
+        for (var j = 0; j < list.length; j++) {
+          var amt = Number(list[j].amount || 0);
+          total += amt;
+          if (amt > highest) highest = amt;
+        }
+
+        document.getElementById('totalDonors').textContent = donors;
+        document.getElementById('totalAmount').textContent = '₹' + total;
+        document.getElementById('highestDonation').textContent = '₹' + highest;
+
+        // Progress
+        var goal = 51000;
+        var pct = Math.min(100, Math.round((total / goal) * 100));
+        document.getElementById('progressBar').style.width = pct + '%';
+        document.getElementById('progressLabel').textContent = pct + '%';
+      }
+
+      // ===== DONATION FORM =====
+      document.getElementById('donationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var name = document.getElementById('dName').value.trim();
+        var amount = parseFloat(document.getElementById('dAmount').value);
+        var txn = document.getElementById('dTxn').value.trim();
+        var message = document.getElementById('dMessage').value.trim();
+
+        if (!name || !amount || amount <= 0 || !txn) {
+          alert('Please fill Name, Amount, and Transaction ID.');
+          return;
+        }
+
+        var donations = getDonations();
+        var date = new Date();
+        var dateStr = date.toLocaleDateString('en-IN', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+
+        donations.push({
+          name: name,
+          amount: amount,
+          txn: txn,
+          message: message || '',
+          date: dateStr
+        });
+
+        saveDonations(donations);
+        renderAll();
+        document.getElementById('donationForm').reset();
+
+        alert('🙏 Thank you for your donation! Jay Shri Krishna!');
+        launchConfetti();
+      });
+
+      // ===== CONFETTI =====
+      function launchConfetti() {
+        var canvas = document.getElementById('confettiCanvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var colors = ['#FFD700', '#FF6B6B', '#EC407A', '#F48FB1', '#FFC107', '#FFB74D'];
+        var particles = [];
+        for (var i = 0; i < 80; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            w: 4 + Math.random() * 8,
+            h: 4 + Math.random() * 6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vy: 2 + Math.random() * 4,
+            rot: Math.random() * 360,
+            rotSpeed: 2 + Math.random() * 4
+          });
+        }
+
+        var frame = 0;
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          var alive = false;
+
+          for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.y += p.vy;
+            p.rot += p.rotSpeed;
+
+            if (p.y < canvas.height + 50) alive = true;
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot * Math.PI / 180);
+            ctx.globalAlpha = 0.8;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+
+          if (alive || frame < 80) {
+            frame++;
+            requestAnimationFrame(animate);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        }
+
+        animate();
+      }
+
+      window.addEventListener('resize', function() {
+        var canvas = document.getElementById('confettiCanvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // ===== INIT =====
+      renderAll();
+    })();
+  </script>
+
+</body>
+</html>
