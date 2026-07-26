@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #FFF8F2;
+      color: #1F2937;
+      padding-bottom: 80px;
+    }
+    
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, #5B2C9D, #3D1A6B);
+      padding: 20px 0;
+      text-align: center;
+      color: white;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 16px;
+    }
+    
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .header h1 span {
+      color: #F7B733;
+    }
+    
+    .header .village {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+    
+    /* ===== CARD ===== */
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .card-title i {
+      color: #F7B733;
+    }
+    
+    /* ===== BUTTON ===== */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #F7B733, #F5A623);
+      color: #1F2937;
+      box-shadow: 0 4px 16px rgba(247,183,51,0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(247,183,51,0.4);
+    }
+    
+    .btn-block {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    /* ===== COUNTDOWN ===== */
+    .countdown {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .countdown-item {
+      text-align: center;
+      background: #f8f4f0;
+      padding: 10px 16px;
+      border-radius: 12px;
+      min-width: 60px;
+    }
+    
+    .countdown-item span {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #5B2C9D;
+      display: block;
+    }
+    
+    .countdown-item small {
+      font-size: 0.6rem;
+      color: #6B7280;
+      text-transform: uppercase;
+    }
+    
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    .stat {
+      text-align: center;
+      background: #f8f4f0;
+      padding: 12px;
+      border-radius: 12px;
+    }
+    
+    .stat strong {
+      font-size: 1.2rem;
+      color: #5B2C9D;
+      display: block;
+    }
+    
+    .stat span {
+      font-size: 0.65rem;
+      color: #6B7280;
+    }
+    
+    /* ===== PROGRESS ===== */
+    .progress-bar {
+      height: 8px;
+      background: #f0ebe6;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 6px 0;
+    }
+    
+    .progress-bar .fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #F7B733, #5B2C9D);
+      border-radius: 10px;
+      transition: width 0.6s;
+    }
+    
+    /* ===== FORM ===== */
+    .form input,
+    .form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e5e0db;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      background: #faf8f6;
+      transition: 0.3s;
+    }
+    
+    .form input:focus,
+    .form textarea:focus {
+      outline: none;
+      border-color: #5B2C9D;
+      box-shadow: 0 0 0 3px rgba(91,44,157,0.08);
+    }
+    
+    .form textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    
+    /* ===== DONOR ===== */
+    .donor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    .donor-card {
+      background: #f8f4f0;
+      padding: 12px;
+      border-radius: 12px;
+    }
+    
+    .donor-card .name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .donor-card .amount {
+      color: #5B2C9D;
+      font-weight: 700;
+    }
+    
+    .donor-card .msg {
+      font-size: 0.75rem;
+      color: #6B7280;
+    }
+    
+    .donor-card .date {
+      font-size: 0.6rem;
+      opacity: 0.5;
+    }
+    
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #6B7280;
+      padding: 20px;
+    }
+    
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* ===== EVENT ===== */
+    .event-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0ebe6;
+    }
+    
+    .event-item:last-child {
+      border-bottom: none;
+    }
+    
+    .event-time {
+      font-weight: 700;
+      color: #5B2C9D;
+      min-width: 65px;
+      font-size: 0.8rem;
+    }
+    
+    .event-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #F7B733;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.8rem;
+    }
+    
+    /* ===== CONTACT ===== */
+    .contact a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #f8f4f0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #1F2937;
+      margin-bottom: 8px;
+      transition: 0.3s;
+    }
+    
+    .contact a:hover {
+      background: #f0ebe6;
+      transform: translateX(4px);
+    }
+    
+    .contact a i {
+      width: 24px;
+      color: #5B2C9D;
+    }
+    
+    /* ===== BOTTOM NAV ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0 14px;
+      border-top: 1px solid #f0ebe6;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.04);
+      z-index: 100;
+    }
+    
+    .bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #9CA3AF;
+      font-size: 0.6rem;
+      transition: 0.3s;
+    }
+    
+    .bottom-nav a i {
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+    
+    .bottom-nav a.active {
+      color: #5B2C9D;
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 16px 0;
+      color: #6B7280;
+      font-size: 0.75rem;
+      border-top: 1px solid #f0ebe6;
+      margin-top: 16px;
+    }
+    
+    .footer i {
+      color: #FF6B6B;
+    }
+    
+    /* ===== FLOATING ===== */
+    .floating {
+      position: fixed;
+      bottom: 80px;
+      right: 16px;
+      z-index: 50;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F7B733, #F5A623);
+      color: #1F2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 20px rgba(247,183,51,0.3);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .floating:hover {
+      transform: scale(1.1);
+    }
+    
+    /* ===== CONFETTI ===== */
+    #confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 380px) {
+      .countdown-item { min-width: 50px; padding: 8px 10px; }
+      .countdown-item span { font-size: 1.4rem; }
+      .gallery { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .donor-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <div class="container">
+      <h1>🦚 श्री कृष्ण <br><span>जन्माष्टमी</span> महोत्सव</h1>
+      <div class="village">📍 ग्राम भानपुर</div>
+      <p style="font-size:0.8rem; opacity:0.7; margin-top:8px; max-width:350px; margin-left:auto; margin-right:auto;">
+        "आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।"
+      </p>
+      <a href="#donate" class="btn btn-primary" style="margin-top:12px; display:inline-block;">
+        <i class="fas fa-hand-holding-heart"></i> दान करें
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ===== COUNTDOWN ===== -->
+    <div class="card">
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span id="days">00</span><small>दिन</small></div>
+        <div class="countdown-item"><span id="hours">00</span><small>घंटे</small></div>
+        <div class="countdown-item"><span id="minutes">00</span><small>मिनट</small></div>
+        <div class="countdown-item"><span id="seconds">00</span><small>सेकंड</small></div>
+      </div>
+    </div>
+
+    <!-- ===== STATS ===== -->
+    <div class="card">
+      <div class="stats">
+        <div class="stat">
+          <strong id="totalDonors">0</strong>
+          <span>दानकर्ता</span>
+        </div>
+        <div class="stat">
+          <strong id="totalAmount">₹0</strong>
+          <span>कुल संग्रह</span>
+        </div>
+        <div class="stat">
+          <strong>₹51,000</strong>
+          <span>लक्ष्य</span>
+        </div>
+      </div>
+      <div style="margin-top:10px;">
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#6B7280;">
+          <span>₹<span id="collectedDisplay">0</span> संग्रहित</span>
+          <span><span id="progressLabel">0</span>%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="fill" id="progressBar"></div>
+        </div>
+        <p style="text-align:center; font-size:0.7rem; color:#6B7280; margin-top:6px;">
+          <span id="motivationalMsg">🙏 आपका सहयोग हमारी ताकत है</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== DONATION ===== -->
+    <div id="donate" class="card">
+      <div class="card-title"><i class="fas fa-donate"></i> दान करें</div>
+      
+      <div style="text-align:center; background:#f8f4f0; padding:16px; border-radius:12px; border:2px dashed #ddd;">
+        <i class="fas fa-qrcode" style="font-size:3rem; color:#5B2C9D; opacity:0.4;"></i>
+        <p style="font-size:0.8rem; color:#6B7280;">UPI QR कोड स्कैन करें</p>
+        <div style="display:flex; justify-content:center; gap:10px; margin-top:8px; flex-wrap:wrap;">
+          <span style="background:white; padding:6px 16px; border-radius:50px; font-weight:500; border:1px solid #ddd;">krishna@pay</span>
+          <button id="copyBtn" style="background:#5B2C9D; color:white; border:none; padding:6px 16px; border-radius:50px; cursor:pointer;">कॉपी</button>
+        </div>
+      </div>
+      
+      <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:12px 0;">
+        <button class="quick" data-amount="51" style="padding:8px 16px; border-radius:50px; border:1px solid #ddd; background:white; cursor:pointer;">₹51</button>
+        <button class="quick" data-amount="101" style="padding:8px 16px; border-radius:50px; border:1px solid #ddd; background:white; cursor:pointer;">₹101</button>
+        <button class="quick" data-amount="251" style="padding:8px 16px; border-radius:50px; border:1px solid #ddd; background:white; cursor:pointer;">₹251</button>
+        <button class="quick" data-amount="501" style="padding:8px 16px; border-radius:50px; border:1px solid #ddd; background:white; cursor:pointer;">₹501</button>
+        <button class="quick" data-amount="1100" style="padding:8px 16px; border-radius:50px; border:1px solid #ddd; background:white; cursor:pointer;">₹1,100</button>
+      </div>
+      
+      <form id="donationForm" class="form">
+        <input type="text" placeholder="आपका नाम *" id="dName" required>
+        <input type="number" placeholder="राशि (₹) *" id="dAmount" required min="1">
+        <input type="text" placeholder="Transaction ID *" id="dTxn" required>
+        <textarea rows="2" placeholder="संदेश (वैकल्पिक)" id="dMessage"></textarea>
+        <button type="submit" class="btn btn-primary btn-block">
+          <i class="fas fa-check-circle"></i> दान सबमिट करें
+        </button>
+      </form>
+    </div>
+
+    <!-- ===== DONOR WALL ===== -->
+    <div id="donors" class="card">
+      <div class="card-title"><i class="fas fa-users"></i> दानकर्ता</div>
+      <div id="donorWall" class="donor-grid"></div>
+    </div>
+
+    <!-- ===== GALLERY ===== -->
+    <div id="gallery" class="card">
+      <div class="card-title"><i class="fas fa-images"></i> गैलरी</div>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+
+    <!-- ===== EVENT ===== -->
+    <div id="event" class="card">
+      <div class="card-title"><i class="fas fa-calendar-alt"></i> कार्यक्रम</div>
+      <div class="event-item">
+        <span class="event-time">04:30 AM</span>
+        <div class="event-icon"><i class="fas fa-sun"></i></div>
+        <span>मंगला आरती</span>
+      </div>
+      <div class="event-item">
+        <span class="event-time">06:00 AM</span>
+        <div class="event-icon"><i class="fas fa-water"></i></div>
+        <span>श्री कृष्ण अभिषेक</span>
+      </div>
+      <div class="event-item">
+        <span class="event-time">07:00 PM</span>
+        <div class="event-icon"><i class="fas fa-music"></i></div>
+        <span>भजन संध्या</span>
+      </div>
+      <div class="event-item">
+        <span class="event-time">08:30 PM</span>
+        <div class="event-icon"><i class="fas fa-pray"></i></div>
+        <span>झांकी दर्शन</span>
+      </div>
+      <div class="event-item">
+        <span class="event-time">10:00 PM</span>
+        <div class="event-icon"><i class="fas fa-utensils"></i></div>
+        <span>प्रसाद वितरण</span>
+      </div>
+      <div class="event-item">
+        <span class="event-time">11:30 PM</span>
+        <div class="event-icon"><i class="fas fa-hand-sparkles"></i></div>
+        <span>मटकी फोड़</span>
+      </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div id="contact" class="card">
+      <div class="card-title"><i class="fas fa-phone-alt"></i> संपर्क करें</div>
+      <div class="contact">
+        <a href="tel:+919999999999"><i class="fas fa-phone"></i> +91 99999 99999</a>
+        <a href="#"><i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp</a>
+        <a href="#"><i class="fas fa-map-pin"></i> ग्राम भानपुर, वृंदावन</a>
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      🦚 श्री कृष्ण जन्माष्टमी महोत्सव<br>
+      Made with <i class="fas fa-heart"></i> for Shri Krishna<br>
+      <span style="opacity:0.5; font-size:0.65rem;">© 2026 · जय श्री कृष्ण</span>
+    </div>
+
+  </div>
+
+  <!-- ===== FLOATING DONATE ===== -->
+  <a href="#donate" class="floating"><i class="fas fa-hand-holding-heart"></i></a>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <div class="bottom-nav">
+    <a href="#" class="active" data-section="home"><i class="fas fa-home"></i>होम</a>
+    <a href="#donate" data-section="donate"><i class="fas fa-donate"></i>दान</a>
+    <a href="#donors" data-section="donors"><i class="fas fa-users"></i>दानकर्ता</a>
+    <a href="#gallery" data-section="gallery"><i class="fas fa-images"></i>गैलरी</a>
+    <a href="#contact" data-section="contact"><i class="fas fa-phone"></i>संपर्क</a>
+  </div>
+
+  <!-- ===== CONFETTI ===== -->
+  <canvas id="confetti"></canvas>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ===== COUNTDOWN =====
+      function updateCountdown() {
+        var target = new Date('2026-08-26T00:00:00').getTime();
+        var diff = Math.max(0, target - Date.now());
+        document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+        diff %= 86400000;
+        document.getElementById('hours').textContent = String(Math.floor(diff / 3600000)).padStart(2, '0');
+        diff %= 3600000;
+        document.getElementById('minutes').textContent = String(Math.floor(diff / 60000)).padStart(2, '0');
+        diff %= 60000;
+        document.getElementById('seconds').textContent = String(Math.floor(diff / 1000)).padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // ===== COPY UPI =====
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        var upi = 'krishna@pay';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(upi).then(function() {
+            alert('UPI ID कॉपी हो गया: ' + upi);
+          });
+        } else {
+          var el = document.createElement('textarea');
+          el.value = upi;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          alert('UPI ID कॉपी हो गया: ' + upi);
+        }
+      });
+
+      // ===== QUICK DONATE =====
+      var quickBtns = document.querySelectorAll('.quick');
+      var amountInput = document.getElementById('dAmount');
+      quickBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          quickBtns.forEach(function(b) { b.style.background = 'white'; b.style.color = '#1F2937'; });
+          this.style.background = '#5B2C9D';
+          this.style.color = 'white';
+          amountInput.value = this.dataset.amount;
+        });
+      });
+
+      // ===== LOCAL STORAGE =====
+      function getDonations() {
+        try { return JSON.parse(localStorage.getItem('krishnaDonations')) || []; } catch { return []; }
+      }
+
+      function saveDonations(list) {
+        localStorage.setItem('krishnaDonations', JSON.stringify(list));
+      }
+
+      // ===== RENDER =====
+      function renderAll() {
+        var list = getDonations();
+        var wall = document.getElementById('donorWall');
+
+        if (list.length === 0) {
+          wall.innerHTML = '<div class="empty">🙏 अभी कोई दान नहीं</div>';
+        } else {
+          var html = '';
+          for (var i = list.length - 1; i >= 0; i--) {
+            var d = list[i];
+            html += '<div class="donor-card">';
+            html += '<div class="name">🙏 ' + (d.name || 'Anonymous') + '</div>';
+            html += '<div class="amount">₹' + (d.amount || 0) + '</div>';
+            if (d.message) html += '<div class="msg">' + d.message + '</div>';
+            html += '<div class="date">' + (d.date || '') + '</div>';
+            html += '</div>';
+          }
+          wall.innerHTML = html;
+        }
+
+        var total = 0, donors = list.length;
+        for (var j = 0; j < list.length; j++) {
+          total += Number(list[j].amount || 0);
+        }
+
+        document.getElementById('totalDonors').textContent = donors;
+        document.getElementById('totalAmount').textContent = '₹' + total;
+        document.getElementById('collectedDisplay').textContent = total;
+
+        var goal = 51000;
+        var pct = Math.min(100, Math.round((total / goal) * 100));
+        document.getElementById('progressBar').style.width = pct + '%';
+        document.getElementById('progressLabel').textContent = pct + '%';
+
+        var msgs = ['🙏 आपका सहयोग हमारी ताकत है', '🌟 मिलकर बनाएंगे भव्य महोत्सव', '💫 हर दान है पुण्य', '🦚 कृष्ण की कृपा बनी रहे'];
+   
