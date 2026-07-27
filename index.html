@@ -1829,7 +1829,7 @@
         const API_BASE = window.location.origin + '/api';
 
         // ============================================================
-        // 1. LOADER
+        // 1. LOADER & AUTO-PLAY SONG
         // ============================================================
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hide');
@@ -1842,7 +1842,49 @@
             updateStats();
             setInterval(fetchDonors, 30000);
             setInterval(updateStats, 30000);
+
+            // Auto-play Jai Shri Krishna song
+            playSong();
         });
+
+        // ---------- SONG ----------
+        function playSong() {
+            const audio = document.getElementById('bgSong');
+            if (audio) {
+                // Try to play; if blocked, show a small play button
+                audio.play().catch(() => {
+                    // Show a tiny play button overlay
+                    const btn = document.createElement('button');
+                    btn.innerHTML = '🔊 Play Jai Shri Krishna';
+                    btn.style.cssText = `
+                        position: fixed;
+                        bottom: 140px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 9998;
+                        background: rgba(255,193,7,0.12);
+                        backdrop-filter: blur(12px);
+                        color: #FFC107;
+                        border: 1px solid rgba(255,193,7,0.2);
+                        padding: 8px 20px;
+                        border-radius: 60px;
+                        font-family: 'Poppins', sans-serif;
+                        font-weight: 600;
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+                        transition: all 0.3s ease;
+                    `;
+                    btn.onmouseover = () => { btn.style.transform = 'scale(1.05)'; };
+                    btn.onmouseout = () => { btn.style.transform = 'scale(1)'; };
+                    btn.onclick = function() {
+                        audio.play();
+                        this.remove();
+                    };
+                    document.body.appendChild(btn);
+                });
+            }
+        }
 
         // ============================================================
         // 2. TOAST
@@ -2079,7 +2121,7 @@
             if (!mobile || mobile.length < 10 || !/^\d{10,15}$/.test(mobile)) { mobErr.classList.add('show');
                 valid = false; } else { mobErr.classList.remove('show'); }
 
-            if (!valid) { showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें。'); return; }
+            if (!valid) { showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें।'); return; }
 
             let amount = customInput.value.trim();
             if (!amount) {
@@ -2270,6 +2312,15 @@
         console.log('📸 Gallery Images: ' + galleryImages.length + ' images');
         console.log('🙏 जय श्री कृष्ण!');
     </script>
+
+    <!-- ============================================================
+    AUDIO – Jai Shri Krishna (Auto-play)
+    ============================================================ -->
+    <audio id="bgSong" autoplay loop preload="auto">
+        <source src="/static/assets/audio/jai-shri-krishna.mp3" type="audio/mpeg">
+        <!-- Fallback: use a free online chant if local file missing -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
 </body>
 </html>
