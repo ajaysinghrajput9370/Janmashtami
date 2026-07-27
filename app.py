@@ -1,28 +1,21 @@
 # ============================================================
-# app.py – Flask Backend for Krishna Janmashtami Donation System
+# app.py – Flask Backend + Frontend Server (Monolithic)
 # ============================================================
-# Run: python app.py
-# API Base: http://localhost:5000/api
-# ============================================================
-
 import os
 import sqlite3
-import json
 import threading
 import time
 from datetime import datetime
-from flask import Flask, request, jsonify, g
+from flask import Flask, request, jsonify, g, send_from_directory, send_file, abort
 from flask_cors import CORS
-from werkzeug.exceptions import BadRequest
 
 # ---------- CONFIG ----------
 DATABASE = 'donors.db'
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+app = Flask(__name__, static_folder='static', static_url_path='/static')
+CORS(app)  # CORS enabled for API
 
 # ---------- DATABASE HELPERS ----------
 def get_db():
-    """Get database connection (thread-local)."""
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
@@ -30,7 +23,6 @@ def get_db():
     return db
 
 def init_db():
-    """Create tables if they don't exist."""
     with app.app_context():
         db = get_db()
         cursor = db.cursor()
@@ -49,29 +41,20 @@ def init_db():
         ''')
         db.commit()
 
-def close_db(exception=None):
-    """Close database connection."""
+@app.teardown_appcontext
+def teardown_db(exception=None):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
 
-@app.teardown_appcontext
-def teardown_db(exception=None):
-    close_db(exception)
-
-# ---------- AUTO-PAYMENT CONFIRMATION (Background Thread) ----------
+# ---------- AUTO-CONFIRM THREAD ----------
 def auto_confirm_payments():
-    """
-    Background thread: checks for pending donations with a transaction ID
-    and auto-confirms them after 30 seconds.
-    """
     with app.app_context():
         while True:
             try:
-                time.sleep(30)  # Check every 30 seconds
+                time.sleep(30)
                 db = get_db()
                 cursor = db.cursor()
-                # Find pending donations with a transaction ID
                 cursor.execute('''
                     UPDATE donors 
                     SET status = 'confirmed' 
@@ -86,19 +69,35 @@ def auto_confirm_payments():
             except Exception as e:
                 print(f"⚠️ Auto-confirm error: {e}")
 
-# Start background thread
 thread = threading.Thread(target=auto_confirm_payments, daemon=True)
 thread.start()
 
-# ---------- API ROUTES ----------
+# ============================================================
+# FRONTEND ROUTES – index.html and static assets
+# ============================================================
+
+@app.route('/')
+def serve_index():
+    """Serve the main HTML file."""
+    return send_from_directory('.', 'index.html')
+
+# (Optional) If you have other static files like .css or .js in root,
+# you can add a catch-all route. But better to keep them in static/.
+# For simplicity, we'll serve index.html at root.
+
+# If you want to serve static assets from the 'static' folder,
+# Flask already serves them via /static/ URL.
+
+# ============================================================
+# API ROUTES
+# ============================================================
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    """Health check endpoint."""
     return jsonify({'status': 'ok', 'timestamp': datetime.now().isoformat()})
 
 @app.route('/api/donors', methods=['GET'])
 def get_donors():
-    """Get all donors sorted by newest first."""
     try:
         db = get_db()
         cursor = db.cursor()
@@ -127,7 +126,6 @@ def get_donors():
 
 @app.route('/api/donors/stats', methods=['GET'])
 def get_stats():
-    """Get donation statistics."""
     try:
         db = get_db()
         cursor = db.cursor()
@@ -151,13 +149,11 @@ def get_stats():
 
 @app.route('/api/donate', methods=['POST'])
 def create_donation():
-    """Create a new donation entry."""
     try:
         data = request.get_json()
         if not data:
             return jsonify({'error': 'Invalid JSON'}), 400
 
-        # Validate required fields
         name = data.get('name', '').strip()
         mobile = data.get('mobile', '').strip()
         amount = data.get('amount')
@@ -172,12 +168,7 @@ def create_donation():
         amount = int(amount)
         txn = data.get('txn', '').strip()
         message = data.get('message', '').strip()
-        # Auto-confirm if transaction ID is provided
         status = 'confirmed' if txn else 'pending'
-
-        # Auto-detect name from UPI (if available) - just a placeholder logic
-        # In real scenario, you'd parse from UPI webhook or payment gateway
-        # For now, we use the provided name
 
         date_str = datetime.now().strftime('%d %b %Y, %I:%M %p')
 
@@ -190,8 +181,6 @@ def create_donation():
         db.commit()
 
         donor_id = cursor.lastrowid
-
-        # Fetch the created donor
         cursor.execute('SELECT * FROM donors WHERE id = ?', (donor_id,))
         row = cursor.fetchone()
 
@@ -206,13 +195,11 @@ def create_donation():
             'date': row['date'],
             'auto_confirmed': status == 'confirmed'
         }), 201
-
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/donor/<int:donor_id>', methods=['GET'])
 def get_donor(donor_id):
-    """Get a single donor by ID."""
     try:
         db = get_db()
         cursor = db.cursor()
@@ -220,7 +207,6 @@ def get_donor(donor_id):
         row = cursor.fetchone()
         if not row:
             return jsonify({'error': 'Donor not found'}), 404
-
         return jsonify({
             'id': row['id'],
             'name': row['name'],
@@ -236,7 +222,6 @@ def get_donor(donor_id):
 
 @app.route('/api/donor/<int:donor_id>', methods=['PUT'])
 def update_donor(donor_id):
-    """Update a donor (e.g., confirm payment, edit details)."""
     try:
         data = request.get_json()
         if not data:
@@ -244,8 +229,6 @@ def update_donor(donor_id):
 
         db = get_db()
         cursor = db.cursor()
-
-        # Build update query dynamically
         fields = []
         values = []
         allowed_fields = ['name', 'mobile', 'amount', 'txn', 'message', 'status']
@@ -269,10 +252,8 @@ def update_donor(donor_id):
         if cursor.rowcount == 0:
             return jsonify({'error': 'Donor not found'}), 404
 
-        # Fetch updated donor
         cursor.execute('SELECT * FROM donors WHERE id = ?', (donor_id,))
         row = cursor.fetchone()
-
         return jsonify({
             'id': row['id'],
             'name': row['name'],
@@ -288,43 +269,32 @@ def update_donor(donor_id):
 
 @app.route('/api/donor/<int:donor_id>', methods=['DELETE'])
 def delete_donor(donor_id):
-    """Delete a donor by ID (admin only)."""
     try:
         db = get_db()
         cursor = db.cursor()
         cursor.execute('DELETE FROM donors WHERE id = ?', (donor_id,))
         db.commit()
-
         if cursor.rowcount == 0:
             return jsonify({'error': 'Donor not found'}), 404
-
         return jsonify({'message': 'Donor deleted successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/confirm/<int:donor_id>', methods=['POST'])
 def confirm_donation(donor_id):
-    """Manually confirm a donation."""
     try:
         db = get_db()
         cursor = db.cursor()
         cursor.execute('UPDATE donors SET status = "confirmed" WHERE id = ? AND status = "pending"', (donor_id,))
         db.commit()
-
         if cursor.rowcount == 0:
             return jsonify({'error': 'Donor not found or already confirmed'}), 404
-
         return jsonify({'message': 'Donation confirmed successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# ---------- WEBHOOK FOR PAYMENT GATEWAY (Simulated) ----------
 @app.route('/api/webhook/payment', methods=['POST'])
 def payment_webhook():
-    """
-    Webhook endpoint for payment gateways (Razorpay, PhonePe, etc.)
-    Expected payload: { "txn_id": "xxx", "status": "success", "amount": 100, "name": "John" }
-    """
     try:
         data = request.get_json()
         if not data:
@@ -339,19 +309,16 @@ def payment_webhook():
             return jsonify({'error': 'txn_id and status are required'}), 400
 
         if status.lower() == 'success':
-            # Find donor by transaction ID
             db = get_db()
             cursor = db.cursor()
             cursor.execute('SELECT * FROM donors WHERE txn = ?', (txn_id,))
             row = cursor.fetchone()
 
             if row:
-                # Update status to confirmed
                 cursor.execute('UPDATE donors SET status = "confirmed" WHERE id = ?', (row['id'],))
                 db.commit()
                 return jsonify({'message': f'Donation {txn_id} confirmed'})
             else:
-                # If donor not found, create a new entry
                 date_str = datetime.now().strftime('%d %b %Y, %I:%M %p')
                 cursor.execute('''
                     INSERT INTO donors (name, mobile, amount, txn, message, status, date)
@@ -364,16 +331,10 @@ def payment_webhook():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# ---------- RUN SERVER ----------
-if __name__ == '__main__':
-    # Initialize database
+# ============================================================
+# RUN SERVER (Production with Gunicorn)
+# ============================================================
+if __name__ == "__main__":
     init_db()
-    print("🕉️ श्री कृष्ण जन्माष्टमी दान प्रणाली")
-    print("📡 Server running on http://localhost:5000")
-    print("📡 API Base: http://localhost:5000/api")
-    print("📡 Donors: http://localhost:5000/api/donors")
-    print("📡 Stats: http://localhost:5000/api/donors/stats")
-    print("📡 Health: http://localhost:5000/api/health")
-    print("🔁 Auto-confirm thread started (checks every 30s)")
-    print("🙏 जय श्री कृष्ण!")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
