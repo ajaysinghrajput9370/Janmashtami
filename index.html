@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
     <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर - आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।" />
-    <meta name="theme-color" content="#2D1B4E" />
+    <meta name="theme-color" content="#0D0618" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔱</text></svg>" />
     <style>
         /* ============================================================
-           STYLE.CSS – Premium Liquid Glass · Mobile First
+           STYLE.CSS – Premium Liquid Glass · Rich Krishna Theme
            ============================================================ */
         * {
             margin: 0;
@@ -21,29 +21,34 @@
         }
 
         :root {
-            --primary: #3D1F6D;
-            --primary-light: #6A3D9E;
-            --secondary: #1A2A6B;
-            --secondary-light: #3B5EAC;
-            --gold: #D4A843;
-            --gold-light: #E8C86A;
-            --gold-glow: rgba(212, 168, 67, 0.25);
-            --bg: #F5F0FF;
-            --glass: rgba(255, 255, 255, 0.38);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --text: #1A0A2E;
-            --text-light: #4A3A5A;
-            --pink-glow: #D4A0C0;
-            --pink-glow-soft: rgba(212, 160, 192, 0.12);
-            --shadow: 0 20px 60px rgba(61, 31, 109, 0.08);
-            --shadow-lg: 0 30px 80px rgba(61, 31, 109, 0.14);
+            --primary: #6A1B9A;
+            --primary-dark: #4A148C;
+            --primary-light: #9C4DCC;
+            --secondary: #0D47A1;
+            --secondary-light: #1A6BC4;
+            --gold: #FFC107;
+            --gold-light: #FFD54F;
+            --gold-glow: rgba(255, 193, 7, 0.3);
+            --bg: #0D0618;
+            --bg-gradient: radial-gradient(ellipse at 20% 20%, #1A0A2E, #0D0618 70%);
+            --glass: rgba(255, 255, 255, 0.06);
+            --glass-hover: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 215, 150, 0.08);
+            --text: #F5EDFF;
+            --text-light: #C4B5D0;
+            --text-muted: #8A7A9A;
+            --pink-glow: #FF4081;
+            --pink-glow-soft: rgba(255, 64, 129, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.7);
+            --shadow-gold: 0 8px 40px rgba(255, 193, 7, 0.15);
             --radius: 28px;
-            --radius-sm: 18px;
+            --radius-sm: 16px;
             --radius-full: 60px;
             --font: 'Poppins', sans-serif;
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --nav-height: 72px;
-            --glass-blur: 32px;
+            --glass-blur: 28px;
         }
 
         html {
@@ -53,16 +58,27 @@
 
         body {
             font-family: var(--font);
-            background: var(--bg);
+            background: var(--bg-gradient);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
             padding: 0 0 80px 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image:
-                radial-gradient(ellipse at 10% 20%, rgba(212, 168, 67, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 90% 80%, rgba(61, 31, 109, 0.05) 0%, transparent 50%);
+            position: relative;
+        }
+
+        /* ---------- ANIMATED BACKGROUND ---------- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 10% 10%, rgba(106, 27, 154, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 90% 90%, rgba(255, 193, 7, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(13, 71, 161, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         /* ---------- SCROLLBAR ---------- */
@@ -70,7 +86,7 @@
             width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg);
+            background: #0D0618;
         }
         ::-webkit-scrollbar-thumb {
             background: var(--primary-light);
@@ -85,23 +101,28 @@
         }
 
         .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             text-align: center;
             margin: 32px 0 12px;
-            color: var(--text);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.5px;
+            text-shadow: 0 0 60px rgba(255, 193, 7, 0.15);
         }
         .section-title .gold {
             color: var(--gold);
-            text-shadow: 0 0 30px rgba(212, 168, 67, 0.15);
+            -webkit-text-fill-color: var(--gold);
         }
         .section-sub {
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-light);
             margin-bottom: 18px;
-            font-weight: 400;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         /* ---------- GLASS CARD ---------- */
@@ -111,13 +132,14 @@
             -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(200%);
             border-radius: var(--radius);
             border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
             transition: all var(--transition);
         }
         .glass-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.48);
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            background: var(--glass-hover);
+            border-color: rgba(255, 215, 150, 0.15);
         }
 
         /* ---------- BUTTONS ---------- */
@@ -125,11 +147,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 14px 30px;
+            gap: 10px;
+            padding: 14px 32px;
             border-radius: var(--radius-full);
             font-family: var(--font);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
             border: none;
             cursor: pointer;
@@ -137,24 +159,25 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.3px;
         }
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #fff;
-            box-shadow: 0 8px 30px rgba(61, 31, 109, 0.3);
+            box-shadow: 0 8px 30px rgba(106, 27, 154, 0.4);
         }
         .btn-primary:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(61, 31, 109, 0.4);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 50px rgba(106, 27, 154, 0.5);
         }
         .btn-gold {
-            background: linear-gradient(135deg, var(--gold), #C49A38);
+            background: linear-gradient(135deg, var(--gold), #F9A825);
             color: #1A0A2E;
-            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.3);
+            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.3);
         }
         .btn-gold:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(212, 168, 67, 0.4);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 50px rgba(255, 193, 7, 0.4);
         }
         .btn-glass {
             background: var(--glass);
@@ -163,8 +186,19 @@
             color: var(--text);
         }
         .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(255, 215, 150, 0.2);
+        }
+        .btn-outline-gold {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold);
+            color: #1A0A2E;
+            transform: translateY(-3px);
         }
         .btn-sm {
             padding: 10px 20px;
@@ -174,26 +208,12 @@
             width: 100%;
             justify-content: center;
         }
-        .btn-success {
-            background: #2E7D32;
-            color: #fff;
-        }
-        .btn-success:hover {
-            background: #1B5E20;
-        }
-        .btn-danger {
-            background: #C62828;
-            color: #fff;
-        }
-        .btn-danger:hover {
-            background: #B71C1C;
-        }
 
         /* Ripple */
         .btn .ripple {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
             transform: scale(0);
             animation: rippleAnim 0.6s linear;
             pointer-events: none;
@@ -210,7 +230,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: var(--bg);
+            background: var(--bg-gradient);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -223,10 +243,10 @@
             pointer-events: none;
         }
         .loader-ring {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 4px solid rgba(61, 31, 109, 0.08);
+            border: 3px solid rgba(255, 193, 7, 0.08);
             border-top-color: var(--gold);
             animation: spin 0.8s linear infinite;
         }
@@ -236,10 +256,10 @@
             }
         }
         .loader-text {
-            margin-top: 14px;
+            margin-top: 16px;
             font-weight: 500;
-            color: var(--primary);
-            letter-spacing: 2px;
+            color: var(--gold);
+            letter-spacing: 3px;
             font-size: 0.85rem;
         }
 
@@ -250,14 +270,14 @@
             z-index: 1000;
             padding: 10px 18px;
             height: var(--nav-height);
-            background: rgba(245, 240, 255, 0.65);
-            backdrop-filter: blur(28px) saturate(220%);
-            -webkit-backdrop-filter: blur(28px) saturate(220%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(13, 6, 24, 0.75);
+            backdrop-filter: blur(30px) saturate(220%);
+            -webkit-backdrop-filter: blur(30px) saturate(220%);
+            border-bottom: 1px solid rgba(255, 215, 150, 0.06);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 40px rgba(61, 31, 109, 0.04);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
         }
         .navbar .brand {
             display: flex;
@@ -266,8 +286,8 @@
             cursor: pointer;
         }
         .navbar .brand .logo {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--gold));
             display: flex;
@@ -276,7 +296,7 @@
             font-size: 1.3rem;
             color: #fff;
             flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(61, 31, 109, 0.2);
+            box-shadow: 0 4px 20px rgba(106, 27, 154, 0.3);
         }
         .navbar .brand .name {
             display: flex;
@@ -284,16 +304,20 @@
             line-height: 1.2;
         }
         .navbar .brand .name .main {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1rem;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.3px;
         }
         .navbar .brand .name .sub {
             font-size: 0.6rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--text-light);
             letter-spacing: 0.5px;
+            -webkit-text-fill-color: var(--text-light);
         }
         .navbar .nav-right {
             display: flex;
@@ -304,7 +328,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            border: none;
+            border: 1px solid var(--glass-border);
             background: var(--glass);
             backdrop-filter: blur(8px);
             display: flex;
@@ -313,11 +337,11 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: all var(--transition);
-            color: var(--text);
-            border: 1px solid var(--glass-border);
+            color: var(--text-light);
         }
         .navbar .nav-right .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--gold);
             transform: scale(1.05);
         }
         .navbar .nav-right .hamburger {
@@ -325,7 +349,11 @@
             cursor: pointer;
             padding: 4px 8px;
             user-select: none;
-            color: var(--text);
+            color: var(--text-light);
+            transition: all var(--transition);
+        }
+        .navbar .nav-right .hamburger:hover {
+            color: var(--gold);
         }
 
         /* ---------- MOBILE NAV ---------- */
@@ -335,14 +363,14 @@
             left: 0;
             right: 0;
             z-index: 999;
-            background: rgba(245, 240, 255, 0.95);
+            background: rgba(13, 6, 24, 0.96);
             backdrop-filter: blur(34px);
             -webkit-backdrop-filter: blur(34px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            border-bottom: 1px solid rgba(255, 215, 150, 0.06);
             padding: 12px 18px 18px;
             transform: translateY(-120%);
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
         .nav-mobile.open {
             transform: translateY(0);
@@ -354,18 +382,18 @@
             padding: 14px 12px;
             border-radius: var(--radius-sm);
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-light);
             cursor: pointer;
             transition: all var(--transition);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
         .nav-mobile .nav-item:last-child {
             border-bottom: none;
         }
         .nav-mobile .nav-item:hover,
         .nav-mobile .nav-item.active {
-            background: rgba(61, 31, 109, 0.05);
-            color: var(--primary);
+            background: rgba(255, 193, 7, 0.06);
+            color: var(--gold);
         }
         .nav-mobile .nav-item .icon {
             font-size: 1.2rem;
@@ -379,10 +407,10 @@
             margin: 12px 14px 20px;
             border-radius: var(--radius);
             overflow: hidden;
-            min-height: 320px;
+            min-height: 340px;
             display: flex;
             align-items: flex-end;
-            box-shadow: 0 20px 60px rgba(61, 31, 109, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
         .hero .hero-bg {
             position: absolute;
@@ -395,48 +423,61 @@
         .hero .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(61, 31, 109, 0.1) 0%, rgba(26, 10, 46, 0.5) 100%);
+            background: linear-gradient(180deg, rgba(13, 6, 24, 0.2) 0%, rgba(13, 6, 24, 0.7) 100%);
             z-index: 1;
+        }
+        .hero .hero-glow {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                radial-gradient(ellipse at 70% 30%, rgba(255, 193, 7, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 80%, rgba(106, 27, 154, 0.12) 0%, transparent 50%);
+            pointer-events: none;
         }
         .hero .hero-content {
             position: relative;
             z-index: 2;
-            padding: 22px 18px 26px;
+            padding: 22px 18px 28px;
             width: 100%;
             color: #fff;
-            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+            text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
         }
         .hero .hero-content .village {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 193, 7, 0.12);
             backdrop-filter: blur(10px);
-            padding: 3px 16px;
+            padding: 4px 18px;
             border-radius: var(--radius-full);
             font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 1px;
-            margin-bottom: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 193, 7, 0.15);
+            color: var(--gold-light);
         }
         .hero .hero-content h1 {
-            font-size: 1.85rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             line-height: 1.15;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
         .hero .hero-content h1 .gold {
-            color: var(--gold);
-            text-shadow: 0 0 40px rgba(212, 168, 67, 0.25);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
         }
         .hero .hero-content .tagline {
             font-size: 0.9rem;
-            opacity: 0.95;
-            font-weight: 400;
+            opacity: 0.9;
+            font-weight: 300;
             margin-bottom: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
             max-width: 90%;
+            color: rgba(255, 255, 255, 0.85);
         }
         .hero .hero-content .btn-group {
             display: flex;
@@ -444,51 +485,80 @@
             flex-wrap: wrap;
         }
         .hero .hero-content .btn-group .btn {
-            padding: 10px 22px;
+            padding: 12px 24px;
             font-size: 0.8rem;
         }
 
         /* ---------- COUNTDOWN ---------- */
         .countdown-section {
             margin: 0 14px 20px;
-            padding: 18px 12px;
+            padding: 22px 12px 18px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            animation: rotateGlow 20s linear infinite;
+        }
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
         .countdown-section .label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-light);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            position: relative;
         }
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 12px;
+            position: relative;
         }
         .cd-item {
             background: var(--glass);
             backdrop-filter: blur(16px);
-            padding: 8px 12px;
-            min-width: 58px;
+            padding: 10px 14px;
+            min-width: 62px;
             border-radius: var(--radius-sm);
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .cd-item:hover {
+            border-color: rgba(255, 193, 7, 0.2);
+            transform: translateY(-2px);
         }
         .cd-item .num {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--secondary);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
             line-height: 1.2;
         }
         .cd-item .lbl {
             font-size: 0.55rem;
-            font-weight: 600;
-            color: var(--text-light);
+            font-weight: 500;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            -webkit-text-fill-color: var(--text-muted);
         }
 
         /* ---------- STATS ---------- */
@@ -499,64 +569,79 @@
             margin: 4px 14px 20px;
         }
         .stats-grid .stat-card {
-            padding: 16px 12px;
+            padding: 18px 12px;
             text-align: center;
             background: var(--glass);
             backdrop-filter: blur(16px);
             border-radius: var(--radius-sm);
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .stats-grid .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 193, 7, 0.1);
         }
         .stats-grid .stat-card .num {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .stats-grid .stat-card .num.gold {
-            color: var(--gold);
+        .stats-grid .stat-card .num.purple {
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .stats-grid .stat-card .lbl {
             font-size: 0.65rem;
-            font-weight: 500;
-            color: var(--text-light);
-            margin-top: 2px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 4px;
+            -webkit-text-fill-color: var(--text-muted);
         }
 
         /* ---------- DONATION GOAL ---------- */
         .goal-section {
             margin: 4px 14px 20px;
-            padding: 18px 16px;
+            padding: 20px 18px;
         }
         .goal-section .goal-header {
             display: flex;
             justify-content: space-between;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--text);
+            color: var(--text-light);
         }
         .goal-section .goal-header .gold {
             color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
         }
         .goal-bar {
             width: 100%;
             height: 8px;
-            background: rgba(61, 31, 109, 0.08);
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 20px;
             overflow: hidden;
-            margin: 8px 0 4px;
+            margin: 10px 0 6px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         .goal-bar .fill {
             height: 100%;
             border-radius: 20px;
-            background: linear-gradient(90deg, var(--gold), var(--primary));
+            background: linear-gradient(90deg, var(--gold), var(--primary-light));
             width: 0%;
-            transition: width 1s ease;
+            transition: width 1.5s ease;
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.15);
         }
         .goal-section .goal-footer {
             display: flex;
             justify-content: space-between;
             font-size: 0.65rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         /* ---------- DONATE SECTION ---------- */
@@ -564,7 +649,7 @@
             padding: 0 14px 20px;
         }
         .donate-section .donate-card {
-            padding: 20px 16px;
+            padding: 22px 18px;
         }
 
         .quick-donate {
@@ -572,51 +657,55 @@
             flex-wrap: wrap;
             gap: 8px;
             justify-content: center;
-            margin: 12px 0 14px;
+            margin: 14px 0 16px;
         }
         .quick-donate .amt {
-            padding: 10px 16px;
+            padding: 10px 18px;
             border-radius: var(--radius-full);
-            border: 2px solid rgba(61, 31, 109, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.06);
             background: transparent;
             font-weight: 600;
             font-size: 0.8rem;
-            color: var(--text);
+            color: var(--text-light);
             cursor: pointer;
             transition: all var(--transition);
             font-family: var(--font);
         }
         .quick-donate .amt:hover {
-            border-color: var(--primary);
-            background: rgba(61, 31, 109, 0.04);
+            border-color: rgba(255, 193, 7, 0.2);
+            background: rgba(255, 193, 7, 0.04);
+            color: var(--gold);
         }
         .quick-donate .amt.active {
             border-color: var(--gold);
-            background: rgba(212, 168, 67, 0.08);
-            color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.06);
+            background: rgba(255, 193, 7, 0.08);
+            color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.05);
         }
 
         .donate-form input,
         .donate-form textarea {
             width: 100%;
-            padding: 14px 16px;
+            padding: 14px 18px;
             margin-bottom: 12px;
             border-radius: var(--radius-sm);
-            border: 2px solid rgba(0, 0, 0, 0.04);
-            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
             font-family: var(--font);
             font-size: 0.85rem;
             color: var(--text);
             transition: all var(--transition);
             outline: none;
-            backdrop-filter: blur(4px);
+        }
+        .donate-form input::placeholder,
+        .donate-form textarea::placeholder {
+            color: var(--text-muted);
         }
         .donate-form input:focus,
         .donate-form textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(61, 31, 109, 0.04);
-            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 193, 7, 0.2);
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.03);
+            background: rgba(255, 255, 255, 0.05);
         }
         .donate-form textarea {
             min-height: 64px;
@@ -628,7 +717,7 @@
             gap: 10px;
         }
         .donate-form .form-error {
-            color: #D45A5A;
+            color: #FF6B6B;
             font-size: 0.7rem;
             margin-top: -8px;
             margin-bottom: 10px;
@@ -647,13 +736,14 @@
             padding: 14px 10px;
         }
         .qr-section .qr-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: var(--radius-sm);
             background: #fff;
-            padding: 6px;
-            box-shadow: var(--shadow);
+            padding: 8px;
+            box-shadow: var(--shadow-gold);
             object-fit: contain;
+            border: 2px solid rgba(255, 193, 7, 0.06);
         }
         .qr-section .upi-box {
             display: flex;
@@ -661,16 +751,16 @@
             gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(8px);
-            padding: 6px 16px;
+            padding: 8px 18px;
             border-radius: var(--radius-full);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .qr-section .upi-box .upi-id {
             font-weight: 600;
             font-size: 0.9rem;
-            color: var(--text);
+            color: var(--gold);
         }
 
         /* ---------- DONOR WALL ---------- */
@@ -689,14 +779,14 @@
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
             transition: all var(--transition);
-            flex-wrap: wrap;
         }
         .donor-wall .donor-card:hover {
-            transform: translateX(4px);
+            transform: translateX(6px);
+            border-color: rgba(255, 193, 7, 0.06);
         }
         .donor-wall .donor-card .avatar {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-light), var(--gold));
             display: flex;
@@ -704,12 +794,13 @@
             justify-content: center;
             font-size: 1.1rem;
             color: #fff;
-            font-weight: 600;
+            font-weight: 700;
             flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(106, 27, 154, 0.2);
         }
         .donor-wall .donor-card .info {
             flex: 1;
-            min-width: 100px;
+            min-width: 80px;
         }
         .donor-wall .donor-card .info .name {
             font-weight: 600;
@@ -720,22 +811,23 @@
             flex-wrap: wrap;
         }
         .donor-wall .donor-card .info .name .status {
-            font-size: 0.55rem;
-            padding: 2px 10px;
+            font-size: 0.5rem;
+            padding: 2px 12px;
             border-radius: var(--radius-full);
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
         .donor-wall .donor-card .info .name .status.confirmed {
-            background: rgba(46, 125, 50, 0.12);
-            color: #2E7D32;
+            background: rgba(76, 175, 80, 0.12);
+            color: #81C784;
         }
         .donor-wall .donor-card .info .name .status.pending {
             background: rgba(255, 152, 0, 0.12);
-            color: #E65100;
+            color: #FFB74D;
         }
         .donor-wall .donor-card .info .msg {
             font-size: 0.75rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -765,11 +857,12 @@
             transition: all var(--transition);
         }
         .timeline-item:hover {
-            transform: translateX(4px);
+            transform: translateX(6px);
+            border-color: rgba(255, 193, 7, 0.06);
         }
         .timeline-item .icon {
-            font-size: 1.4rem;
-            width: 36px;
+            font-size: 1.5rem;
+            width: 38px;
             text-align: center;
             flex-shrink: 0;
         }
@@ -782,17 +875,17 @@
         }
         .timeline-item .info .time {
             font-size: 0.7rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
         .timeline-item .badge {
-            padding: 3px 12px;
+            padding: 3px 14px;
             border-radius: var(--radius-full);
-            background: rgba(212, 168, 67, 0.12);
+            background: rgba(255, 193, 7, 0.08);
             color: var(--gold);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             flex-shrink: 0;
-            border: 1px solid rgba(212, 168, 67, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.06);
         }
 
         /* ---------- ORGANIZERS ---------- */
@@ -813,20 +906,22 @@
             transition: all var(--transition);
         }
         .organizer-card:hover {
-            transform: translateX(4px);
+            transform: translateX(6px);
+            border-color: rgba(255, 193, 7, 0.06);
         }
         .organizer-card .avatar {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--gold), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #fff;
             font-weight: 700;
             flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.15);
         }
         .organizer-card .info .name {
             font-weight: 600;
@@ -834,7 +929,7 @@
         }
         .organizer-card .info .role {
             font-size: 0.75rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         /* ---------- GALLERY ---------- */
@@ -843,7 +938,7 @@
         }
         .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
         }
         .gallery-grid .gallery-item {
@@ -855,10 +950,13 @@
             box-shadow: var(--shadow);
             transition: all var(--transition);
             position: relative;
+            border: 1px solid var(--glass-border);
         }
         .gallery-grid .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.04);
             box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 193, 7, 0.1);
+            z-index: 2;
         }
         .gallery-grid .gallery-item img {
             width: 100%;
@@ -869,16 +967,17 @@
         .gallery-grid .gallery-item .overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: linear-gradient(0deg, rgba(13, 6, 24, 0.5) 0%, transparent 60%);
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
+            padding: 12px;
             opacity: 0;
             transition: all var(--transition);
             color: #fff;
-            font-weight: 500;
-            font-size: 0.8rem;
-            backdrop-filter: blur(4px);
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
         }
         .gallery-grid .gallery-item:hover .overlay {
             opacity: 1;
@@ -889,8 +988,8 @@
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(24px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(40px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -904,16 +1003,16 @@
             pointer-events: auto;
         }
         .lightbox .lightbox-content {
-            max-width: 90%;
+            max-width: 92%;
             max-height: 80vh;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
-            transition: transform 0.4s ease;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            transform: scale(0.9) rotate(-2deg);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .lightbox.open .lightbox-content {
-            transform: scale(1);
+            transform: scale(1) rotate(0deg);
         }
         .lightbox .lightbox-content img {
             width: 100%;
@@ -924,13 +1023,13 @@
         }
         .lightbox .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(10px);
             color: #fff;
             font-size: 1.4rem;
@@ -941,8 +1040,8 @@
             justify-content: center;
         }
         .lightbox .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.08);
+            transform: rotate(90deg) scale(1.05);
         }
 
         /* ---------- CONTACT ---------- */
@@ -950,62 +1049,98 @@
             padding: 0 14px 20px;
         }
         .contact-section .contact-card {
-            padding: 20px 16px;
+            padding: 22px 18px;
         }
         .contact-section .contact-item {
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all var(--transition);
         }
         .contact-section .contact-item:last-child {
             border-bottom: none;
         }
+        .contact-section .contact-item:hover {
+            padding-left: 6px;
+        }
         .contact-section .contact-item .icon {
-            font-size: 1.2rem;
-            width: 34px;
+            font-size: 1.3rem;
+            width: 36px;
             text-align: center;
+            flex-shrink: 0;
         }
         .contact-section .contact-item .info {
             flex: 1;
         }
         .contact-section .contact-item .info .label {
             font-size: 0.65rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .contact-section .contact-item .info .value {
             font-weight: 500;
-            color: var(--text);
+            color: var(--text-light);
+        }
+        .contact-section .contact-item .info .value a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+        .contact-section .contact-item .info .value a:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
+        .contact-section .contact-item .btn-link {
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 193, 7, 0.06);
+            border: 1px solid rgba(255, 193, 7, 0.06);
+            color: var(--gold);
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: var(--font);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .contact-section .contact-item .btn-link:hover {
+            background: rgba(255, 193, 7, 0.12);
+            transform: scale(1.02);
         }
 
         /* ---------- FOOTER ---------- */
         .footer {
-            padding: 28px 18px 16px;
+            padding: 30px 18px 16px;
             text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-top: 1px solid rgba(255, 215, 150, 0.04);
             margin-top: 10px;
         }
         .footer .brand {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--primary);
-        }
-        .footer .brand .gold {
-            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .footer .sub {
             font-size: 0.75rem;
-            color: var(--text-light);
-            margin-top: 4px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            -webkit-text-fill-color: var(--text-muted);
         }
         .footer .love {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 0.7rem;
-            color: var(--text-light);
-            opacity: 0.6;
+            color: var(--text-muted);
+            opacity: 0.5;
+            -webkit-text-fill-color: var(--text-muted);
         }
 
         /* ---------- BOTTOM NAV ---------- */
@@ -1015,81 +1150,95 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(245, 240, 255, 0.88);
-            backdrop-filter: blur(28px) saturate(220%);
-            -webkit-backdrop-filter: blur(28px) saturate(220%);
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(13, 6, 24, 0.92);
+            backdrop-filter: blur(30px) saturate(220%);
+            -webkit-backdrop-filter: blur(30px) saturate(220%);
+            border-top: 1px solid rgba(255, 215, 150, 0.04);
             display: flex;
             justify-content: space-around;
-            padding: 4px 0 env(safe-area-inset-bottom);
-            box-shadow: 0 -4px 40px rgba(61, 31, 109, 0.04);
+            padding: 6px 0 env(safe-area-inset-bottom);
+            box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.4);
         }
         .bottom-nav .nav-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1px;
+            gap: 2px;
             padding: 4px 10px;
             border: none;
             background: transparent;
             font-family: var(--font);
             font-size: 0.55rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--text-muted);
             cursor: pointer;
             transition: all var(--transition);
             position: relative;
             min-width: 44px;
         }
         .bottom-nav .nav-btn .icon {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             transition: all var(--transition);
         }
         .bottom-nav .nav-btn.active {
-            color: var(--primary);
+            color: var(--gold);
         }
         .bottom-nav .nav-btn.active .icon {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            text-shadow: 0 0 30px rgba(255, 193, 7, 0.15);
+        }
+        .bottom-nav .nav-btn:hover {
+            color: var(--gold-light);
         }
 
         /* ---------- FLOATING DONATE ---------- */
         .floating-donate {
             position: fixed;
-            bottom: 76px;
-            right: 16px;
+            bottom: 80px;
+            right: 18px;
             z-index: 999;
-            width: 52px;
-            height: 52px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), #C49A38);
+            background: linear-gradient(135deg, var(--gold), #F9A825);
             border: none;
-            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.35);
+            box-shadow: 0 8px 40px rgba(255, 193, 7, 0.3);
             color: #1A0A2E;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
             transition: all var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: floatPulse 3s ease-in-out infinite;
         }
         .floating-donate:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 40px rgba(212, 168, 67, 0.45);
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 60px rgba(255, 193, 7, 0.4);
+        }
+        @keyframes floatPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.04);
+            }
         }
         .floating-donate .pulse-ring {
             position: absolute;
-            inset: -6px;
+            inset: -8px;
             border-radius: 50%;
-            border: 2px solid rgba(212, 168, 67, 0.2);
-            animation: pulseRing 2s ease-out infinite;
+            border: 2px solid rgba(255, 193, 7, 0.15);
+            animation: pulseRing 2.5s ease-out infinite;
         }
         @keyframes pulseRing {
             0% {
                 transform: scale(1);
-                opacity: 1;
+                opacity: 0.8;
             }
             100% {
-                transform: scale(1.5);
+                transform: scale(1.6);
                 opacity: 0;
             }
         }
@@ -1097,8 +1246,8 @@
         /* ---------- SCROLL ANIMATIONS ---------- */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .reveal.visible {
             opacity: 1;
@@ -1134,19 +1283,19 @@
         /* ---------- TOAST ---------- */
         .toast {
             position: fixed;
-            bottom: 130px;
+            bottom: 140px;
             left: 50%;
             transform: translateX(-50%) translateY(20px);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(13, 6, 24, 0.9);
             backdrop-filter: blur(20px);
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: var(--radius-full);
             box-shadow: var(--shadow-lg);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 215, 150, 0.06);
             font-family: var(--font);
             font-weight: 500;
             font-size: 0.85rem;
-            color: var(--text);
+            color: var(--text-light);
             opacity: 0;
             transition: all 0.4s ease;
             pointer-events: none;
@@ -1162,14 +1311,14 @@
         .server-status {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.65rem;
-            color: var(--text-light);
-            padding: 4px 14px;
+            gap: 8px;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            padding: 4px 16px;
             border-radius: var(--radius-full);
-            background: rgba(212, 168, 67, 0.06);
-            border: 1px solid rgba(212, 168, 67, 0.08);
-            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 215, 150, 0.03);
+            margin-top: 12px;
             justify-content: center;
         }
         .server-status .dot {
@@ -1180,10 +1329,10 @@
             animation: pulseDot 2s infinite;
         }
         .server-status .dot.online {
-            background: #4CAF50;
+            background: #66BB6A;
         }
         .server-status .dot.offline {
-            background: #E53935;
+            background: #EF5350;
         }
         @keyframes pulseDot {
             0%,
@@ -1204,24 +1353,32 @@
                 font-size: 0.8rem;
             }
             .cd-item .num {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .cd-item {
-                min-width: 48px;
-                padding: 6px 8px;
+                min-width: 50px;
+                padding: 8px 10px;
             }
             .stats-grid .stat-card .num {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .quick-donate .amt {
-                padding: 8px 12px;
+                padding: 8px 14px;
                 font-size: 0.7rem;
             }
             .donate-form .form-row {
                 grid-template-columns: 1fr;
             }
             .gallery-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
             }
         }
 
@@ -1231,13 +1388,14 @@
                 padding: 0 20px;
             }
             .hero .hero-content h1 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
             .stats-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
             }
         }
 
@@ -1246,7 +1404,7 @@
                 padding: 0 0 0 0;
             }
             .container {
-                max-width: 640px;
+                max-width: 680px;
             }
             .bottom-nav {
                 display: none;
@@ -1262,20 +1420,20 @@
             }
             .navbar .nav-links {
                 display: flex !important;
-                gap: 24px;
+                gap: 28px;
                 align-items: center;
             }
             .navbar .nav-links a {
                 text-decoration: none;
                 font-weight: 500;
                 font-size: 0.85rem;
-                color: var(--text);
+                color: var(--text-light);
                 transition: all var(--transition);
                 position: relative;
             }
             .navbar .nav-links a:hover,
             .navbar .nav-links a.active {
-                color: var(--primary);
+                color: var(--gold);
             }
             .navbar .nav-links a.active::after {
                 content: '';
@@ -1284,8 +1442,20 @@
                 left: 0;
                 right: 0;
                 height: 2px;
-                background: var(--primary);
+                background: var(--gold);
                 border-radius: 4px;
+                box-shadow: 0 0 20px rgba(255, 193, 7, 0.15);
+            }
+            .navbar .nav-links a:hover::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--gold);
+                border-radius: 4px;
+                opacity: 0.3;
             }
         }
 
@@ -1295,57 +1465,6 @@
             }
         }
 
-        /* ---------- DARK MODE ---------- */
-        body.dark {
-            --bg: #120A1E;
-            --text: #F0E8F8;
-            --text-light: #B8A8C8;
-            --glass: rgba(40, 28, 56, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.06);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-        body.dark .navbar {
-            background: rgba(18, 10, 30, 0.75);
-            border-bottom-color: rgba(255, 255, 255, 0.04);
-        }
-        body.dark .nav-mobile {
-            background: rgba(18, 10, 30, 0.92);
-        }
-        body.dark .bottom-nav {
-            background: rgba(18, 10, 30, 0.88);
-            border-top-color: rgba(255, 255, 255, 0.04);
-        }
-        body.dark .toast {
-            background: rgba(40, 28, 56, 0.9);
-            color: #F0E8F8;
-        }
-        body.dark .donate-form input,
-        body.dark .donate-form textarea {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.06);
-            color: #F0E8F8;
-        }
-        body.dark .donate-form input:focus,
-        body.dark .donate-form textarea:focus {
-            background: rgba(255, 255, 255, 0.08);
-        }
-        body.dark .quick-donate .amt {
-            border-color: rgba(255, 255, 255, 0.06);
-            color: #F0E8F8;
-        }
-        body.dark .quick-donate .amt.active {
-            border-color: var(--gold);
-            background: rgba(212, 168, 67, 0.08);
-            color: var(--gold);
-        }
-        body.dark .qr-section .upi-box {
-            background: rgba(255, 255, 255, 0.04);
-        }
-        body.dark .hero .hero-overlay {
-            background: linear-gradient(180deg, rgba(61, 31, 109, 0.2) 0%, rgba(18, 10, 30, 0.6) 100%);
-        }
-
         /* ---------- DECORATIVE FLOATING ---------- */
         .float-deco {
             position: fixed;
@@ -1353,15 +1472,15 @@
             z-index: 0;
             font-size: 2rem;
             opacity: 0.04;
-            animation: floatDeco 12s infinite ease-in-out;
+            animation: floatDeco 14s infinite ease-in-out;
         }
         @keyframes floatDeco {
             0%,
             100% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(0) rotate(0deg) scale(1);
             }
             50% {
-                transform: translateY(-30px) rotate(10deg);
+                transform: translateY(-30px) rotate(8deg) scale(1.05);
             }
         }
 
@@ -1389,15 +1508,22 @@
         .text-center {
             text-align: center;
         }
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .text-gold {
+            color: var(--gold);
+        }
     </style>
 </head>
 <body>
 
     <!-- DECORATIVE FLOATING -->
-    <div class="float-deco" style="top:12%;left:5%;font-size:2.4rem;">🕉️</div>
-    <div class="float-deco" style="top:45%;right:3%;font-size:1.8rem;animation-delay:4s;">🌸</div>
-    <div class="float-deco" style="bottom:25%;left:6%;font-size:2rem;animation-delay:7s;">🔱</div>
-    <div class="float-deco" style="top:70%;right:8%;font-size:1.6rem;animation-delay:10s;">🌺</div>
+    <div class="float-deco" style="top:8%;left:4%;font-size:2.6rem;">🕉️</div>
+    <div class="float-deco" style="top:40%;right:2%;font-size:2rem;animation-delay:4s;">🌸</div>
+    <div class="float-deco" style="bottom:30%;left:5%;font-size:2.2rem;animation-delay:7s;">🔱</div>
+    <div class="float-deco" style="top:65%;right:6%;font-size:1.8rem;animation-delay:10s;">🌺</div>
+    <div class="float-deco" style="bottom:60%;left:8%;font-size:1.6rem;animation-delay:12s;">✨</div>
 
     <!-- LOADER -->
     <div id="loader">
@@ -1449,8 +1575,9 @@
 
     <!-- HERO -->
     <section class="hero" id="hero">
-        <img class="hero-bg" src="assets/images/hero-banner.jpg" alt="Krishna Janmashtami Banner" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg, var(--primary), var(--secondary))';" />
+        <img class="hero-bg" src="/static/assets/images/hero-banner.jpg" alt="Krishna Janmashtami Banner" loading="lazy" onerror="this.style.display='none';" />
         <div class="hero-overlay"></div>
+        <div class="hero-glow"></div>
         <div class="hero-content">
             <span class="village">📍 ग्राम भानपुर</span>
             <h1>श्री कृष्ण <span class="gold">जन्माष्टमी</span> महोत्सव 2026</h1>
@@ -1480,19 +1607,19 @@
     <!-- STATS -->
     <div class="stats-grid reveal">
         <div class="stat-card glass-card">
-            <div class="num" id="statDonors">0</div>
+            <div class="num purple" id="statDonors">0</div>
             <div class="lbl">🙏 दाता</div>
         </div>
         <div class="stat-card glass-card">
-            <div class="num gold" id="statCollection">₹0</div>
+            <div class="num" id="statCollection">₹0</div>
             <div class="lbl">💰 संग्रह</div>
         </div>
         <div class="stat-card glass-card">
-            <div class="num" id="statTarget">₹5,00,000</div>
+            <div class="num purple" id="statTarget">₹5,00,000</div>
             <div class="lbl">🎯 लक्ष्य</div>
         </div>
         <div class="stat-card glass-card">
-            <div class="num gold" id="statPercent">0%</div>
+            <div class="num" id="statPercent">0%</div>
             <div class="lbl">📊 प्रगति</div>
         </div>
     </div>
@@ -1520,7 +1647,7 @@
         <div class="donate-card glass-card reveal">
             <!-- QR -->
             <div class="qr-section">
-                <img class="qr-img" src="assets/images/qr-code.png" alt="QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23ffffff%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%233D1F6D%22 font-family=%22monospace%22%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E'" />
+                <img class="qr-img" src="/static/assets/images/qr-code.png" alt="QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%231A0A2E%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FFC107%22 font-family=%22monospace%22%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E'" />
                 <div class="upi-box">
                     <span class="upi-id">🔹 krishna@upi</span>
                     <button class="btn btn-sm btn-glass" id="copyUpiBtn">📋 कॉपी</button>
@@ -1566,7 +1693,7 @@
         <h2 class="section-title reveal">👥 <span class="gold">दाता</span> सूची</h2>
         <p class="section-sub reveal">आपका नाम भी इस सूची में शामिल होगा।</p>
         <div id="donorList">
-            <div style="text-align:center;padding:24px;color:var(--text-light);font-size:0.85rem;">⏳ दाता सूची लोड हो रही है...</div>
+            <div style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.85rem;">⏳ दाता सूची लोड हो रही है...</div>
         </div>
     </section>
 
@@ -1638,26 +1765,41 @@
         <div class="contact-card glass-card reveal">
             <div class="contact-item">
                 <span class="icon">📱</span>
-                <div class="info"><div class="label">फोन</div><div class="value">+91 99999 99999</div></div>
+                <div class="info">
+                    <div class="label">फोन</div>
+                    <div class="value"><a href="tel:+919792410116">+91 97924 10116</a></div>
+                </div>
+                <a href="tel:+919792410116" class="btn-link">📞 कॉल</a>
             </div>
             <div class="contact-item">
                 <span class="icon">💬</span>
-                <div class="info"><div class="label">WhatsApp</div><div class="value">+91 99999 99999</div></div>
+                <div class="info">
+                    <div class="label">WhatsApp</div>
+                    <div class="value"><a href="https://wa.me/919792410116" target="_blank">+91 97924 10116</a></div>
+                </div>
+                <a href="https://wa.me/919792410116" target="_blank" class="btn-link">💬 चैट</a>
             </div>
             <div class="contact-item">
                 <span class="icon">📍</span>
-                <div class="info"><div class="label">पता</div><div class="value">ग्राम भानपुर, उत्तर प्रदेश</div></div>
+                <div class="info">
+                    <div class="label">पता</div>
+                    <div class="value">ग्राम भानपुर, उत्तर प्रदेश</div>
+                </div>
             </div>
             <div class="contact-item">
                 <span class="icon">🗺️</span>
-                <div class="info"><div class="label">Google Maps</div><div class="value" style="color:var(--primary);font-weight:600;cursor:pointer;" id="mapLink">दिशा-निर्देश देखें →</div></div>
+                <div class="info">
+                    <div class="label">Google Maps</div>
+                    <div class="value"><a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank">काली माँ मंदिर, भानपुर</a></div>
+                </div>
+                <a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank" class="btn-link">🗺️ खोलें</a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="brand">श्री कृष्ण <span class="gold">जन्माष्टमी</span> महोत्सव</div>
+        <div class="brand">श्री कृष्ण जन्माष्टमी महोत्सव</div>
         <div class="sub">📍 ग्राम भानपुर · 2026</div>
         <div class="love">Made with ❤️ by Gram Bhanpur Team</div>
     </footer>
@@ -1682,7 +1824,7 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // CONFIG – API Base URL (change to your server)
+        // CONFIG – API Base URL
         // ============================================================
         const API_BASE = window.location.origin + '/api';
 
@@ -1698,7 +1840,6 @@
             checkServerStatus();
             fetchDonors();
             updateStats();
-            // Auto-refresh every 30 seconds
             setInterval(fetchDonors, 30000);
             setInterval(updateStats, 30000);
         });
@@ -1709,12 +1850,12 @@
         function showToast(msg, isError = false) {
             const t = document.getElementById('toast');
             t.textContent = msg;
-            t.style.color = isError ? '#C62828' : 'var(--text)';
+            t.style.color = isError ? '#EF5350' : 'var(--text-light)';
             t.classList.add('show');
             clearTimeout(t._hide);
             t._hide = setTimeout(() => {
                 t.classList.remove('show');
-                t.style.color = 'var(--text)';
+                t.style.color = 'var(--text-light)';
             }, 4000);
         }
 
@@ -1816,10 +1957,6 @@
         document.getElementById('heroDonateBtn').addEventListener('click', () => scrollToSection('donate'));
         document.getElementById('heroProgramBtn').addEventListener('click', () => scrollToSection('timeline'));
         document.getElementById('floatingDonateBtn').addEventListener('click', () => scrollToSection('donate'));
-        document.getElementById('mapLink').addEventListener('click', () => {
-            showToast('🗺️ Google Maps खुल रहा है...');
-            window.open('https://maps.google.com/?q=Uttar+Pradesh+India', '_blank');
-        });
 
         // ============================================================
         // 6. THEME TOGGLE
@@ -1862,7 +1999,7 @@
             } catch (e) {
                 console.error('Fetch donors error:', e);
                 document.getElementById('donorList').innerHTML =
-                    `<div style="text-align:center;padding:24px;color:#D45A5A;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया बाद में प्रयास करें।</div>`;
+                    `<div style="text-align:center;padding:24px;color:#EF5350;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया बाद में प्रयास करें।</div>`;
             }
         }
 
@@ -1873,10 +2010,10 @@
             const list = document.getElementById('donorList');
             if (!donors || donors.length === 0) {
                 list.innerHTML =
-                    `<div style="text-align:center;padding:24px;color:var(--text-light);font-size:0.85rem;">अभी तक कोई दाता नहीं। आप पहले बनें! 🙏</div>`;
+                    `<div style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.85rem;">अभी तक कोई दाता नहीं। आप पहले बनें! 🙏</div>`;
                 return;
             }
-            list.innerHTML = donors.map(d => `
+            list.innerHTML = donors.slice(0, 25).map(d => `
                 <div class="donor-card glass-card">
                     <div class="avatar">${d.name.charAt(0).toUpperCase()}</div>
                     <div class="info">
@@ -1942,7 +2079,7 @@
             if (!mobile || mobile.length < 10 || !/^\d{10,15}$/.test(mobile)) { mobErr.classList.add('show');
                 valid = false; } else { mobErr.classList.remove('show'); }
 
-            if (!valid) { showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें।'); return; }
+            if (!valid) { showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें。'); return; }
 
             let amount = customInput.value.trim();
             if (!amount) {
@@ -1951,9 +2088,7 @@
             }
             amount = parseInt(amount) || 251;
 
-            // Auto-confirm if transaction ID is provided
             const status = txn ? 'confirmed' : 'pending';
-
             const payload = { name, mobile, amount, txn, message: message || '🙏 हरि बोल', status };
 
             try {
@@ -2023,12 +2158,15 @@
         }
 
         // ============================================================
-        // 13. GALLERY
+        // 13. GALLERY – using actual images from /static/assets/images/
         // ============================================================
-        const galleryCount = 16;
+        const galleryCount = 15;
         const galleryImages = [];
         for (let i = 1; i <= galleryCount; i++) {
-            galleryImages.push({ src: `assets/images/gallery-${i}.jpg`, label: `गैलरी ${i}` });
+            galleryImages.push({
+                src: `/static/assets/images/gallery-${i}.jpg`,
+                label: `गैलरी ${i}`
+            });
         }
 
         function renderGallery() {
@@ -2037,7 +2175,7 @@
                 <div class="gallery-item" data-index="${index}">
                     <img src="${item.src}" alt="${item.label}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="overlay">${item.label}</div>
-                    <div style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; background:var(--glass); font-size:2.8rem; color:var(--primary);">🖼️</div>
+                    <div style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; background:var(--glass); font-size:2.8rem; color:var(--text-muted);">🖼️</div>
                 </div>
             `).join('');
             grid.querySelectorAll('.gallery-item').forEach(el => {
@@ -2075,7 +2213,7 @@
             const container = document.createElement('div');
             container.className = 'confetti-container';
             document.body.appendChild(container);
-            const colors = ['#D4A843', '#3D1F6D', '#1A2A6B', '#D4A0C0', '#FF6B6B', '#48D1CC', '#FFD93D'];
+            const colors = ['#FFC107', '#6A1B9A', '#0D47A1', '#FF4081', '#FF6B6B', '#48D1CC', '#FFD93D'];
             const shapes = ['■', '●', '▲', '★', '♦'];
             for (let i = 0; i < 70; i++) {
                 const el = document.createElement('div');
@@ -2129,6 +2267,7 @@
 
         console.log('🕉️ श्री कृष्ण जन्माष्टमी महोत्सव 2026 – साइट लोड हुई!');
         console.log('📡 API Base: ' + API_BASE);
+        console.log('📸 Gallery Images: ' + galleryImages.length + ' images');
         console.log('🙏 जय श्री कृष्ण!');
     </script>
 
