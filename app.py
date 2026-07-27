@@ -6,13 +6,13 @@ import sqlite3
 import threading
 import time
 from datetime import datetime
-from flask import Flask, request, jsonify, g, send_from_directory, send_file, abort
+from flask import Flask, request, jsonify, g, send_from_directory
 from flask_cors import CORS
 
 # ---------- CONFIG ----------
 DATABASE = 'donors.db'
 app = Flask(__name__, static_folder='static', static_url_path='/static')
-CORS(app)  # CORS enabled for API
+CORS(app)
 
 # ---------- DATABASE HELPERS ----------
 def get_db():
@@ -73,20 +73,12 @@ thread = threading.Thread(target=auto_confirm_payments, daemon=True)
 thread.start()
 
 # ============================================================
-# FRONTEND ROUTES – index.html and static assets
+# FRONTEND ROUTES
 # ============================================================
 
 @app.route('/')
 def serve_index():
-    """Serve the main HTML file."""
     return send_from_directory('.', 'index.html')
-
-# (Optional) If you have other static files like .css or .js in root,
-# you can add a catch-all route. But better to keep them in static/.
-# For simplicity, we'll serve index.html at root.
-
-# If you want to serve static assets from the 'static' folder,
-# Flask already serves them via /static/ URL.
 
 # ============================================================
 # API ROUTES
@@ -332,7 +324,7 @@ def payment_webhook():
         return jsonify({'error': str(e)}), 500
 
 # ============================================================
-# RUN SERVER (Production with Gunicorn)
+# RUN SERVER
 # ============================================================
 if __name__ == "__main__":
     init_db()
