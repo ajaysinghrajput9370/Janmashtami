@@ -6,7 +6,6 @@
     <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
     <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर - आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।" />
     <meta name="theme-color" content="#2D1B4E" />
-    <link rel="canonical" href="https://janmashtami-seven.vercel.app/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -105,7 +104,7 @@
             font-weight: 400;
         }
 
-        /* ---------- GLASS CARD (Ultra Transparent) ---------- */
+        /* ---------- GLASS CARD ---------- */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(var(--glass-blur)) saturate(200%);
@@ -174,6 +173,20 @@
         .btn-full {
             width: 100%;
             justify-content: center;
+        }
+        .btn-success {
+            background: #2E7D32;
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #1B5E20;
+        }
+        .btn-danger {
+            background: #C62828;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #B71C1C;
         }
 
         /* Ripple */
@@ -360,7 +373,7 @@
             text-align: center;
         }
 
-        /* ---------- HERO with Banner ---------- */
+        /* ---------- HERO ---------- */
         .hero {
             position: relative;
             margin: 12px 14px 20px;
@@ -676,6 +689,7 @@
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
             transition: all var(--transition);
+            flex-wrap: wrap;
         }
         .donor-wall .donor-card:hover {
             transform: translateX(4px);
@@ -695,11 +709,29 @@
         }
         .donor-wall .donor-card .info {
             flex: 1;
-            min-width: 0;
+            min-width: 100px;
         }
         .donor-wall .donor-card .info .name {
             font-weight: 600;
             font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .donor-wall .donor-card .info .name .status {
+            font-size: 0.55rem;
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            font-weight: 500;
+        }
+        .donor-wall .donor-card .info .name .status.confirmed {
+            background: rgba(46, 125, 50, 0.12);
+            color: #2E7D32;
+        }
+        .donor-wall .donor-card .info .name .status.pending {
+            background: rgba(255, 152, 0, 0.12);
+            color: #E65100;
         }
         .donor-wall .donor-card .info .msg {
             font-size: 0.75rem;
@@ -1126,6 +1158,43 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ---------- SERVER STATUS ---------- */
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.65rem;
+            color: var(--text-light);
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            background: rgba(212, 168, 67, 0.06);
+            border: 1px solid rgba(212, 168, 67, 0.08);
+            margin-top: 10px;
+            justify-content: center;
+        }
+        .server-status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulseDot 2s infinite;
+        }
+        .server-status .dot.online {
+            background: #4CAF50;
+        }
+        .server-status .dot.offline {
+            background: #E53935;
+        }
+        @keyframes pulseDot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 390px) {
             .hero .hero-content h1 {
@@ -1277,7 +1346,7 @@
             background: linear-gradient(180deg, rgba(61, 31, 109, 0.2) 0%, rgba(18, 10, 30, 0.6) 100%);
         }
 
-        /* ---------- DECORATIVE FLOATING ELEMENTS ---------- */
+        /* ---------- DECORATIVE FLOATING ---------- */
         .float-deco {
             position: fixed;
             pointer-events: none;
@@ -1293,36 +1362,6 @@
             }
             50% {
                 transform: translateY(-30px) rotate(10deg);
-            }
-        }
-
-        /* ---------- BACKEND STATUS ---------- */
-        .backend-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.65rem;
-            color: var(--text-light);
-            padding: 4px 12px;
-            border-radius: var(--radius-full);
-            background: rgba(212, 168, 67, 0.06);
-            border: 1px solid rgba(212, 168, 67, 0.08);
-        }
-        .backend-status .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #4CAF50;
-            display: inline-block;
-            animation: pulseDot 2s infinite;
-        }
-        @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
             }
         }
 
@@ -1354,7 +1393,7 @@
 </head>
 <body>
 
-    <!-- DECORATIVE FLOATING ELEMENTS -->
+    <!-- DECORATIVE FLOATING -->
     <div class="float-deco" style="top:12%;left:5%;font-size:2.4rem;">🕉️</div>
     <div class="float-deco" style="top:45%;right:3%;font-size:1.8rem;animation-delay:4s;">🌸</div>
     <div class="float-deco" style="bottom:25%;left:6%;font-size:2rem;animation-delay:7s;">🔱</div>
@@ -1423,7 +1462,7 @@
         </div>
     </section>
 
-    <!-- COUNTDOWN -->
+    <!-- COUNTDOWN + SERVER STATUS -->
     <section class="countdown-section glass-card reveal">
         <div class="label">🕉️ जन्माष्टमी में शेष समय</div>
         <div class="countdown-grid" id="countdown">
@@ -1432,11 +1471,9 @@
             <div class="cd-item"><span class="num" id="minutes">00</span><span class="lbl">मिनट</span></div>
             <div class="cd-item"><span class="num" id="seconds">00</span><span class="lbl">सेकंड</span></div>
         </div>
-        <div style="display:flex;justify-content:center;margin-top:12px;">
-            <div class="backend-status">
-                <span class="dot"></span>
-                <span>बैकएंड: सक्रिय (LocalStorage)</span>
-            </div>
+        <div class="server-status" id="serverStatus">
+            <span class="dot online" id="statusDot"></span>
+            <span id="statusText">सर्वर: ऑनलाइन</span>
         </div>
     </section>
 
@@ -1515,7 +1552,7 @@
                         <div class="form-error" id="mobileError">सही मोबाइल नंबर दर्ज करें</div>
                     </div>
                 </div>
-                <input type="text" id="donorTxn" placeholder="लेन-देन आईडी (वैकल्पिक)" />
+                <input type="text" id="donorTxn" placeholder="लेन-देन आईडी (ट्रांजेक्शन ID)" />
                 <textarea id="donorMessage" placeholder="आपका संदेश (वैकल्पिक)"></textarea>
                 <button type="submit" class="btn btn-gold btn-full" id="donateSubmitBtn">
                     🙏 दान करें
@@ -1528,7 +1565,9 @@
     <section class="donor-wall" id="donorWall">
         <h2 class="section-title reveal">👥 <span class="gold">दाता</span> सूची</h2>
         <p class="section-sub reveal">आपका नाम भी इस सूची में शामिल होगा।</p>
-        <div id="donorList"></div>
+        <div id="donorList">
+            <div style="text-align:center;padding:24px;color:var(--text-light);font-size:0.85rem;">⏳ दाता सूची लोड हो रही है...</div>
+        </div>
     </section>
 
     <!-- TIMELINE -->
@@ -1643,6 +1682,11 @@
     ============================================================ -->
     <script>
         // ============================================================
+        // CONFIG – API Base URL (change to your server)
+        // ============================================================
+        const API_BASE = window.location.origin + '/api';
+
+        // ============================================================
         // 1. LOADER
         // ============================================================
         window.addEventListener('load', function() {
@@ -1651,23 +1695,52 @@
                 setTimeout(() => el.classList.add('visible'), 100 + i * 70);
             });
             renderGallery();
-            renderDonorWall();
+            checkServerStatus();
+            fetchDonors();
             updateStats();
+            // Auto-refresh every 30 seconds
+            setInterval(fetchDonors, 30000);
+            setInterval(updateStats, 30000);
         });
 
         // ============================================================
         // 2. TOAST
         // ============================================================
-        function showToast(msg) {
+        function showToast(msg, isError = false) {
             const t = document.getElementById('toast');
             t.textContent = msg;
+            t.style.color = isError ? '#C62828' : 'var(--text)';
             t.classList.add('show');
             clearTimeout(t._hide);
-            t._hide = setTimeout(() => t.classList.remove('show'), 3000);
+            t._hide = setTimeout(() => {
+                t.classList.remove('show');
+                t.style.color = 'var(--text)';
+            }, 4000);
         }
 
         // ============================================================
-        // 3. COUNTDOWN – target: 4 Sep 2026, 21:00 IST
+        // 3. SERVER STATUS
+        // ============================================================
+        async function checkServerStatus() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            try {
+                const res = await fetch(API_BASE + '/health');
+                if (res.ok) {
+                    dot.className = 'dot online';
+                    text.textContent = 'सर्वर: ऑनलाइन ✅';
+                } else {
+                    dot.className = 'dot offline';
+                    text.textContent = 'सर्वर: ऑफलाइन ❌';
+                }
+            } catch (e) {
+                dot.className = 'dot offline';
+                text.textContent = 'सर्वर: कनेक्ट नहीं हो पाया ❌';
+            }
+        }
+
+        // ============================================================
+        // 4. COUNTDOWN – target: 4 Sep 2026, 21:00 IST
         // ============================================================
         const targetDate = new Date('2026-09-04T21:00:00+05:30').getTime();
 
@@ -1683,7 +1756,7 @@
         setInterval(updateCountdown, 1000);
 
         // ============================================================
-        // 4. NAVIGATION
+        // 5. NAVIGATION
         // ============================================================
         function scrollToSection(id) {
             const el = document.getElementById(id);
@@ -1749,7 +1822,7 @@
         });
 
         // ============================================================
-        // 5. THEME TOGGLE
+        // 6. THEME TOGGLE
         // ============================================================
         const themeBtn = document.getElementById('themeToggle');
         let darkMode = localStorage.getItem('krishnaTheme') === 'dark';
@@ -1763,7 +1836,7 @@
         });
 
         // ============================================================
-        // 6. DONATION – Quick Amounts
+        // 7. DONATION – Quick Amounts
         // ============================================================
         const quickBtns = document.querySelectorAll('.quick-donate .amt');
         const customInput = document.getElementById('customAmount');
@@ -1777,46 +1850,82 @@
         customInput.addEventListener('focus', () => quickBtns.forEach(b => b.classList.remove('active')));
 
         // ============================================================
-        // 7. DONATION – Form Submit with LocalStorage
+        // 8. API – FETCH DONORS
         // ============================================================
-        let donors = JSON.parse(localStorage.getItem('krishnaDonors') || '[]');
+        async function fetchDonors() {
+            try {
+                const res = await fetch(API_BASE + '/donors');
+                if (!res.ok) throw new Error('Failed to fetch donors');
+                const data = await res.json();
+                renderDonorWall(data);
+                updateStats(data);
+            } catch (e) {
+                console.error('Fetch donors error:', e);
+                document.getElementById('donorList').innerHTML =
+                    `<div style="text-align:center;padding:24px;color:#D45A5A;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया बाद में प्रयास करें।</div>`;
+            }
+        }
 
-        function renderDonorWall() {
+        // ============================================================
+        // 9. RENDER DONOR WALL
+        // ============================================================
+        function renderDonorWall(donors) {
             const list = document.getElementById('donorList');
-            if (donors.length === 0) {
+            if (!donors || donors.length === 0) {
                 list.innerHTML =
                     `<div style="text-align:center;padding:24px;color:var(--text-light);font-size:0.85rem;">अभी तक कोई दाता नहीं। आप पहले बनें! 🙏</div>`;
                 return;
             }
-            list.innerHTML = donors.slice(0, 25).map(d => `
+            list.innerHTML = donors.map(d => `
                 <div class="donor-card glass-card">
                     <div class="avatar">${d.name.charAt(0).toUpperCase()}</div>
                     <div class="info">
-                        <div class="name">${d.name}</div>
-                        <div class="msg">${d.message || '🙏 हरि बोल'}</div>
+                        <div class="name">
+                            ${d.name}
+                            <span class="status ${d.status === 'confirmed' ? 'confirmed' : 'pending'}">
+                                ${d.status === 'confirmed' ? '✅ कन्फर्म' : '⏳ पेंडिंग'}
+                            </span>
+                        </div>
+                        <div class="msg">${d.message || '🙏 हरि बोल'} · ${d.date || ''}</div>
                     </div>
                     <div class="amount">₹${d.amount}</div>
                 </div>
             `).join('');
         }
 
-        function updateStats() {
-            const totalDonors = donors.length;
-            const totalCollection = donors.reduce((sum, d) => sum + Number(d.amount), 0);
-            const target = 500000;
-            const percent = Math.min(100, (totalCollection / target) * 100);
+        // ============================================================
+        // 10. UPDATE STATS
+        // ============================================================
+        async function updateStats(data) {
+            try {
+                let donors = data;
+                if (!donors) {
+                    const res = await fetch(API_BASE + '/donors');
+                    if (res.ok) donors = await res.json();
+                    else return;
+                }
+                const totalDonors = donors.length;
+                const totalCollection = donors.reduce((sum, d) => sum + Number(d.amount), 0);
+                const target = 500000;
+                const percent = Math.min(100, (totalCollection / target) * 100);
 
-            document.getElementById('statDonors').textContent = totalDonors;
-            document.getElementById('statCollection').textContent = '₹' + totalCollection.toLocaleString('en-IN');
-            document.getElementById('statPercent').textContent = Math.round(percent) + '%';
-            document.getElementById('goalCollected').textContent = '₹' + totalCollection.toLocaleString('en-IN');
-            document.getElementById('goalFill').style.width = percent + '%';
-            document.getElementById('goalRemain').textContent = '₹' + (target - totalCollection).toLocaleString('en-IN') +
-                ' शेष';
-            document.getElementById('goalPercentLabel').textContent = Math.round(percent) + '%';
+                document.getElementById('statDonors').textContent = totalDonors;
+                document.getElementById('statCollection').textContent = '₹' + totalCollection.toLocaleString('en-IN');
+                document.getElementById('statPercent').textContent = Math.round(percent) + '%';
+                document.getElementById('goalCollected').textContent = '₹' + totalCollection.toLocaleString('en-IN');
+                document.getElementById('goalFill').style.width = percent + '%';
+                document.getElementById('goalRemain').textContent = '₹' + (target - totalCollection).toLocaleString(
+                    'en-IN') + ' शेष';
+                document.getElementById('goalPercentLabel').textContent = Math.round(percent) + '%';
+            } catch (e) {
+                console.error('Stats error:', e);
+            }
         }
 
-        document.getElementById('donateForm').addEventListener('submit', function(e) {
+        // ============================================================
+        // 11. DONATION FORM SUBMIT
+        // ============================================================
+        document.getElementById('donateForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const name = document.getElementById('donorName').value.trim();
@@ -1842,38 +1951,56 @@
             }
             amount = parseInt(amount) || 251;
 
-            const donor = {
-                id: Date.now(),
-                name,
-                mobile,
-                amount,
-                txn,
-                message: message || '🙏 हरि बोल',
-                date: new Date().toLocaleDateString('hi-IN')
-            };
+            // Auto-confirm if transaction ID is provided
+            const status = txn ? 'confirmed' : 'pending';
 
-            donors.unshift(donor);
-            localStorage.setItem('krishnaDonors', JSON.stringify(donors));
+            const payload = { name, mobile, amount, txn, message: message || '🙏 हरि बोल', status };
 
-            document.getElementById('donorName').value = '';
-            document.getElementById('donorMobile').value = '';
-            document.getElementById('donorTxn').value = '';
-            document.getElementById('donorMessage').value = '';
-            customInput.value = '';
-            quickBtns.forEach(b => b.classList.remove('active'));
-            document.querySelector('.quick-donate .amt[data-amount="251"]')?.classList.add('active');
+            try {
+                const submitBtn = document.getElementById('donateSubmitBtn');
+                submitBtn.textContent = '⏳ जमा हो रहा...';
+                submitBtn.disabled = true;
 
-            renderDonorWall();
-            updateStats();
-            launchConfetti();
-            showToast(`🙏 धन्यवाद ${name}! ₹${amount} का दान सफल।`);
-            setTimeout(() => {
-                document.getElementById('donorWall').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 400);
+                const res = await fetch(API_BASE + '/donate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    document.getElementById('donorName').value = '';
+                    document.getElementById('donorMobile').value = '';
+                    document.getElementById('donorTxn').value = '';
+                    document.getElementById('donorMessage').value = '';
+                    customInput.value = '';
+                    quickBtns.forEach(b => b.classList.remove('active'));
+                    document.querySelector('.quick-donate .amt[data-amount="251"]')?.classList.add('active');
+
+                    await fetchDonors();
+                    await updateStats();
+                    launchConfetti();
+                    showToast(`🙏 धन्यवाद ${name}! ₹${amount} का दान सफल। ${txn ? '✅ स्वतः कन्फर्म' : '⏳ पेंडिंग'}`);
+                    setTimeout(() => {
+                        document.getElementById('donorWall').scrollIntoView({ behavior: 'smooth',
+                            block: 'start' });
+                    }, 400);
+                } else {
+                    showToast('⚠️ ' + (result.error || 'दान जमा नहीं हो पाया। कृपया पुनः प्रयास करें।'), true);
+                }
+            } catch (e) {
+                showToast('⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया पुनः प्रयास करें।', true);
+                console.error('Submit error:', e);
+            } finally {
+                const submitBtn = document.getElementById('donateSubmitBtn');
+                submitBtn.textContent = '🙏 दान करें';
+                submitBtn.disabled = false;
+            }
         });
 
         // ============================================================
-        // 8. COPY UPI
+        // 12. COPY UPI
         // ============================================================
         document.getElementById('copyUpiBtn').addEventListener('click', function() {
             const upi = 'krishna@upi';
@@ -1896,7 +2023,7 @@
         }
 
         // ============================================================
-        // 9. GALLERY
+        // 13. GALLERY
         // ============================================================
         const galleryCount = 16;
         const galleryImages = [];
@@ -1942,7 +2069,7 @@
         }
 
         // ============================================================
-        // 10. CONFETTI
+        // 14. CONFETTI
         // ============================================================
         function launchConfetti() {
             const container = document.createElement('div');
@@ -1967,7 +2094,7 @@
         }
 
         // ============================================================
-        // 11. SCROLL REVEAL
+        // 15. SCROLL REVEAL
         // ============================================================
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
@@ -1976,7 +2103,7 @@
         revealEls.forEach(el => observer.observe(el));
 
         // ============================================================
-        // 12. RIPPLE EFFECT
+        // 16. RIPPLE EFFECT
         // ============================================================
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -1993,7 +2120,7 @@
         });
 
         // ============================================================
-        // 13. KEYBOARD
+        // 17. KEYBOARD
         // ============================================================
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') { navMobile.classList.remove('open');
@@ -2001,8 +2128,8 @@
         });
 
         console.log('🕉️ श्री कृष्ण जन्माष्टमी महोत्सव 2026 – साइट लोड हुई!');
+        console.log('📡 API Base: ' + API_BASE);
         console.log('🙏 जय श्री कृष्ण!');
-        console.log('👥 दाता: ' + donors.length + ' लोग');
     </script>
 
 </body>
