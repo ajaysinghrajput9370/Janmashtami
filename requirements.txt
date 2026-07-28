@@ -3,6 +3,6 @@ flask-cors==4.0.0
 gunicorn==23.0.0
 razorpay>=1.4.3
 sqlalchemy>=2.0.43
-psycopg2-binary==2.9.9
+psycopg2-binary>=2.9.10
 python-dotenv==1.0.0
 setuptools
