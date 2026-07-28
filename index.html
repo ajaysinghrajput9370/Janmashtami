@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
-    <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर - आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।" />
+    <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर" />
     <meta name="theme-color" content="#0D0618" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔱</text></svg>" />
+    <!-- Razorpay Checkout -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         /* ============================================================
-           STYLE.CSS – Premium Liquid Glass · Rich Krishna Theme
+           STYLE.CSS – Premium Liquid Glass · Krishna Theme
            ============================================================ */
         * {
             margin: 0;
@@ -38,7 +40,6 @@
             --text-light: #C4B5D0;
             --text-muted: #8A7A9A;
             --pink-glow: #FF4081;
-            --pink-glow-soft: rgba(255, 64, 129, 0.08);
             --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.7);
             --shadow-gold: 0 8px 40px rgba(255, 193, 7, 0.15);
@@ -68,7 +69,6 @@
             position: relative;
         }
 
-        /* ---------- ANIMATED BACKGROUND ---------- */
         body::before {
             content: '';
             position: fixed;
@@ -81,7 +81,6 @@
             pointer-events: none;
         }
 
-        /* ---------- SCROLLBAR ---------- */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -93,7 +92,6 @@
             border-radius: 20px;
         }
 
-        /* ---------- UTILITY ---------- */
         .container {
             padding: 0 16px;
             max-width: 480px;
@@ -112,10 +110,7 @@
             letter-spacing: -0.5px;
             text-shadow: 0 0 60px rgba(255, 193, 7, 0.15);
         }
-        .section-title .gold {
-            color: var(--gold);
-            -webkit-text-fill-color: var(--gold);
-        }
+
         .section-sub {
             text-align: center;
             font-size: 0.9rem;
@@ -125,7 +120,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ---------- GLASS CARD ---------- */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(var(--glass-blur)) saturate(200%);
@@ -142,7 +136,6 @@
             border-color: rgba(255, 215, 150, 0.15);
         }
 
-        /* ---------- BUTTONS ---------- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -160,15 +153,6 @@
             position: relative;
             overflow: hidden;
             letter-spacing: 0.3px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            box-shadow: 0 8px 30px rgba(106, 27, 154, 0.4);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 12px 50px rgba(106, 27, 154, 0.5);
         }
         .btn-gold {
             background: linear-gradient(135deg, var(--gold), #F9A825);
@@ -190,26 +174,15 @@
             transform: translateY(-3px);
             border-color: rgba(255, 215, 150, 0.2);
         }
-        .btn-outline-gold {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-        .btn-outline-gold:hover {
-            background: var(--gold);
-            color: #1A0A2E;
-            transform: translateY(-3px);
+        .btn-full {
+            width: 100%;
+            justify-content: center;
         }
         .btn-sm {
             padding: 10px 20px;
             font-size: 0.8rem;
         }
-        .btn-full {
-            width: 100%;
-            justify-content: center;
-        }
 
-        /* Ripple */
         .btn .ripple {
             position: absolute;
             border-radius: 50%;
@@ -356,7 +329,6 @@
             color: var(--gold);
         }
 
-        /* ---------- MOBILE NAV ---------- */
         .nav-mobile {
             position: fixed;
             top: var(--nav-height);
@@ -727,7 +699,7 @@
             display: block;
         }
 
-        /* QR */
+        /* QR Section */
         .qr-section {
             display: flex;
             flex-direction: column;
@@ -1344,6 +1316,25 @@
             }
         }
 
+        /* ---------- DECORATIVE FLOATING ---------- */
+        .float-deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: 2rem;
+            opacity: 0.04;
+            animation: floatDeco 14s infinite ease-in-out;
+        }
+        @keyframes floatDeco {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) rotate(8deg) scale(1.05);
+            }
+        }
+
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 390px) {
             .hero .hero-content h1 {
@@ -1465,26 +1456,6 @@
             }
         }
 
-        /* ---------- DECORATIVE FLOATING ---------- */
-        .float-deco {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            font-size: 2rem;
-            opacity: 0.04;
-            animation: floatDeco 14s infinite ease-in-out;
-        }
-        @keyframes floatDeco {
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg) scale(1);
-            }
-            50% {
-                transform: translateY(-30px) rotate(8deg) scale(1.05);
-            }
-        }
-
-        /* ---------- UTILITY ---------- */
         .hidden {
             display: none !important;
         }
@@ -1639,13 +1610,13 @@
         </div>
     </div>
 
-    <!-- DONATE -->
+    <!-- DONATE SECTION -->
     <section class="donate-section" id="donate">
         <h2 class="section-title reveal">🙏 <span class="gold">दान</span> करें</h2>
         <p class="section-sub reveal">आपका सहयोग इस महोत्सव को भव्य बनाने में सहायक होगा।</p>
 
         <div class="donate-card glass-card reveal">
-            <!-- QR -->
+            <!-- QR & UPI -->
             <div class="qr-section">
                 <img class="qr-img" src="/static/assets/images/qr-code.png" alt="QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%231A0A2E%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FFC107%22 font-family=%22monospace%22%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E'" />
                 <div class="upi-box">
@@ -1654,7 +1625,7 @@
                 </div>
             </div>
 
-            <!-- Quick Donate -->
+            <!-- Quick Donate Presets -->
             <div class="quick-donate" id="quickDonate">
                 <button class="amt" data-amount="51">₹51</button>
                 <button class="amt" data-amount="101">₹101</button>
@@ -1667,7 +1638,7 @@
             <!-- Custom Amount -->
             <input type="number" id="customAmount" placeholder="अपनी राशि दर्ज करें ₹" />
 
-            <!-- Form -->
+            <!-- Donor Form -->
             <form class="donate-form" id="donateForm">
                 <div class="form-row">
                     <div>
@@ -1679,10 +1650,11 @@
                         <div class="form-error" id="mobileError">सही मोबाइल नंबर दर्ज करें</div>
                     </div>
                 </div>
-                <input type="text" id="donorTxn" placeholder="लेन-देन आईडी (ट्रांजेक्शन ID)" />
                 <textarea id="donorMessage" placeholder="आपका संदेश (वैकल्पिक)"></textarea>
-                <button type="submit" class="btn btn-gold btn-full" id="donateSubmitBtn">
-                    🙏 दान करें
+
+                <!-- Razorpay Donate Button -->
+                <button type="submit" class="btn btn-gold btn-full" id="rzpDonateBtn" style="font-size:1.1rem; padding:16px;">
+                    💳 Donate with Razorpay
                 </button>
             </form>
         </div>
@@ -1701,7 +1673,6 @@
     <section class="timeline-section" id="timeline">
         <h2 class="section-title reveal">📅 <span class="gold">कार्यक्रम</span> सूची</h2>
         <p class="section-sub reveal">4-5 सितंबर 2026</p>
-
         <div class="timeline-item glass-card reveal">
             <span class="icon">🌅</span>
             <div class="info"><div class="title">श्री कृष्ण जन्माष्टमी</div><div class="time">4 सितंबर, शाम 7:00 बजे</div></div>
@@ -1730,24 +1701,15 @@
         <p class="section-sub reveal">आयोजन में विशेष योगदान</p>
         <div class="organizer-card glass-card reveal">
             <div class="avatar">🌺</div>
-            <div class="info">
-                <div class="name">श्री देव नारायण</div>
-                <div class="role">मुख्य आयोजक</div>
-            </div>
+            <div class="info"><div class="name">श्री देव नारायण</div><div class="role">मुख्य आयोजक</div></div>
         </div>
         <div class="organizer-card glass-card reveal">
             <div class="avatar">🌹</div>
-            <div class="info">
-                <div class="name">श्री सुनील</div>
-                <div class="role">सह-आयोजक</div>
-            </div>
+            <div class="info"><div class="name">श्री सुनील</div><div class="role">सह-आयोजक</div></div>
         </div>
         <div class="organizer-card glass-card reveal">
             <div class="avatar">🌸</div>
-            <div class="info">
-                <div class="name">श्री यदुनाथ सिंह</div>
-                <div class="role">सह-आयोजक</div>
-            </div>
+            <div class="info"><div class="name">श्री यदुनाथ सिंह</div><div class="role">सह-आयोजक</div></div>
         </div>
     </section>
 
@@ -1847,13 +1809,10 @@
             playSong();
         });
 
-        // ---------- SONG ----------
         function playSong() {
             const audio = document.getElementById('bgSong');
             if (audio) {
-                // Try to play; if blocked, show a small play button
                 audio.play().catch(() => {
-                    // Show a tiny play button overlay
                     const btn = document.createElement('button');
                     btn.innerHTML = '🔊 Play Jai Shri Krishna';
                     btn.style.cssText = `
@@ -2015,7 +1974,7 @@
         });
 
         // ============================================================
-        // 7. DONATION – Quick Amounts
+        // 7. QUICK AMOUNTS
         // ============================================================
         const quickBtns = document.querySelectorAll('.quick-donate .amt');
         const customInput = document.getElementById('customAmount');
@@ -2029,7 +1988,19 @@
         customInput.addEventListener('focus', () => quickBtns.forEach(b => b.classList.remove('active')));
 
         // ============================================================
-        // 8. API – FETCH DONORS
+        // 8. GET SELECTED AMOUNT
+        // ============================================================
+        function getSelectedAmount() {
+            let amount = customInput.value.trim();
+            if (!amount) {
+                const active = document.querySelector('.quick-donate .amt.active');
+                amount = active ? active.getAttribute('data-amount') : '251';
+            }
+            return parseInt(amount) || 251;
+        }
+
+        // ============================================================
+        // 9. FETCH DONORS FROM DB
         // ============================================================
         async function fetchDonors() {
             try {
@@ -2041,12 +2012,12 @@
             } catch (e) {
                 console.error('Fetch donors error:', e);
                 document.getElementById('donorList').innerHTML =
-                    `<div style="text-align:center;padding:24px;color:#EF5350;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया बाद में प्रयास करें।</div>`;
+                    `<div style="text-align:center;padding:24px;color:#EF5350;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया।</div>`;
             }
         }
 
         // ============================================================
-        // 9. RENDER DONOR WALL
+        // 10. RENDER DONOR WALL
         // ============================================================
         function renderDonorWall(donors) {
             const list = document.getElementById('donorList');
@@ -2055,15 +2026,13 @@
                     `<div style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.85rem;">अभी तक कोई दाता नहीं। आप पहले बनें! 🙏</div>`;
                 return;
             }
-            list.innerHTML = donors.slice(0, 25).map(d => `
+            list.innerHTML = donors.map(d => `
                 <div class="donor-card glass-card">
                     <div class="avatar">${d.name.charAt(0).toUpperCase()}</div>
                     <div class="info">
                         <div class="name">
                             ${d.name}
-                            <span class="status ${d.status === 'confirmed' ? 'confirmed' : 'pending'}">
-                                ${d.status === 'confirmed' ? '✅ कन्फर्म' : '⏳ पेंडिंग'}
-                            </span>
+                            <span class="status confirmed">✅ कन्फर्म</span>
                         </div>
                         <div class="msg">${d.message || '🙏 हरि बोल'} · ${d.date || ''}</div>
                     </div>
@@ -2073,7 +2042,7 @@
         }
 
         // ============================================================
-        // 10. UPDATE STATS
+        // 11. UPDATE STATS
         // ============================================================
         async function updateStats(data) {
             try {
@@ -2102,15 +2071,94 @@
         }
 
         // ============================================================
-        // 11. DONATION FORM SUBMIT
+        // 12. RAZORPAY DONATION FLOW
         // ============================================================
-        document.getElementById('donateForm').addEventListener('submit', async function(e) {
+        function openRazorpayCheckout(name, amount) {
+            // Create order on backend
+            fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, amount })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        showToast('⚠️ ' + data.error, true);
+                        return;
+                    }
+                    // Open Razorpay Checkout
+                    const options = {
+                        key: data.key,
+                        amount: data.amount * 100,
+                        currency: 'INR',
+                        name: 'Shri Krishna Janmashtami Seva',
+                        description: 'Donation for Janmashtami 2026',
+                        order_id: data.order_id,
+                        prefill: {
+                            name: name,
+                            contact: document.getElementById('donorMobile').value || '',
+                        },
+                        theme: {
+                            color: '#FFC107'
+                        },
+                        handler: function(response) {
+                            // Payment success: verify signature
+                            const payload = {
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                                name: name,
+                                amount: amount,
+                                message: document.getElementById('donorMessage').value || ''
+                            };
+                            fetch('/api/verify-payment', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(payload)
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.status === 'success') {
+                                        showToast('✅ Donation Successful! Thank you 🙏');
+                                        fetchDonors();
+                                        updateStats();
+                                        launchConfetti();
+                                        // Clear form
+                                        document.getElementById('donorName').value = '';
+                                        document.getElementById('donorMobile').value = '';
+                                        document.getElementById('donorMessage').value = '';
+                                        customInput.value = '';
+                                        quickBtns.forEach(b => b.classList.remove('active'));
+                                        document.querySelector('.quick-donate .amt[data-amount="251"]')
+                                            ?.classList.add('active');
+                                    } else {
+                                        showToast('⚠️ Payment verification failed.', true);
+                                    }
+                                })
+                                .catch(err => showToast('⚠️ Error: ' + err, true));
+                        },
+                        modal: {
+                            ondismiss: function() {
+                                console.log('Checkout closed');
+                            }
+                        }
+                    };
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                })
+                .catch(err => {
+                    showToast('⚠️ Error creating order: ' + err, true);
+                });
+        }
+
+        // ============================================================
+        // 13. DONATE FORM SUBMIT
+        // ============================================================
+        document.getElementById('donateForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const name = document.getElementById('donorName').value.trim();
             const mobile = document.getElementById('donorMobile').value.trim();
-            const txn = document.getElementById('donorTxn').value.trim();
-            const message = document.getElementById('donorMessage').value.trim();
 
             const nameErr = document.getElementById('nameError');
             const mobErr = document.getElementById('mobileError');
@@ -2121,63 +2169,22 @@
             if (!mobile || mobile.length < 10 || !/^\d{10,15}$/.test(mobile)) { mobErr.classList.add('show');
                 valid = false; } else { mobErr.classList.remove('show'); }
 
-            if (!valid) { showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें।'); return; }
-
-            let amount = customInput.value.trim();
-            if (!amount) {
-                const active = document.querySelector('.quick-donate .amt.active');
-                amount = active ? active.getAttribute('data-amount') : '251';
+            if (!valid) {
+                showToast('⚠️ कृपया सभी आवश्यक फील्ड भरें।', true);
+                return;
             }
-            amount = parseInt(amount) || 251;
 
-            const status = txn ? 'confirmed' : 'pending';
-            const payload = { name, mobile, amount, txn, message: message || '🙏 हरि बोल', status };
-
-            try {
-                const submitBtn = document.getElementById('donateSubmitBtn');
-                submitBtn.textContent = '⏳ जमा हो रहा...';
-                submitBtn.disabled = true;
-
-                const res = await fetch(API_BASE + '/donate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await res.json();
-
-                if (res.ok) {
-                    document.getElementById('donorName').value = '';
-                    document.getElementById('donorMobile').value = '';
-                    document.getElementById('donorTxn').value = '';
-                    document.getElementById('donorMessage').value = '';
-                    customInput.value = '';
-                    quickBtns.forEach(b => b.classList.remove('active'));
-                    document.querySelector('.quick-donate .amt[data-amount="251"]')?.classList.add('active');
-
-                    await fetchDonors();
-                    await updateStats();
-                    launchConfetti();
-                    showToast(`🙏 धन्यवाद ${name}! ₹${amount} का दान सफल। ${txn ? '✅ स्वतः कन्फर्म' : '⏳ पेंडिंग'}`);
-                    setTimeout(() => {
-                        document.getElementById('donorWall').scrollIntoView({ behavior: 'smooth',
-                            block: 'start' });
-                    }, 400);
-                } else {
-                    showToast('⚠️ ' + (result.error || 'दान जमा नहीं हो पाया। कृपया पुनः प्रयास करें।'), true);
-                }
-            } catch (e) {
-                showToast('⚠️ सर्वर से कनेक्ट नहीं हो पाया। कृपया पुनः प्रयास करें।', true);
-                console.error('Submit error:', e);
-            } finally {
-                const submitBtn = document.getElementById('donateSubmitBtn');
-                submitBtn.textContent = '🙏 दान करें';
-                submitBtn.disabled = false;
+            const amount = getSelectedAmount();
+            if (amount <= 0) {
+                showToast('⚠️ कृपया सही राशि दर्ज करें।', true);
+                return;
             }
+
+            openRazorpayCheckout(name, amount);
         });
 
         // ============================================================
-        // 12. COPY UPI
+        // 14. COPY UPI
         // ============================================================
         document.getElementById('copyUpiBtn').addEventListener('click', function() {
             const upi = 'krishna@upi';
@@ -2200,7 +2207,7 @@
         }
 
         // ============================================================
-        // 13. GALLERY – using actual images from /static/assets/images/
+        // 15. GALLERY
         // ============================================================
         const galleryCount = 15;
         const galleryImages = [];
@@ -2249,7 +2256,7 @@
         }
 
         // ============================================================
-        // 14. CONFETTI
+        // 16. CONFETTI
         // ============================================================
         function launchConfetti() {
             const container = document.createElement('div');
@@ -2274,7 +2281,7 @@
         }
 
         // ============================================================
-        // 15. SCROLL REVEAL
+        // 17. SCROLL REVEAL
         // ============================================================
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
@@ -2283,7 +2290,7 @@
         revealEls.forEach(el => observer.observe(el));
 
         // ============================================================
-        // 16. RIPPLE EFFECT
+        // 18. RIPPLE EFFECT
         // ============================================================
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -2300,7 +2307,7 @@
         });
 
         // ============================================================
-        // 17. KEYBOARD
+        // 19. KEYBOARD
         // ============================================================
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') { navMobile.classList.remove('open');
@@ -2309,16 +2316,12 @@
 
         console.log('🕉️ श्री कृष्ण जन्माष्टमी महोत्सव 2026 – साइट लोड हुई!');
         console.log('📡 API Base: ' + API_BASE);
-        console.log('📸 Gallery Images: ' + galleryImages.length + ' images');
         console.log('🙏 जय श्री कृष्ण!');
     </script>
 
-    <!-- ============================================================
-    AUDIO – Jai Shri Krishna (Auto-play)
-    ============================================================ -->
+    <!-- AUDIO – Jai Shri Krishna (Auto-play) -->
     <audio id="bgSong" autoplay loop preload="auto">
         <source src="/static/assets/audio/jai-shri-krishna.mp3" type="audio/mpeg">
-        <!-- Fallback: use a free online chant if local file missing -->
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
