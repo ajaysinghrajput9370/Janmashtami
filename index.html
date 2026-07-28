@@ -5,46 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
     <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर" />
-    <meta name="theme-color" content="#0D0618" />
+    <meta name="theme-color" content="#FF6B35" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔱</text></svg>" />
     <style>
         /* ============================================================
-           STYLE.CSS – Premium Liquid Glass · Krishna Theme
+           STYLE.CSS – Vibrant Colorful Krishna Theme
            ============================================================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #6A1B9A;
-            --primary-light: #9C4DCC;
-            --secondary: #0D47A1;
-            --gold: #FFC107;
-            --gold-light: #FFD54F;
-            --bg: #0D0618;
-            --bg-gradient: radial-gradient(ellipse at 20% 20%, #1A0A2E, #0D0618 70%);
-            --glass: rgba(255,255,255,0.06);
-            --glass-hover: rgba(255,255,255,0.12);
-            --glass-border: rgba(255,215,150,0.08);
-            --text: #F5EDFF;
-            --text-light: #C4B5D0;
-            --text-muted: #8A7A9A;
-            --shadow: 0 20px 60px rgba(0,0,0,0.5);
-            --shadow-lg: 0 30px 80px rgba(0,0,0,0.7);
+            --orange: #FF6B35;
+            --orange-light: #FF8A5C;
+            --pink: #FF4081;
+            --pink-light: #FF80AB;
+            --purple: #7B2FBE;
+            --purple-light: #9C4DCC;
+            --gold: #FFD700;
+            --gold-light: #FFE44D;
+            --teal: #00BCD4;
+            --teal-light: #4DD0E1;
+            --bg-start: #FF6B35;
+            --bg-end: #7B2FBE;
+            --glass: rgba(255,255,255,0.15);
+            --glass-hover: rgba(255,255,255,0.25);
+            --glass-border: rgba(255,255,255,0.1);
+            --text: #FFFFFF;
+            --text-light: rgba(255,255,255,0.85);
+            --text-muted: rgba(255,255,255,0.6);
+            --shadow: 0 20px 60px rgba(0,0,0,0.3);
+            --shadow-lg: 0 30px 80px rgba(0,0,0,0.4);
             --radius: 28px;
             --radius-sm: 16px;
             --radius-full: 60px;
             --font: 'Poppins', sans-serif;
             --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --nav-height: 72px;
-            --glass-blur: 28px;
+            --glass-blur: 24px;
         }
 
         html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: var(--font);
-            background: var(--bg-gradient);
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
@@ -58,24 +64,43 @@
             inset: 0;
             z-index: 0;
             background:
-                radial-gradient(ellipse at 10% 10%, rgba(106,27,154,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 90% 90%, rgba(255,193,7,0.05) 0%, transparent 50%);
+                radial-gradient(ellipse at 10% 10%, rgba(255,215,0,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 90% 90%, rgba(255,64,129,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0,188,212,0.04) 0%, transparent 70%);
             pointer-events: none;
         }
 
+        /* ---------- DECORATIVE FLOATING ---------- */
+        .float-deco {
+            position: fixed; pointer-events: none; z-index: 0;
+            font-size: 2.5rem; opacity: 0.06;
+            animation: floatDeco 16s infinite ease-in-out;
+        }
+        @keyframes floatDeco {
+            0%,100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-40px) rotate(10deg) scale(1.05); }
+        }
+
         ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0D0618; }
-        ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 20px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 20px; }
 
         .container { padding: 0 16px; max-width: 480px; margin: 0 auto; }
+
         .section-title {
             font-size: 1.8rem; font-weight: 800; text-align: center; margin: 32px 0 12px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--orange-light));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            text-shadow: 0 0 60px rgba(255,193,7,0.15);
+            text-shadow: 0 0 60px rgba(255,215,0,0.15);
+            animation: titleGlow 3s ease-in-out infinite;
         }
-        .section-sub { text-align: center; font-size: 0.9rem; color: var(--text-light); margin-bottom: 18px; font-weight: 300; }
+        @keyframes titleGlow {
+            0%,100% { filter: drop-shadow(0 0 20px rgba(255,215,0,0.1)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255,64,129,0.2)); }
+        }
+        .section-sub { text-align: center; font-size: 0.9rem; color: var(--text-light); margin-bottom: 18px; font-weight: 300; letter-spacing: 0.5px; }
 
+        /* ---------- GLASS CARD ---------- */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(var(--glass-blur)) saturate(200%);
@@ -89,9 +114,10 @@
             transform: translateY(-4px) scale(1.005);
             box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.06);
             background: var(--glass-hover);
-            border-color: rgba(255,215,150,0.15);
+            border-color: rgba(255,215,0,0.15);
         }
 
+        /* ---------- BUTTONS ---------- */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             padding: 14px 32px; border-radius: var(--radius-full); font-family: var(--font);
@@ -101,14 +127,19 @@
         }
         .btn-gold {
             background: linear-gradient(135deg, var(--gold), #F9A825);
-            color: #1A0A2E; box-shadow: 0 8px 30px rgba(255,193,7,0.3);
+            color: #1A0A2E; box-shadow: 0 8px 30px rgba(255,215,0,0.3);
         }
-        .btn-gold:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 50px rgba(255,193,7,0.4); }
+        .btn-gold:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 50px rgba(255,215,0,0.4); }
+        .btn-pink {
+            background: linear-gradient(135deg, var(--pink), #D81B60);
+            color: #fff; box-shadow: 0 8px 30px rgba(255,64,129,0.3);
+        }
+        .btn-pink:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 50px rgba(255,64,129,0.4); }
         .btn-glass {
             background: var(--glass); backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border); color: var(--text);
         }
-        .btn-glass:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); border-color: rgba(255,215,150,0.2); }
+        .btn-glass:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); border-color: rgba(255,215,0,0.2); }
         .btn-sm { padding: 10px 20px; font-size: 0.8rem; }
         .btn-full { width: 100%; justify-content: center; }
 
@@ -120,14 +151,15 @@
 
         /* ---------- LOADER ---------- */
         #loader {
-            position: fixed; inset: 0; z-index: 9999; background: var(--bg-gradient);
+            position: fixed; inset: 0; z-index: 9999;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.7s ease, visibility 0.7s ease;
         }
         #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
         .loader-ring {
             width: 60px; height: 60px; border-radius: 50%;
-            border: 3px solid rgba(255,193,7,0.08); border-top-color: var(--gold);
+            border: 3px solid rgba(255,215,0,0.08); border-top-color: var(--gold);
             animation: spin 0.8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -136,19 +168,25 @@
         /* ---------- NAVBAR ---------- */
         .navbar {
             position: sticky; top: 0; z-index: 1000; padding: 10px 18px; height: var(--nav-height);
-            background: rgba(13,6,24,0.75); backdrop-filter: blur(30px) saturate(220%);
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(30px) saturate(220%);
             -webkit-backdrop-filter: blur(30px) saturate(220%);
-            border-bottom: 1px solid rgba(255,215,150,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
             display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 4px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 40px rgba(0,0,0,0.15);
         }
         .navbar .brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
         .navbar .brand .logo {
             width: 42px; height: 42px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--gold));
+            background: linear-gradient(135deg, var(--gold), var(--pink));
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; color: #fff; flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(106,27,154,0.3);
+            font-size: 1.3rem; color: #1A0A2E; flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%,100% { box-shadow: 0 4px 20px rgba(255,215,0,0.3); }
+            50% { box-shadow: 0 4px 40px rgba(255,64,129,0.4); }
         }
         .navbar .brand .name { display: flex; flex-direction: column; line-height: 1.2; }
         .navbar .brand .name .main {
@@ -159,21 +197,21 @@
         .navbar .brand .name .sub { font-size: 0.6rem; font-weight: 400; color: var(--text-light); letter-spacing: 0.5px; }
         .navbar .nav-right { display: flex; align-items: center; gap: 6px; }
         .navbar .nav-right .icon-btn {
-            width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--glass-border);
-            background: var(--glass); backdrop-filter: blur(8px);
+            width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.06); backdrop-filter: blur(8px);
             display: flex; align-items: center; justify-content: center;
             font-size: 1.1rem; cursor: pointer; transition: all var(--transition);
             color: var(--text-light);
         }
-        .navbar .nav-right .icon-btn:hover { background: rgba(255,255,255,0.06); color: var(--gold); transform: scale(1.05); }
+        .navbar .nav-right .icon-btn:hover { background: rgba(255,255,255,0.12); color: var(--gold); transform: scale(1.05); }
         .navbar .nav-right .hamburger { font-size: 1.5rem; cursor: pointer; padding: 4px 8px; user-select: none; color: var(--text-light); }
         .navbar .nav-right .hamburger:hover { color: var(--gold); }
 
         /* ---------- MOBILE NAV ---------- */
         .nav-mobile {
             position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 999;
-            background: rgba(13,6,24,0.96); backdrop-filter: blur(34px); -webkit-backdrop-filter: blur(34px);
-            border-bottom: 1px solid rgba(255,215,150,0.06); padding: 12px 18px 18px;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(34px); -webkit-backdrop-filter: blur(34px);
+            border-bottom: 1px solid rgba(255,255,255,0.06); padding: 12px 18px 18px;
             transform: translateY(-120%); transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
@@ -182,11 +220,11 @@
             display: flex; align-items: center; gap: 14px; padding: 14px 12px;
             border-radius: var(--radius-sm); font-weight: 500; color: var(--text-light);
             cursor: pointer; transition: all var(--transition);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-mobile .nav-item:last-child { border-bottom: none; }
         .nav-mobile .nav-item:hover, .nav-mobile .nav-item.active {
-            background: rgba(255,193,7,0.06); color: var(--gold);
+            background: rgba(255,215,0,0.08); color: var(--gold);
         }
         .nav-mobile .nav-item .icon { font-size: 1.2rem; width: 32px; text-align: center; }
 
@@ -194,21 +232,24 @@
         .hero {
             position: relative; margin: 12px 14px 20px; border-radius: var(--radius);
             overflow: hidden; min-height: 340px; display: flex; align-items: flex-end;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         .hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-        .hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,6,24,0.2) 0%, rgba(13,6,24,0.7) 100%); z-index: 1; }
+        .hero .hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+        }
         .hero .hero-glow {
             position: absolute; inset: 0; z-index: 1;
-            background: radial-gradient(ellipse at 70% 30%, rgba(255,193,7,0.08) 0%, transparent 60%),
-                       radial-gradient(ellipse at 30% 80%, rgba(106,27,154,0.12) 0%, transparent 50%);
+            background: radial-gradient(ellipse at 70% 30%, rgba(255,215,0,0.1) 0%, transparent 60%),
+                       radial-gradient(ellipse at 30% 80%, rgba(255,64,129,0.08) 0%, transparent 50%);
             pointer-events: none;
         }
-        .hero .hero-content { position: relative; z-index: 2; padding: 22px 18px 28px; width: 100%; color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,0.3); }
+        .hero .hero-content { position: relative; z-index: 2; padding: 22px 18px 28px; width: 100%; color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,0.4); }
         .hero .hero-content .village {
-            display: inline-block; background: rgba(255,193,7,0.12); backdrop-filter: blur(10px);
+            display: inline-block; background: rgba(255,215,0,0.12); backdrop-filter: blur(10px);
             padding: 4px 18px; border-radius: var(--radius-full); font-size: 0.7rem; font-weight: 500;
-            letter-spacing: 1px; margin-bottom: 10px; border: 1px solid rgba(255,193,7,0.15);
+            letter-spacing: 1px; margin-bottom: 10px; border: 1px solid rgba(255,215,0,0.15);
             color: var(--gold-light);
         }
         .hero .hero-content h1 { font-size: 2rem; font-weight: 900; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.5px; }
@@ -227,7 +268,7 @@
         }
         .countdown-section::before {
             content: ''; position: absolute; inset: -50%;
-            background: radial-gradient(ellipse at center, rgba(255,193,7,0.03) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(255,215,0,0.04) 0%, transparent 70%);
             pointer-events: none; animation: rotateGlow 20s linear infinite;
         }
         @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -238,7 +279,7 @@
             border-radius: var(--radius-sm); border: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: all var(--transition);
         }
-        .cd-item:hover { border-color: rgba(255,193,7,0.2); transform: translateY(-2px); }
+        .cd-item:hover { border-color: rgba(255,215,0,0.2); transform: translateY(-2px); }
         .cd-item .num {
             font-size: 1.8rem; font-weight: 800;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
@@ -256,14 +297,14 @@
             border-radius: var(--radius-sm); border: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: all var(--transition);
         }
-        .stats-grid .stat-card:hover { transform: translateY(-3px); border-color: rgba(255,193,7,0.1); }
+        .stats-grid .stat-card:hover { transform: translateY(-3px); border-color: rgba(255,215,0,0.1); }
         .stats-grid .stat-card .num {
             font-size: 1.6rem; font-weight: 800;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .stats-grid .stat-card .num.purple {
-            background: linear-gradient(135deg, var(--primary-light), #0D47A1);
+            background: linear-gradient(135deg, var(--purple-light), var(--pink));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .stats-grid .stat-card .lbl { font-size: 0.65rem; font-weight: 400; color: var(--text-muted); margin-top: 4px; }
@@ -277,8 +318,9 @@
             overflow: hidden; margin: 10px 0 6px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
         .goal-bar .fill {
-            height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--gold), var(--primary-light));
-            width: 0%; transition: width 1.5s ease; box-shadow: 0 0 30px rgba(255,193,7,0.15);
+            height: 100%; border-radius: 20px;
+            background: linear-gradient(90deg, var(--gold), var(--pink), var(--teal));
+            width: 0%; transition: width 1.5s ease; box-shadow: 0 0 30px rgba(255,215,0,0.15);
         }
         .goal-section .goal-footer { display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--text-muted); }
 
@@ -291,28 +333,45 @@
         }
         .quick-donate .amt {
             padding: 10px 18px; border-radius: var(--radius-full);
-            border: 2px solid rgba(255,255,255,0.06); background: transparent;
+            border: 2px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.04);
             font-weight: 600; font-size: 0.8rem; color: var(--text-light);
             cursor: pointer; transition: all var(--transition); font-family: var(--font);
         }
-        .quick-donate .amt:hover { border-color: rgba(255,193,7,0.2); background: rgba(255,193,7,0.04); color: var(--gold); }
-        .quick-donate .amt.active { border-color: var(--gold); background: rgba(255,193,7,0.08); color: var(--gold); box-shadow: 0 0 30px rgba(255,193,7,0.05); }
+        .quick-donate .amt:hover { border-color: rgba(255,215,0,0.3); background: rgba(255,215,0,0.06); color: var(--gold); }
+        .quick-donate .amt.active { border-color: var(--gold); background: rgba(255,215,0,0.08); color: var(--gold); box-shadow: 0 0 30px rgba(255,215,0,0.05); }
 
-        .donate-form input, .donate-form textarea {
+        .donate-form input, .donate-form textarea, .donate-form .file-input-wrapper {
             width: 100%; padding: 14px 18px; margin-bottom: 12px; border-radius: var(--radius-sm);
-            border: 2px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.04);
             font-family: var(--font); font-size: 0.85rem; color: var(--text);
             transition: all var(--transition); outline: none;
         }
         .donate-form input::placeholder, .donate-form textarea::placeholder { color: var(--text-muted); }
         .donate-form input:focus, .donate-form textarea:focus {
-            border-color: rgba(255,193,7,0.2); box-shadow: 0 0 30px rgba(255,193,7,0.03);
-            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,215,0,0.2); box-shadow: 0 0 30px rgba(255,215,0,0.03);
+            background: rgba(255,255,255,0.08);
         }
         .donate-form textarea { min-height: 64px; resize: vertical; }
         .donate-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .donate-form .form-error { color: #FF6B6B; font-size: 0.7rem; margin-top: -8px; margin-bottom: 10px; display: none; }
         .donate-form .form-error.show { display: block; }
+
+        /* File input styling */
+        .file-input-wrapper {
+            position: relative; overflow: hidden; display: flex; align-items: center; gap: 12px;
+            cursor: pointer; padding: 12px 18px;
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer;
+        }
+        .file-input-wrapper .file-label {
+            color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;
+        }
+        .file-input-wrapper .file-label .icon { font-size: 1.2rem; }
+        .file-input-wrapper .file-name {
+            color: var(--gold); font-size: 0.8rem; margin-left: auto;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px;
+        }
 
         /* QR Section */
         .qr-section {
@@ -320,12 +379,12 @@
         }
         .qr-section .qr-img {
             width: 200px; height: 200px; border-radius: var(--radius-sm);
-            background: #fff; padding: 8px; box-shadow: 0 8px 40px rgba(255,193,7,0.15);
-            object-fit: contain; border: 2px solid rgba(255,193,7,0.06);
+            background: #fff; padding: 8px; box-shadow: 0 8px 40px rgba(255,215,0,0.15);
+            object-fit: contain; border: 2px solid rgba(255,215,0,0.06);
         }
         .qr-section .upi-box {
             display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
-            background: rgba(255,255,255,0.03); backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.06); backdrop-filter: blur(8px);
             padding: 8px 18px; border-radius: var(--radius-full);
             border: 1px solid rgba(255,255,255,0.04);
         }
@@ -344,13 +403,13 @@
             border: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: all var(--transition);
         }
-        .donor-wall .donor-card:hover { transform: translateX(6px); border-color: rgba(255,193,7,0.06); }
+        .donor-wall .donor-card:hover { transform: translateX(6px); border-color: rgba(255,215,0,0.06); }
         .donor-wall .donor-card .avatar {
             width: 44px; height: 44px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-light), var(--gold));
+            background: linear-gradient(135deg, var(--gold), var(--pink));
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; color: #fff; font-weight: 700; flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(106,27,154,0.2);
+            font-size: 1.1rem; color: #1A0A2E; font-weight: 700; flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.2);
         }
         .donor-wall .donor-card .info { flex: 1; min-width: 80px; }
         .donor-wall .donor-card .info .name { font-weight: 600; font-size: 0.85rem; }
@@ -365,16 +424,16 @@
             border: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: all var(--transition);
         }
-        .timeline-item:hover { transform: translateX(6px); border-color: rgba(255,193,7,0.06); }
+        .timeline-item:hover { transform: translateX(6px); border-color: rgba(255,215,0,0.06); }
         .timeline-item .icon { font-size: 1.5rem; width: 38px; text-align: center; flex-shrink: 0; }
         .timeline-item .info { flex: 1; }
         .timeline-item .info .title { font-weight: 600; font-size: 0.85rem; }
         .timeline-item .info .time { font-size: 0.7rem; color: var(--text-muted); }
         .timeline-item .badge {
             padding: 3px 14px; border-radius: var(--radius-full);
-            background: rgba(255,193,7,0.08); color: var(--gold);
+            background: rgba(255,215,0,0.12); color: var(--gold);
             font-size: 0.6rem; font-weight: 600; flex-shrink: 0;
-            border: 1px solid rgba(255,193,7,0.06);
+            border: 1px solid rgba(255,215,0,0.06);
         }
 
         /* ---------- ORGANIZERS ---------- */
@@ -385,13 +444,13 @@
             border: 1px solid var(--glass-border); box-shadow: var(--shadow);
             transition: all var(--transition);
         }
-        .organizer-card:hover { transform: translateX(6px); border-color: rgba(255,193,7,0.06); }
+        .organizer-card:hover { transform: translateX(6px); border-color: rgba(255,215,0,0.06); }
         .organizer-card .avatar {
             width: 48px; height: 48px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--primary));
+            background: linear-gradient(135deg, var(--gold), var(--pink));
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: #fff; font-weight: 700; flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(255,193,7,0.15);
+            font-size: 1.2rem; color: #1A0A2E; font-weight: 700; flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.15);
         }
         .organizer-card .info .name { font-weight: 600; font-size: 0.95rem; }
         .organizer-card .info .role { font-size: 0.75rem; color: var(--text-muted); }
@@ -404,10 +463,10 @@
             background: var(--glass); box-shadow: var(--shadow); transition: all var(--transition);
             position: relative; border: 1px solid var(--glass-border);
         }
-        .gallery-grid .gallery-item:hover { transform: scale(1.04); box-shadow: var(--shadow-lg); border-color: rgba(255,193,7,0.1); z-index: 2; }
+        .gallery-grid .gallery-item:hover { transform: scale(1.04); box-shadow: var(--shadow-lg); border-color: rgba(255,215,0,0.1); z-index: 2; }
         .gallery-grid .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-grid .gallery-item .overlay {
-            position: absolute; inset: 0; background: linear-gradient(0deg, rgba(13,6,24,0.5) 0%, transparent 60%);
+            position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 60%);
             display: flex; align-items: flex-end; justify-content: center; padding: 12px;
             opacity: 0; transition: all var(--transition);
             color: #fff; font-weight: 400; font-size: 0.7rem; letter-spacing: 0.5px;
@@ -416,7 +475,7 @@
 
         /* Lightbox */
         .lightbox {
-            position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.9); backdrop-filter: blur(40px);
+            position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.85); backdrop-filter: blur(40px);
             display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none;
             transition: opacity 0.4s ease; padding: 20px;
         }
@@ -441,7 +500,7 @@
         .contact-section .contact-card { padding: 22px 18px; }
         .contact-section .contact-item {
             display: flex; align-items: center; gap: 14px; padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03); transition: all var(--transition);
+            border-bottom: 1px solid rgba(255,255,255,0.04); transition: all var(--transition);
         }
         .contact-section .contact-item:last-child { border-bottom: none; }
         .contact-section .contact-item:hover { padding-left: 6px; }
@@ -453,16 +512,16 @@
         .contact-section .contact-item .info .value a:hover { color: var(--gold-light); text-decoration: underline; }
         .contact-section .contact-item .btn-link {
             padding: 6px 16px; border-radius: var(--radius-full);
-            background: rgba(255,193,7,0.06); border: 1px solid rgba(255,193,7,0.06);
+            background: rgba(255,215,0,0.06); border: 1px solid rgba(255,215,0,0.06);
             color: var(--gold); font-size: 0.7rem; font-weight: 600; cursor: pointer;
             transition: all var(--transition); font-family: var(--font); text-decoration: none;
             display: inline-flex; align-items: center; gap: 6px;
         }
-        .contact-section .contact-item .btn-link:hover { background: rgba(255,193,7,0.12); transform: scale(1.02); }
+        .contact-section .contact-item .btn-link:hover { background: rgba(255,215,0,0.12); transform: scale(1.02); }
 
         /* ---------- FOOTER ---------- */
         .footer {
-            padding: 30px 18px 16px; text-align: center; border-top: 1px solid rgba(255,215,150,0.04); margin-top: 10px;
+            padding: 30px 18px 16px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 10px;
         }
         .footer .brand {
             font-weight: 800; font-size: 1.1rem;
@@ -470,14 +529,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .footer .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
-        .footer .love { margin-top: 12px; font-size: 0.7rem; color: var(--text-muted); opacity: 0.5; }
+        .footer .love { margin-top: 12px; font-size: 0.7rem; color: var(--text-muted); opacity: 0.6; }
 
         /* ---------- BOTTOM NAV ---------- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(13,6,24,0.92); backdrop-filter: blur(30px) saturate(220%);
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(30px) saturate(220%);
             -webkit-backdrop-filter: blur(30px) saturate(220%);
-            border-top: 1px solid rgba(255,215,150,0.04);
+            border-top: 1px solid rgba(255,255,255,0.06);
             display: flex; justify-content: space-around; padding: 6px 0 env(safe-area-inset-bottom);
             box-shadow: 0 -4px 40px rgba(0,0,0,0.4);
         }
@@ -490,24 +549,24 @@
         }
         .bottom-nav .nav-btn .icon { font-size: 1.4rem; transition: all var(--transition); }
         .bottom-nav .nav-btn.active { color: var(--gold); }
-        .bottom-nav .nav-btn.active .icon { transform: translateY(-3px); text-shadow: 0 0 30px rgba(255,193,7,0.15); }
+        .bottom-nav .nav-btn.active .icon { transform: translateY(-3px); text-shadow: 0 0 30px rgba(255,215,0,0.15); }
         .bottom-nav .nav-btn:hover { color: var(--gold-light); }
 
         /* ---------- FLOATING DONATE ---------- */
         .floating-donate {
             position: fixed; bottom: 80px; right: 18px; z-index: 999;
             width: 58px; height: 58px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), #F9A825);
-            border: none; box-shadow: 0 8px 40px rgba(255,193,7,0.3);
+            background: linear-gradient(135deg, var(--gold), var(--pink));
+            border: none; box-shadow: 0 8px 40px rgba(255,215,0,0.3);
             color: #1A0A2E; font-size: 1.6rem; cursor: pointer;
             transition: all var(--transition); display: flex; align-items: center; justify-content: center;
             animation: floatPulse 3s ease-in-out infinite;
         }
-        .floating-donate:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 12px 60px rgba(255,193,7,0.4); }
+        .floating-donate:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 12px 60px rgba(255,215,0,0.4); }
         @keyframes floatPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         .floating-donate .pulse-ring {
             position: absolute; inset: -8px; border-radius: 50%;
-            border: 2px solid rgba(255,193,7,0.15); animation: pulseRing 2.5s ease-out infinite;
+            border: 2px solid rgba(255,215,0,0.15); animation: pulseRing 2.5s ease-out infinite;
         }
         @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
 
@@ -523,9 +582,9 @@
         /* ---------- TOAST ---------- */
         .toast {
             position: fixed; bottom: 140px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background: rgba(13,6,24,0.9); backdrop-filter: blur(20px);
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(20px);
             padding: 12px 28px; border-radius: var(--radius-full); box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,215,150,0.06); font-family: var(--font);
+            border: 1px solid rgba(255,215,0,0.06); font-family: var(--font);
             font-weight: 500; font-size: 0.85rem; color: var(--text-light);
             opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 9998; white-space: nowrap;
         }
@@ -535,13 +594,21 @@
         .server-status {
             display: flex; align-items: center; gap: 8px; font-size: 0.6rem; color: var(--text-muted);
             padding: 4px 16px; border-radius: var(--radius-full);
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,150,0.03);
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
             margin-top: 12px; justify-content: center;
         }
         .server-status .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; animation: pulseDot 2s infinite; }
         .server-status .dot.online { background: #66BB6A; }
         .server-status .dot.offline { background: #EF5350; }
         @keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        /* ---------- DONATION FORM CONTAINER ---------- */
+        #donationFormContainer {
+            display: none;
+            animation: slideUp 0.5s ease;
+        }
+        #donationFormContainer.show { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 390px) {
@@ -580,16 +647,10 @@
             .navbar .nav-links a.active::after {
                 content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
                 height: 2px; background: var(--gold); border-radius: 4px;
-                box-shadow: 0 0 20px rgba(255,193,7,0.15);
+                box-shadow: 0 0 20px rgba(255,215,0,0.15);
             }
         }
         @media (max-width: 767px) { .navbar .nav-links { display: none; } }
-
-        .float-deco {
-            position: fixed; pointer-events: none; z-index: 0; font-size: 2rem; opacity: 0.04;
-            animation: floatDeco 14s infinite ease-in-out;
-        }
-        @keyframes floatDeco { 0%,100% { transform: translateY(0) rotate(0deg) scale(1); } 50% { transform: translateY(-30px) rotate(8deg) scale(1.05); } }
 
         .hidden { display: none !important; }
         .flex-center { display: flex; align-items: center; justify-content: center; }
@@ -600,29 +661,16 @@
         .text-center { text-align: center; }
         .text-muted { color: var(--text-muted); }
         .text-gold { color: var(--gold); }
-
-        /* ---------- DONATION FORM CONTAINER (Hidden by default) ---------- */
-        #donationFormContainer {
-            display: none;
-            animation: slideUp 0.5s ease;
-        }
-        #donationFormContainer.show {
-            display: block;
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
 
     <!-- DECORATIVE FLOATING -->
-    <div class="float-deco" style="top:8%;left:4%;font-size:2.6rem;">🕉️</div>
-    <div class="float-deco" style="top:40%;right:2%;font-size:2rem;animation-delay:4s;">🌸</div>
-    <div class="float-deco" style="bottom:30%;left:5%;font-size:2.2rem;animation-delay:7s;">🔱</div>
-    <div class="float-deco" style="top:65%;right:6%;font-size:1.8rem;animation-delay:10s;">🌺</div>
-    <div class="float-deco" style="bottom:60%;left:8%;font-size:1.6rem;animation-delay:12s;">✨</div>
+    <div class="float-deco" style="top:6%;left:3%;font-size:2.8rem;">🕉️</div>
+    <div class="float-deco" style="top:35%;right:2%;font-size:2.2rem;animation-delay:4s;">🌸</div>
+    <div class="float-deco" style="bottom:25%;left:4%;font-size:2.4rem;animation-delay:7s;">🔱</div>
+    <div class="float-deco" style="top:60%;right:5%;font-size:2rem;animation-delay:10s;">🌺</div>
+    <div class="float-deco" style="bottom:55%;left:7%;font-size:1.8rem;animation-delay:12s;">✨</div>
 
     <!-- LOADER -->
     <div id="loader">
@@ -714,7 +762,7 @@
             <div class="lbl">💰 संग्रह</div>
         </div>
         <div class="stat-card glass-card">
-            <div class="num purple" id="statTarget">₹5,00,000</div>
+            <div class="num purple" id="statTarget">₹20,000</div>
             <div class="lbl">🎯 लक्ष्य</div>
         </div>
         <div class="stat-card glass-card">
@@ -727,13 +775,13 @@
     <div class="goal-section glass-card reveal">
         <div class="goal-header">
             <span>💰 संग्रह: <span class="gold" id="goalCollected">₹0</span></span>
-            <span>🎯 लक्ष्य: ₹5,00,000</span>
+            <span>🎯 लक्ष्य: ₹20,000</span>
         </div>
         <div class="goal-bar">
             <div class="fill" id="goalFill" style="width:0%;"></div>
         </div>
         <div class="goal-footer">
-            <span id="goalRemain">₹5,00,000 शेष</span>
+            <span id="goalRemain">₹20,000 शेष</span>
             <span id="goalPercentLabel">0%</span>
         </div>
     </div>
@@ -746,7 +794,7 @@
         <div class="donate-card glass-card reveal">
             <!-- QR Section -->
             <div class="qr-section">
-                <img class="qr-img" src="/static/assets/images/qr-code.png" alt="UPI QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%231A0A2E%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FFC107%22 font-family=%22monospace%22%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E'" />
+                <img class="qr-img" src="/static/assets/images/qr-code.png" alt="UPI QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fff%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FF6B35%22 font-family=%22monospace%22%3EUPI: krishna@upi%3C/text%3E%3C/svg%3E'" />
                 <div class="upi-box">
                     <span class="upi-id">🔹 krishna@upi</span>
                     <button class="btn btn-sm btn-glass" id="copyUpiBtn">📋 कॉपी</button>
@@ -767,7 +815,7 @@
                 <div style="text-align:center;margin-bottom:14px;color:var(--gold-light);font-weight:500;font-size:0.9rem;">
                     🙏 कृपया अपनी Payment Details भरें
                 </div>
-                <form class="donate-form" id="donateForm">
+                <form class="donate-form" id="donateForm" enctype="multipart/form-data">
                     <div class="form-row">
                         <div>
                             <input type="text" id="donorName" placeholder="पूरा नाम *" />
@@ -778,18 +826,23 @@
                             <div class="form-error" id="mobileError">सही मोबाइल नंबर दर्ज करें</div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div>
-                            <input type="number" id="donorAmount" placeholder="₹ राशि *" />
-                            <div class="form-error" id="amountError">कृपया सही राशि दर्ज करें</div>
-                        </div>
-                        <div>
-                            <input type="text" id="donorUtr" placeholder="UTR / Transaction ID *" />
-                            <div class="form-error" id="utrError">कृपया UTR/Transaction ID दर्ज करें</div>
-                        </div>
+                    <input type="number" id="donorAmount" placeholder="₹ राशि *" />
+                    <div class="form-error" id="amountError">कृपया सही राशि दर्ज करें</div>
+
+                    <!-- Screenshot Upload (Optional) -->
+                    <div class="file-input-wrapper">
+                        <span class="file-label">
+                            <span class="icon">📷</span> स्क्रीनशॉट अपलोड करें (Optional)
+                        </span>
+                        <input type="file" id="screenshotUpload" accept="image/png,image/jpeg,image/gif,image/webp" />
+                        <span class="file-name" id="fileName">कोई फाइल नहीं</span>
                     </div>
+                    <p style="font-size:0.65rem;color:var(--text-muted);margin-top:-6px;margin-bottom:12px;">
+                        ⚡ सिर्फ PNG, JPG, JPEG, GIF, WEBP (Max 5MB)
+                    </p>
+
                     <textarea id="donorMessage" placeholder="आपका संदेश (वैकल्पिक)"></textarea>
-                    <button type="submit" class="btn btn-gold btn-full" id="submitBtn">
+                    <button type="submit" class="btn btn-pink btn-full" id="submitBtn">
                         🙏 दान सबमिट करें
                     </button>
                     <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:8px;">
@@ -931,7 +984,7 @@
         const API_BASE = window.location.origin + '/api';
 
         // ============================================================
-        // 1. LOADER & SONG
+        // 1. LOADER & SONG (Auto-play, No Controls)
         // ============================================================
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hide');
@@ -943,30 +996,12 @@
             updateStats();
             setInterval(fetchDonors, 30000);
             setInterval(updateStats, 30000);
-            playSong();
-        });
-
-        function playSong() {
+            // Auto-play song
             const audio = document.getElementById('bgSong');
             if (audio) {
-                audio.play().catch(() => {
-                    const btn = document.createElement('button');
-                    btn.innerHTML = '🔊 Play Jai Shri Krishna';
-                    btn.style.cssText = `
-                        position: fixed; bottom: 140px; left: 50%; transform: translateX(-50%);
-                        z-index: 9998; background: rgba(255,193,7,0.12); backdrop-filter: blur(12px);
-                        color: #FFC107; border: 1px solid rgba(255,193,7,0.2);
-                        padding: 8px 20px; border-radius: 60px; font-family: 'Poppins', sans-serif;
-                        font-weight: 600; font-size: 0.8rem; cursor: pointer;
-                        box-shadow: 0 8px 30px rgba(0,0,0,0.3); transition: all 0.3s ease;
-                    `;
-                    btn.onmouseover = () => { btn.style.transform = 'scale(1.05)'; };
-                    btn.onmouseout = () => { btn.style.transform = 'scale(1)'; };
-                    btn.onclick = function() { audio.play(); this.remove(); };
-                    document.body.appendChild(btn);
-                });
+                audio.play().catch(() => {});
             }
-        }
+        });
 
         // ============================================================
         // 2. TOAST
@@ -977,7 +1012,8 @@
             t.style.color = isError ? '#EF5350' : 'var(--text-light)';
             t.classList.add('show');
             clearTimeout(t._hide);
-            t._hide = setTimeout(() => { t.classList.remove('show'); t.style.color = 'var(--text-light)'; }, 4000);
+            t._hide = setTimeout(() => { t.classList.remove('show');
+                t.style.color = 'var(--text-light)'; }, 4000);
         }
 
         // ============================================================
@@ -994,9 +1030,18 @@
         });
 
         // ============================================================
-        // 4. COUNTDOWN
+        // 4. FILE INPUT - Show filename
+        // ============================================================
+        document.getElementById('screenshotUpload').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'कोई फाइल नहीं';
+            document.getElementById('fileName').textContent = fileName;
+        });
+
+        // ============================================================
+        // 5. COUNTDOWN
         // ============================================================
         const targetDate = new Date('2026-09-04T21:00:00+05:30').getTime();
+
         function updateCountdown() {
             const now = Date.now();
             let diff = Math.max(0, targetDate - now);
@@ -1009,11 +1054,12 @@
         setInterval(updateCountdown, 1000);
 
         // ============================================================
-        // 5. NAVIGATION
+        // 6. NAVIGATION
         // ============================================================
         function scrollToSection(id) {
             const el = document.getElementById(id);
-            if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top, behavior: 'smooth' }); }
+            if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top, behavior: 'smooth' }); }
         }
         document.querySelectorAll('#navLinks a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1054,7 +1100,7 @@
                 .classList.remove('open'); });
 
         // ============================================================
-        // 6. THEME TOGGLE
+        // 7. THEME TOGGLE
         // ============================================================
         const themeBtn = document.getElementById('themeToggle');
         let darkMode = localStorage.getItem('krishnaTheme') === 'dark';
@@ -1068,7 +1114,7 @@
         });
 
         // ============================================================
-        // 7. FETCH DONORS (Approved only)
+        // 8. FETCH DONORS
         // ============================================================
         async function fetchDonors() {
             try {
@@ -1084,7 +1130,7 @@
         }
 
         // ============================================================
-        // 8. RENDER DONOR WALL
+        // 9. RENDER DONOR WALL
         // ============================================================
         function renderDonorWall(donors) {
             const list = document.getElementById('donorList');
@@ -1106,7 +1152,7 @@
         }
 
         // ============================================================
-        // 9. UPDATE STATS
+        // 10. UPDATE STATS
         // ============================================================
         async function updateStats(data) {
             try {
@@ -1114,7 +1160,7 @@
                 if (!donors) { const res = await fetch(API_BASE + '/donors'); if (res.ok) donors = await res.json(); else return; }
                 const totalDonors = donors.length;
                 const totalCollection = donors.reduce((sum, d) => sum + Number(d.amount), 0);
-                const target = 500000;
+                const target = 20000;
                 const percent = Math.min(100, (totalCollection / target) * 100);
                 document.getElementById('statDonors').textContent = totalDonors;
                 document.getElementById('statCollection').textContent = '₹' + totalCollection.toLocaleString('en-IN');
@@ -1128,7 +1174,7 @@
         }
 
         // ============================================================
-        // 10. DONATION FORM SUBMIT
+        // 11. DONATION FORM SUBMIT (with Screenshot Upload)
         // ============================================================
         document.getElementById('donateForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1136,13 +1182,13 @@
             const name = document.getElementById('donorName').value.trim();
             const mobile = document.getElementById('donorMobile').value.trim();
             const amount = document.getElementById('donorAmount').value.trim();
-            const utr = document.getElementById('donorUtr').value.trim();
             const message = document.getElementById('donorMessage').value.trim();
+            const fileInput = document.getElementById('screenshotUpload');
+            const screenshot = fileInput.files[0];
 
             const nameErr = document.getElementById('nameError');
             const mobErr = document.getElementById('mobileError');
             const amtErr = document.getElementById('amountError');
-            const utrErr = document.getElementById('utrError');
 
             let valid = true;
             if (!name || name.length < 2) { nameErr.classList.add('show');
@@ -1151,18 +1197,17 @@
                 valid = false; } else { mobErr.classList.remove('show'); }
             if (!amount || parseInt(amount) <= 0) { amtErr.classList.add('show');
                 valid = false; } else { amtErr.classList.remove('show'); }
-            if (!utr || utr.length < 4) { utrErr.classList.add('show');
-                valid = false; } else { utrErr.classList.remove('show'); }
 
             if (!valid) { showToast('⚠️ कृपया सभी जरूरी फील्ड सही से भरें।', true); return; }
 
-            const payload = {
-                name: name,
-                mobile: mobile,
-                amount: parseInt(amount),
-                utr: utr,
-                message: message || ''
-            };
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('mobile', mobile);
+            formData.append('amount', parseInt(amount));
+            formData.append('message', message || '');
+            if (screenshot) {
+                formData.append('screenshot', screenshot);
+            }
 
             try {
                 const submitBtn = document.getElementById('submitBtn');
@@ -1171,8 +1216,7 @@
 
                 const res = await fetch(API_BASE + '/donate', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: formData
                 });
 
                 const data = await res.json();
@@ -1181,8 +1225,9 @@
                     document.getElementById('donorName').value = '';
                     document.getElementById('donorMobile').value = '';
                     document.getElementById('donorAmount').value = '';
-                    document.getElementById('donorUtr').value = '';
                     document.getElementById('donorMessage').value = '';
+                    document.getElementById('screenshotUpload').value = '';
+                    document.getElementById('fileName').textContent = 'कोई फाइल नहीं';
                     document.getElementById('donationFormContainer').classList.remove('show');
                     document.getElementById('showFormBtn').textContent = '✅ Payment Done';
                     showToast('🙏 ' + data.message);
@@ -1200,7 +1245,7 @@
         });
 
         // ============================================================
-        // 11. COPY UPI
+        // 12. COPY UPI
         // ============================================================
         document.getElementById('copyUpiBtn').addEventListener('click', function() {
             const upi = 'krishna@upi';
@@ -1223,7 +1268,7 @@
         }
 
         // ============================================================
-        // 12. GALLERY
+        // 13. GALLERY
         // ============================================================
         const galleryCount = 15;
         const galleryImages = [];
@@ -1269,13 +1314,13 @@
         }
 
         // ============================================================
-        // 13. CONFETTI
+        // 14. CONFETTI
         // ============================================================
         function launchConfetti() {
             const container = document.createElement('div');
             container.className = 'confetti-container';
             document.body.appendChild(container);
-            const colors = ['#FFC107', '#6A1B9A', '#0D47A1', '#FF4081', '#FF6B6B', '#48D1CC', '#FFD93D'];
+            const colors = ['#FFD700', '#FF6B35', '#FF4081', '#7B2FBE', '#00BCD4', '#FF6B6B', '#48D1CC'];
             const shapes = ['■', '●', '▲', '★', '♦'];
             for (let i = 0; i < 70; i++) {
                 const el = document.createElement('div');
@@ -1294,7 +1339,7 @@
         }
 
         // ============================================================
-        // 14. SCROLL REVEAL
+        // 15. SCROLL REVEAL
         // ============================================================
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
@@ -1303,7 +1348,7 @@
         revealEls.forEach(el => observer.observe(el));
 
         // ============================================================
-        // 15. RIPPLE EFFECT
+        // 16. RIPPLE EFFECT
         // ============================================================
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -1320,7 +1365,7 @@
         });
 
         // ============================================================
-        // 16. KEYBOARD
+        // 17. KEYBOARD
         // ============================================================
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') { navMobile.classList.remove('open');
@@ -1331,8 +1376,10 @@
         console.log('🙏 जय श्री कृष्ण!');
     </script>
 
-    <!-- AUDIO -->
-    <audio id="bgSong" autoplay loop preload="auto">
+    <!-- ============================================================
+    AUDIO – Auto-play, No Controls Visible
+    ============================================================ -->
+    <audio id="bgSong" autoplay loop>
         <source src="/static/assets/audio/jai-shri-krishna.mp3" type="audio/mpeg">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
