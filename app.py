@@ -1,332 +1,185 @@
-# ============================================================
-# app.py – Flask Backend + Frontend Server (Monolithic)
-# ============================================================
 import os
-import sqlite3
-import threading
-import time
+import razorpay
+import json
 from datetime import datetime
-from flask import Flask, request, jsonify, g, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 
-# ---------- CONFIG ----------
-DATABASE = 'donors.db'
+# ---------- LOAD ENV ----------
+load_dotenv()
+
+# ---------- APP CONFIG ----------
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 CORS(app)
 
-# ---------- DATABASE HELPERS ----------
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-        db.row_factory = sqlite3.Row
-    return db
+# ---------- DATABASE (Neon DB - PostgreSQL) ----------
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if not DATABASE_URL:
+    print("⚠️ DATABASE_URL not set. Using SQLite as fallback.")
+    DATABASE_URL = 'sqlite:///donations.db'
 
-def init_db():
-    with app.app_context():
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS donors (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                mobile TEXT NOT NULL,
-                amount INTEGER NOT NULL,
-                txn TEXT,
-                message TEXT,
-                status TEXT DEFAULT 'pending',
-                date TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        ''')
-        db.commit()
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(bind=engine)
+Base = declarative_base()
 
-@app.teardown_appcontext
-def teardown_db(exception=None):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
+# ---------- DONATION TABLE ----------
+class Donation(Base):
+    __tablename__ = 'donations'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+    amount = Column(Integer, nullable=False)
+    payment_id = Column(String(100), unique=True, nullable=False)
+    order_id = Column(String(100))
+    signature = Column(String(255))
+    status = Column(String(20), default='success')
+    message = Column(Text, default='')
+    created_at = Column(DateTime, default=datetime.utcnow)
 
-# ---------- AUTO-CONFIRM THREAD ----------
-def auto_confirm_payments():
-    with app.app_context():
-        while True:
-            try:
-                time.sleep(30)
-                db = get_db()
-                cursor = db.cursor()
-                cursor.execute('''
-                    UPDATE donors 
-                    SET status = 'confirmed' 
-                    WHERE status = 'pending' 
-                    AND txn IS NOT NULL 
-                    AND txn != ''
-                    AND datetime(created_at, '+30 seconds') <= datetime('now')
-                ''')
-                if cursor.rowcount > 0:
-                    db.commit()
-                    print(f"✅ Auto-confirmed {cursor.rowcount} donation(s)")
-            except Exception as e:
-                print(f"⚠️ Auto-confirm error: {e}")
+# Create tables if not exist
+Base.metadata.create_all(engine)
 
-thread = threading.Thread(target=auto_confirm_payments, daemon=True)
-thread.start()
+# ---------- RAZORPAY ----------
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
+
+if not RAZORPAY_KEY_ID or not RAZORPAY_KEY_SECRET:
+    print("⚠️ Razorpay keys not set. Payment will not work.")
+
+client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
 # ============================================================
-# FRONTEND ROUTES
+# FRONTEND ROUTE
 # ============================================================
-
 @app.route('/')
 def serve_index():
+    """Serve the main index.html page."""
     return send_from_directory('.', 'index.html')
+
+
+@app.route('/static/<path:path>')
+def serve_static(path):
+    """Serve static files."""
+    return send_from_directory('static', path)
+
 
 # ============================================================
 # API ROUTES
 # ============================================================
-
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok', 'timestamp': datetime.now().isoformat()})
 
+
 @app.route('/api/donors', methods=['GET'])
 def get_donors():
+    """Fetch latest 30 donors from database."""
+    session = SessionLocal()
     try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('''
-            SELECT id, name, mobile, amount, txn, message, status, date, created_at
-            FROM donors
-            ORDER BY created_at DESC
-        ''')
-        rows = cursor.fetchall()
-        donors = []
-        for row in rows:
-            donors.append({
-                'id': row['id'],
-                'name': row['name'],
-                'mobile': row['mobile'],
-                'amount': row['amount'],
-                'txn': row['txn'] or '',
-                'message': row['message'] or '',
-                'status': row['status'],
-                'date': row['date'],
-                'created_at': row['created_at']
-            })
-        return jsonify(donors)
+        donors = session.query(Donation).order_by(
+            Donation.created_at.desc()
+        ).limit(30).all()
+        result = [{
+            'id': d.id,
+            'name': d.name,
+            'amount': d.amount,
+            'payment_id': d.payment_id,
+            'status': d.status,
+            'message': d.message or '🙏 हरि बोल',
+            'date': d.created_at.strftime('%d %b %Y, %I:%M %p')
+        } for d in donors]
+        return jsonify(result)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    finally:
+        session.close()
 
-@app.route('/api/donors/stats', methods=['GET'])
-def get_stats():
-    try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('SELECT COUNT(*) as total FROM donors')
-        total_donors = cursor.fetchone()['total']
 
-        cursor.execute('SELECT SUM(amount) as total_amount FROM donors WHERE status = "confirmed"')
-        total_amount = cursor.fetchone()['total_amount'] or 0
-
-        cursor.execute('SELECT COUNT(*) as pending FROM donors WHERE status = "pending"')
-        pending = cursor.fetchone()['pending']
-
-        return jsonify({
-            'total_donors': total_donors,
-            'total_collection': total_amount,
-            'pending_count': pending,
-            'target': 500000
-        })
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/donate', methods=['POST'])
-def create_donation():
+@app.route('/api/create-order', methods=['POST'])
+def create_order():
+    """Create a Razorpay order for the donation."""
     try:
         data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Invalid JSON'}), 400
-
         name = data.get('name', '').strip()
-        mobile = data.get('mobile', '').strip()
-        amount = data.get('amount')
+        amount = int(data.get('amount', 0))
 
         if not name:
             return jsonify({'error': 'Name is required'}), 400
-        if not mobile or len(mobile) < 10:
-            return jsonify({'error': 'Valid mobile number is required'}), 400
-        if not amount or int(amount) <= 0:
+        if amount <= 0:
             return jsonify({'error': 'Valid amount is required'}), 400
 
-        amount = int(amount)
-        txn = data.get('txn', '').strip()
+        # Create order
+        order_data = {
+            'amount': amount * 100,  # paise
+            'currency': 'INR',
+            'receipt': f'receipt_{name}_{int(datetime.now().timestamp())}',
+            'notes': {'name': name}
+        }
+        order = client.order.create(order_data)
+
+        return jsonify({
+            'order_id': order['id'],
+            'amount': amount,
+            'name': name,
+            'key': RAZORPAY_KEY_ID
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/verify-payment', methods=['POST'])
+def verify_payment():
+    """Verify Razorpay payment signature and save to DB."""
+    try:
+        data = request.get_json()
+        payment_id = data.get('razorpay_payment_id')
+        order_id = data.get('razorpay_order_id')
+        signature = data.get('razorpay_signature')
+        name = data.get('name', '').strip()
+        amount = int(data.get('amount', 0))
         message = data.get('message', '').strip()
-        status = 'confirmed' if txn else 'pending'
 
-        date_str = datetime.now().strftime('%d %b %Y, %I:%M %p')
+        # Verify signature
+        params = {
+            'razorpay_order_id': order_id,
+            'razorpay_payment_id': payment_id,
+            'razorpay_signature': signature
+        }
+        client.utility.verify_payment_signature(params)
 
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('''
-            INSERT INTO donors (name, mobile, amount, txn, message, status, date)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ''', (name, mobile, amount, txn, message, status, date_str))
-        db.commit()
+        # Save to database
+        session = SessionLocal()
+        try:
+            donation = Donation(
+                name=name,
+                amount=amount,
+                payment_id=payment_id,
+                order_id=order_id,
+                signature=signature,
+                status='success',
+                message=message or '🙏 हरि बोल'
+            )
+            session.add(donation)
+            session.commit()
+            return jsonify({'status': 'success', 'message': 'Payment verified and saved'})
+        except Exception as e:
+            session.rollback()
+            return jsonify({'error': str(e)}), 500
+        finally:
+            session.close()
 
-        donor_id = cursor.lastrowid
-        cursor.execute('SELECT * FROM donors WHERE id = ?', (donor_id,))
-        row = cursor.fetchone()
-
-        return jsonify({
-            'id': row['id'],
-            'name': row['name'],
-            'mobile': row['mobile'],
-            'amount': row['amount'],
-            'txn': row['txn'] or '',
-            'message': row['message'] or '',
-            'status': row['status'],
-            'date': row['date'],
-            'auto_confirmed': status == 'confirmed'
-        }), 201
+    except razorpay.errors.SignatureVerificationError:
+        return jsonify({'error': 'Invalid signature'}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/donor/<int:donor_id>', methods=['GET'])
-def get_donor(donor_id):
-    try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('SELECT * FROM donors WHERE id = ?', (donor_id,))
-        row = cursor.fetchone()
-        if not row:
-            return jsonify({'error': 'Donor not found'}), 404
-        return jsonify({
-            'id': row['id'],
-            'name': row['name'],
-            'mobile': row['mobile'],
-            'amount': row['amount'],
-            'txn': row['txn'] or '',
-            'message': row['message'] or '',
-            'status': row['status'],
-            'date': row['date']
-        })
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/donor/<int:donor_id>', methods=['PUT'])
-def update_donor(donor_id):
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Invalid JSON'}), 400
-
-        db = get_db()
-        cursor = db.cursor()
-        fields = []
-        values = []
-        allowed_fields = ['name', 'mobile', 'amount', 'txn', 'message', 'status']
-
-        for field in allowed_fields:
-            if field in data and data[field] is not None:
-                fields.append(f"{field} = ?")
-                if field == 'amount':
-                    values.append(int(data[field]))
-                else:
-                    values.append(data[field].strip())
-
-        if not fields:
-            return jsonify({'error': 'No fields to update'}), 400
-
-        values.append(donor_id)
-        query = f"UPDATE donors SET {', '.join(fields)} WHERE id = ?"
-        cursor.execute(query, values)
-        db.commit()
-
-        if cursor.rowcount == 0:
-            return jsonify({'error': 'Donor not found'}), 404
-
-        cursor.execute('SELECT * FROM donors WHERE id = ?', (donor_id,))
-        row = cursor.fetchone()
-        return jsonify({
-            'id': row['id'],
-            'name': row['name'],
-            'mobile': row['mobile'],
-            'amount': row['amount'],
-            'txn': row['txn'] or '',
-            'message': row['message'] or '',
-            'status': row['status'],
-            'date': row['date']
-        })
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/donor/<int:donor_id>', methods=['DELETE'])
-def delete_donor(donor_id):
-    try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('DELETE FROM donors WHERE id = ?', (donor_id,))
-        db.commit()
-        if cursor.rowcount == 0:
-            return jsonify({'error': 'Donor not found'}), 404
-        return jsonify({'message': 'Donor deleted successfully'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/confirm/<int:donor_id>', methods=['POST'])
-def confirm_donation(donor_id):
-    try:
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('UPDATE donors SET status = "confirmed" WHERE id = ? AND status = "pending"', (donor_id,))
-        db.commit()
-        if cursor.rowcount == 0:
-            return jsonify({'error': 'Donor not found or already confirmed'}), 404
-        return jsonify({'message': 'Donation confirmed successfully'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/webhook/payment', methods=['POST'])
-def payment_webhook():
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Invalid JSON'}), 400
-
-        txn_id = data.get('txn_id')
-        status = data.get('status')
-        amount = data.get('amount')
-        name = data.get('name', 'Unknown')
-
-        if not txn_id or not status:
-            return jsonify({'error': 'txn_id and status are required'}), 400
-
-        if status.lower() == 'success':
-            db = get_db()
-            cursor = db.cursor()
-            cursor.execute('SELECT * FROM donors WHERE txn = ?', (txn_id,))
-            row = cursor.fetchone()
-
-            if row:
-                cursor.execute('UPDATE donors SET status = "confirmed" WHERE id = ?', (row['id'],))
-                db.commit()
-                return jsonify({'message': f'Donation {txn_id} confirmed'})
-            else:
-                date_str = datetime.now().strftime('%d %b %Y, %I:%M %p')
-                cursor.execute('''
-                    INSERT INTO donors (name, mobile, amount, txn, message, status, date)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                ''', (name, '0000000000', amount, txn_id, 'Auto via webhook', 'confirmed', date_str))
-                db.commit()
-                return jsonify({'message': f'New donation created via webhook: {txn_id}'})
-
-        return jsonify({'message': 'Webhook received'})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
 
 # ============================================================
 # RUN SERVER
 # ============================================================
-if __name__ == "__main__":
-    init_db()
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
