@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
-    <meta name="description" content="श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर" />
+    <title>3D श्री कृष्ण जन्माष्टमी महोत्सव 2026 | ग्राम भानपुर</title>
+    <meta name="description" content="3D श्री कृष्ण जन्माष्टमी महोत्सव 2026, ग्राम भानपुर" />
     <meta name="theme-color" content="#ff3b4a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔱</text></svg>" />
+    
     <style>
         /* ============================================================
-           STYLE – Mobile App Dashboard UI (Screenshot Replica)
+           STYLE – 3D Website (Dashboard UI + 3D Universe overlay)
            ============================================================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            /* Dashboard Colors from Screenshot */
             --accent-red: #ff3b4a;
             --accent-red-light: #fff0f0;
             --bg-body: #f4f7f9;
-            --bg-card: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.65); /* Glass effect for 3D */
             --shadow-card: 0 10px 30px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
-            --shadow-hover: 0 16px 48px rgba(0,0,0,0.06);
+            --shadow-hover: 0 20px 50px rgba(0,0,0,0.08);
             --text-main: #1a1a2e;
             --text-light: #5a5a6e;
             --text-muted: #8a8a9e;
-            --border-subtle: #eef2f6;
+            --border-subtle: rgba(255, 255, 255, 0.2);
             --radius-app: 24px;
             --radius-sm: 16px;
             --radius-pill: 50px;
@@ -45,37 +45,50 @@
             overflow-x: hidden;
             padding: 0 0 80px 0;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* 3D BACKGROUND CONTAINER */
+        #three-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none; /* Mouse events pass to cards */
+        }
+
+        /* MAIN APP WRAPPER (Overlaid on top of 3D scene) */
+        #app-content {
+            position: relative;
+            z-index: 1;
         }
 
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg-body); }
         ::-webkit-scrollbar-thumb { background: var(--accent-red); border-radius: 20px; }
 
-        .container { padding: 0 16px; max-width: 480px; margin: 0 auto; }
+        .container { padding: 0 16px; max-width: 480px; margin: 0 auto; position: relative; }
 
-        /* SECTION TITLES */
-        .section-title {
-            font-size: 1.8rem; font-weight: 800; text-align: center; margin: 32px 0 8px; color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-        .section-title span {
-            color: var(--accent-red);
-        }
+        .section-title { font-size: 1.8rem; font-weight: 800; text-align: center; margin: 32px 0 8px; color: var(--text-main); letter-spacing: -0.5px; }
+        .section-title span { color: var(--accent-red); }
         .section-sub { text-align: center; font-size: 0.9rem; color: var(--text-light); margin-bottom: 18px; font-weight: 400; }
 
-        /* APP CARDS (White with Soft Shadows, as in screenshot) */
+        /* 3D GLASS CARDS (Modified for 3D Tilt) */
         .app-card {
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: var(--radius-app);
             box-shadow: var(--shadow-card);
-            border: 1px solid var(--border-subtle);
-            transition: all var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
             overflow: hidden;
+            transform-style: preserve-3d; /* Enables 3D child animations */
+            will-change: transform;
         }
         .app-card:hover {
-            transform: translateY(-4px);
+            border-color: rgba(255, 59, 74, 0.15);
             box-shadow: var(--shadow-hover);
-            border-color: transparent;
         }
 
         /* BUTTONS */
@@ -87,183 +100,116 @@
             transition: all var(--transition); text-decoration: none; position: relative;
         }
         .btn-primary { background: var(--accent-red); color: #fff; box-shadow: 0 4px 16px rgba(255,59,74,0.2); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,59,74,0.3); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(255,59,74,0.3); }
         
-        .btn-secondary { background: var(--bg-body); color: var(--text-main); border: 1px solid var(--border-subtle); }
-        .btn-secondary:hover { background: #fff; border-color: var(--accent-red); color: var(--accent-red); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); color: var(--text-main); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .btn-secondary:hover { background: #fff; border-color: var(--accent-red); color: var(--accent-red); transform: translateY(-2px); }
 
         .btn-full { width: 100%; justify-content: center; }
 
-        .btn .ripple {
-            position: absolute; border-radius: 50%; background: rgba(255,255,255,0.3);
-            transform: scale(0); animation: rippleAnim 0.6s linear; pointer-events: none;
-        }
-        @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
-
         /* LOADER */
-        #loader {
-            position: fixed; inset: 0; z-index: 9999;
-            background: var(--bg-body);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
+        #loader { position: fixed; inset: 0; z-index: 9999; background: var(--bg-body); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.7s ease, visibility 0.7s ease; }
         #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader-ring {
-            width: 50px; height: 50px; border-radius: 50%;
-            border: 3px solid var(--border-subtle); border-top-color: var(--accent-red);
-            animation: spin 0.8s linear infinite;
-        }
+        .loader-ring { width: 50px; height: 50px; border-radius: 50%; border: 3px solid var(--border-subtle); border-top-color: var(--accent-red); animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .loader-text { margin-top: 16px; font-weight: 600; color: var(--text-main); }
 
         /* NAVBAR */
-        .navbar {
-            position: sticky; top: 0; z-index: 1000; padding: 0 18px; height: var(--nav-height);
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .navbar { position: sticky; top: 0; z-index: 1000; padding: 0 18px; height: var(--nav-height); background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .navbar .brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .navbar .brand .logo {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--accent-red); color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255,59,74,0.2);
-        }
+        .navbar .brand .logo { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-red); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255,59,74,0.2); transform-style: preserve-3d; }
         .navbar .brand .name { display: flex; flex-direction: column; line-height: 1.2; }
         .navbar .brand .name .main { font-weight: 700; font-size: 1rem; color: var(--text-main); }
         .navbar .brand .name .sub { font-size: 0.6rem; font-weight: 400; color: var(--text-muted); }
         .navbar .nav-right { display: flex; align-items: center; gap: 4px; }
-        .navbar .nav-right .icon-btn {
-            width: 38px; height: 38px; border-radius: 50%;
-            background: var(--bg-body); border: 1px solid var(--border-subtle);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; cursor: pointer; transition: all var(--transition); color: var(--text-main);
-        }
+        .navbar .nav-right .icon-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 1rem; cursor: pointer; transition: all var(--transition); color: var(--text-main); backdrop-filter: blur(8px); }
         .navbar .nav-right .icon-btn:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); transform: scale(0.95); }
         .navbar .nav-right .hamburger { font-size: 1.4rem; cursor: pointer; padding: 6px; color: var(--text-main); }
 
         /* MOBILE NAV */
-        .nav-mobile {
-            position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 999;
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle); padding: 12px 18px 18px;
-            transform: translateY(-120%); transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-        }
+        .nav-mobile { position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 999; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.2); padding: 12px 18px 18px; transform: translateY(-120%); transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); box-shadow: 0 20px 40px rgba(0,0,0,0.04); }
         .nav-mobile.open { transform: translateY(0); }
-        .nav-mobile .nav-item {
-            display: flex; align-items: center; gap: 14px; padding: 14px 12px;
-            border-radius: var(--radius-sm); font-weight: 500; color: var(--text-main);
-            cursor: pointer; transition: all var(--transition);
-            border-bottom: 1px solid var(--border-subtle);
-        }
+        .nav-mobile .nav-item { display: flex; align-items: center; gap: 14px; padding: 14px 12px; border-radius: var(--radius-sm); font-weight: 500; color: var(--text-main); cursor: pointer; transition: all var(--transition); border-bottom: 1px solid rgba(0,0,0,0.03); }
         .nav-mobile .nav-item:last-child { border-bottom: none; }
-        .nav-mobile .nav-item:hover, .nav-mobile .nav-item.active {
-            background: var(--bg-body); color: var(--accent-red);
-        }
+        .nav-mobile .nav-item:hover, .nav-mobile .nav-item.active { background: var(--bg-body); color: var(--accent-red); }
         .nav-mobile .nav-item .icon { font-size: 1.2rem; width: 28px; text-align: center; }
 
-        /* HERO CARD (Modern white card with red accent) */
-        .hero {
-            margin: 16px 16px 20px; display: flex; flex-direction: column; 
-            padding: 0; overflow: hidden; min-height: auto;
-            background: var(--bg-card); border-radius: var(--radius-app);
-            box-shadow: var(--shadow-card); border: 1px solid var(--border-subtle);
-        }
+        /* HERO CARD */
+        .hero { margin: 16px 16px 20px; display: flex; flex-direction: column; padding: 0; overflow: hidden; min-height: auto; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: var(--radius-app); box-shadow: var(--shadow-card); border: 1px solid rgba(255,255,255,0.4); transform-style: preserve-3d; }
         .hero .hero-bg-wrapper { width: 100%; height: 180px; overflow: hidden; position: relative; }
         .hero .hero-bg-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero .hero-overlay { 
-            position: absolute; inset: 0; 
-            background: rgba(255,255,255,0.3); /* Light overlay */
-        }
+        .hero .hero-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.3); }
         .hero .hero-content { position: relative; z-index: 2; padding: 20px 20px 24px; color: var(--text-main); }
-        .hero .hero-content .village {
-            display: inline-block; background: var(--accent-red-light);
-            padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.65rem; font-weight: 600;
-            color: var(--accent-red); letter-spacing: 0.5px; margin-bottom: 8px;
-        }
+        .hero .hero-content .village { display: inline-block; background: var(--accent-red-light); padding: 4px 16px; border-radius: var(--radius-pill); font-size: 0.65rem; font-weight: 600; color: var(--accent-red); letter-spacing: 0.5px; margin-bottom: 8px; }
         .hero .hero-content h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
         .hero .hero-content h1 .highlight { color: var(--accent-red); }
         .hero .hero-content .tagline { font-size: 0.9rem; color: var(--text-light); font-weight: 400; margin-bottom: 16px; line-height: 1.5; }
         .hero .hero-content .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
 
-        /* COUNTDOWN CARD */
+        /* COUNTDOWN, GOAL, STATS GLASS CARDS */
         .countdown-section { margin: 0 16px 20px; padding: 20px 10px; text-align: center; }
         .countdown-section .label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
         .countdown-grid { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
-        .cd-item {
-            background: var(--bg-body); padding: 10px 8px; min-width: 55px;
-            border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);
-            box-shadow: none; transition: all var(--transition);
-        }
-        .cd-item:hover { border-color: var(--accent-red); }
+        .cd-item { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); padding: 10px 8px; min-width: 55px; border-radius: var(--radius-sm); transition: all var(--transition); transform-style: preserve-3d; }
+        .cd-item:hover { border-color: var(--accent-red); transform: translateZ(10px); }
         .cd-item .num { font-size: 1.6rem; font-weight: 700; color: var(--accent-red); display: block; line-height: 1.2; }
         .cd-item .lbl { font-size: 0.5rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* STATS & GOAL */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 4px 16px 20px; }
-        .stats-grid .stat-card { padding: 16px 8px; text-align: center; background: var(--bg-card); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); box-shadow: none; transition: all var(--transition); }
-        .stats-grid .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .stats-grid .stat-card { padding: 16px 8px; text-align: center; background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(8px); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.3); transition: all var(--transition); transform-style: preserve-3d; }
+        .stats-grid .stat-card:hover { transform: translateY(-4px) translateZ(15px); box-shadow: var(--shadow-hover); border-color: var(--accent-red); }
         .stats-grid .stat-card .num { font-size: 1.5rem; font-weight: 800; color: var(--text-main); }
         .stats-grid .stat-card .num.purple { color: var(--accent-red); }
         .stats-grid .stat-card .lbl { font-size: 0.6rem; font-weight: 500; color: var(--text-muted); margin-top: 2px; }
 
-        .goal-section { margin: 4px 16px 20px; padding: 18px 18px; background: var(--bg-card); border-radius: var(--radius-app); border: 1px solid var(--border-subtle); }
+        .goal-section { margin: 4px 16px 20px; padding: 18px 18px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-radius: var(--radius-app); border: 1px solid rgba(255,255,255,0.4); transform-style: preserve-3d; }
         .goal-section .goal-header { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
         .goal-section .goal-header .gold { color: var(--accent-red); }
-        .goal-bar { width: 100%; height: 8px; background: var(--bg-body); border-radius: 20px; overflow: hidden; margin: 4px 0; border: 1px solid var(--border-subtle); }
+        .goal-bar { width: 100%; height: 8px; background: rgba(0,0,0,0.05); border-radius: 20px; overflow: hidden; margin: 4px 0; border: 1px solid rgba(255,255,255,0.1); }
         .goal-bar .fill { height: 100%; border-radius: 20px; background: var(--accent-red); width: 0%; transition: width 1.2s ease; }
         .goal-section .goal-footer { display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--text-muted); margin-top: 4px; }
 
-        /* DONATE SECTION UI */
+        /* DONATE & FORM */
         .donate-section { padding: 0 16px 20px; }
-        .donate-card { padding: 20px 16px; background: var(--bg-card); border-radius: var(--radius-app); border: 1px solid var(--border-subtle); }
-
+        .donate-card { padding: 20px 16px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-radius: var(--radius-app); border: 1px solid rgba(255,255,255,0.4); transform-style: preserve-3d; }
         .qr-section { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 10px; }
-        .qr-section .qr-img { width: 160px; height: 160px; border-radius: var(--radius-sm); background: #fff; padding: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.02); border: 1px solid var(--border-subtle); object-fit: contain; }
-        .qr-section .upi-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: var(--bg-body); padding: 8px 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle); }
+        .qr-section .qr-img { width: 160px; height: 160px; border-radius: var(--radius-sm); background: #fff; padding: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); object-fit: contain; }
+        .qr-section .upi-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,0.4); }
         .qr-section .upi-box .upi-id { font-weight: 600; font-size: 0.85rem; color: var(--text-main); }
-
         .quick-donate { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 16px; }
-        .quick-donate .amt { padding: 8px 16px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle); background: var(--bg-card); font-weight: 500; font-size: 0.8rem; color: var(--text-main); cursor: pointer; transition: all var(--transition); font-family: var(--font); }
-        .quick-donate .amt:hover { border-color: var(--accent-red); }
+        .quick-donate .amt { padding: 8px 16px; border-radius: var(--radius-pill); border: 1px solid rgba(0,0,0,0.05); background: rgba(255, 255, 255, 0.7); font-weight: 500; font-size: 0.8rem; color: var(--text-main); cursor: pointer; transition: all var(--transition); font-family: var(--font); backdrop-filter: blur(8px); }
+        .quick-donate .amt:hover { border-color: var(--accent-red); transform: translateY(-2px); }
         .quick-donate .amt.active { border-color: var(--accent-red); background: var(--accent-red-light); color: var(--accent-red); }
 
         .donate-form input, .donate-form textarea, .donate-form .file-input-wrapper {
             width: 100%; padding: 14px 16px; margin-bottom: 12px; border-radius: var(--radius-sm);
-            border: 1px solid var(--border-subtle); background: var(--bg-body);
+            border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.5);
             font-family: var(--font); font-size: 0.85rem; color: var(--text-main);
-            transition: all var(--transition); outline: none;
+            transition: all var(--transition); outline: none; backdrop-filter: blur(4px);
         }
-        .donate-form input:focus, .donate-form textarea:focus { border-color: var(--accent-red); background: var(--bg-card); }
+        .donate-form input:focus, .donate-form textarea:focus { border-color: var(--accent-red); background: #fff; }
         .donate-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .donate-form .form-error { color: var(--accent-red); font-size: 0.7rem; margin-top: -6px; margin-bottom: 8px; display: none; }
         .donate-form .form-error.show { display: block; }
-
-        .file-input-wrapper { position: relative; overflow: hidden; display: flex; align-items: center; gap: 10px; cursor: pointer; background: var(--bg-body); }
+        .file-input-wrapper { position: relative; overflow: hidden; display: flex; align-items: center; gap: 10px; cursor: pointer; }
         .file-input-wrapper input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
         .file-input-wrapper .file-label { color: var(--text-muted); font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
         .file-input-wrapper .file-name { color: var(--text-main); font-size: 0.75rem; margin-left: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
 
         .upi-pay-area .btn { font-size: 1rem; padding: 16px 36px; }
 
-        /* DONOR WALL & TIMELINE */
+        /* LIST CARDS (Donors, Timeline, Organizers) */
         .donor-wall, .timeline-section, .organizers-section { padding: 0 16px 20px; }
         .donor-wall .donor-card, .timeline-item, .organizer-card {
             padding: 14px 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px;
-            background: var(--bg-card); border-radius: var(--radius-sm);
-            border: 1px solid var(--border-subtle); transition: all var(--transition);
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-radius: var(--radius-sm);
+            border: 1px solid rgba(255,255,255,0.4); transition: all var(--transition); transform-style: preserve-3d;
         }
-        .donor-wall .donor-card:hover, .timeline-item:hover, .organizer-card:hover { transform: translateX(6px); border-color: var(--accent-red); }
-        .donor-wall .donor-card .avatar, .organizer-card .avatar {
-            width: 44px; height: 44px; border-radius: 50%; background: var(--accent-red); color: #fff;
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
-        }
+        .donor-wall .donor-card:hover, .timeline-item:hover, .organizer-card:hover { transform: translateX(8px) translateZ(10px); border-color: var(--accent-red); background: rgba(255,255,255,0.8); }
+        .donor-wall .donor-card .avatar, .organizer-card .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--accent-red); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; flex-shrink: 0; }
         .donor-wall .donor-card .info .name, .organizer-card .info .name { font-weight: 600; font-size: 0.9rem; }
         .donor-wall .donor-card .info .msg { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .donor-wall .donor-card .amount { font-weight: 700; color: var(--accent-red); font-size: 0.9rem; flex-shrink: 0; }
-        
         .timeline-item .icon { font-size: 1.4rem; width: 36px; text-align: center; flex-shrink: 0; }
         .timeline-item .info .title { font-weight: 600; font-size: 0.9rem; }
         .timeline-item .info .time { font-size: 0.7rem; color: var(--text-muted); }
@@ -272,8 +218,8 @@
         /* GALLERY */
         .gallery-section { padding: 0 16px 20px; }
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .gallery-grid .gallery-item { aspect-ratio: 1/1; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; background: var(--bg-body); border: 1px solid var(--border-subtle); transition: all var(--transition); position: relative; box-shadow: none; }
-        .gallery-grid .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); z-index: 2; }
+        .gallery-grid .gallery-item { aspect-ratio: 1/1; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.4); transition: all var(--transition); position: relative; transform-style: preserve-3d; }
+        .gallery-grid .gallery-item:hover { transform: scale(1.05) translateZ(20px); box-shadow: var(--shadow-hover); z-index: 2; border-color: var(--accent-red); }
         .gallery-grid .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-grid .gallery-item .overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 60%); display: flex; align-items: flex-end; justify-content: center; padding: 8px; opacity: 0; transition: all var(--transition); color: #fff; font-weight: 400; font-size: 0.6rem; }
         .gallery-grid .gallery-item:hover .overlay { opacity: 1; }
@@ -288,36 +234,35 @@
 
         /* CONTACT */
         .contact-section { padding: 0 16px 20px; }
-        .contact-card { padding: 18px 16px; background: var(--bg-card); border-radius: var(--radius-app); border: 1px solid var(--border-subtle); }
-        .contact-section .contact-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border-subtle); }
+        .contact-card { padding: 18px 16px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-radius: var(--radius-app); border: 1px solid rgba(255,255,255,0.4); transform-style: preserve-3d; }
+        .contact-section .contact-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
         .contact-section .contact-item:last-child { border-bottom: none; }
         .contact-section .contact-item .icon { font-size: 1.3rem; width: 32px; text-align: center; flex-shrink: 0; color: var(--accent-red); }
         .contact-section .contact-item .info .label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .contact-section .contact-item .info .value { font-weight: 500; color: var(--text-main); }
         .contact-section .contact-item .info .value a { color: var(--text-main); text-decoration: none; }
-        .contact-section .contact-item .btn-link { padding: 6px 16px; border-radius: var(--radius-pill); background: var(--accent-red-light); border: 1px solid transparent; color: var(--accent-red); font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all var(--transition); font-family: var(--font); text-decoration: none; }
-        .contact-section .contact-item .btn-link:hover { background: var(--accent-red); color: #fff; }
+        .contact-section .contact-item .btn-link { padding: 6px 16px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); color: var(--accent-red); font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all var(--transition); font-family: var(--font); text-decoration: none; backdrop-filter: blur(8px); }
+        .contact-section .contact-item .btn-link:hover { background: var(--accent-red); color: #fff; transform: translateZ(5px); }
 
         /* FOOTER */
-        .footer { padding: 24px 16px 16px; text-align: center; border-top: 1px solid var(--border-subtle); margin: 10px 16px 0; }
+        .footer { padding: 24px 16px 16px; text-align: center; border-top: 1px solid rgba(255,255,255,0.2); margin: 10px 16px 0; }
         .footer .brand { font-weight: 800; font-size: 1rem; color: var(--text-main); }
         .footer .sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
         .footer .love { margin-top: 10px; font-size: 0.65rem; color: var(--text-muted); }
 
-        /* BOTTOM NAV (Mobile App) */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-around; padding: 6px 0 10px; box-shadow: 0 -4px 20px rgba(0,0,0,0.02); }
+        /* BOTTOM NAV */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-around; padding: 6px 0 10px; box-shadow: 0 -4px 20px rgba(0,0,0,0.02); }
         .bottom-nav .nav-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 8px; border: none; background: transparent; font-family: var(--font); font-size: 0.55rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all var(--transition); min-width: 44px; }
         .bottom-nav .nav-btn .icon { font-size: 1.4rem; transition: all var(--transition); }
-        .bottom-nav .nav-btn.active { color: var(--accent-red); }
-        .bottom-nav .nav-btn.active .icon { transform: translateY(-2px); }
+        .bottom-nav .nav-btn.active { color: var(--accent-red); transform: translateY(-2px); }
 
-        /* FLOATING DONATE BUTTON (App Style) */
-        .floating-donate { position: fixed; bottom: 80px; right: 16px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: var(--accent-red); border: none; box-shadow: 0 6px 24px rgba(255,59,74,0.35); color: #fff; font-size: 1.6rem; cursor: pointer; transition: all var(--transition); display: flex; align-items: center; justify-content: center; animation: floatPulse 3s ease-in-out infinite; }
-        .floating-donate:hover { transform: scale(1.1); box-shadow: 0 8px 40px rgba(255,59,74,0.45); }
+        /* FLOATING DONATE */
+        .floating-donate { position: fixed; bottom: 80px; right: 16px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: var(--accent-red); border: none; box-shadow: 0 6px 24px rgba(255,59,74,0.35); color: #fff; font-size: 1.6rem; cursor: pointer; transition: all var(--transition); display: flex; align-items: center; justify-content: center; animation: floatPulse 3s ease-in-out infinite; transform-style: preserve-3d; }
+        .floating-donate:hover { transform: scale(1.1) translateZ(20px); box-shadow: 0 8px 40px rgba(255,59,74,0.45); }
         @keyframes floatPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
         /* TOAST */
-        .toast { position: fixed; bottom: 140px; left: 50%; transform: translateX(-50%) translateY(20px); background: #fff; backdrop-filter: blur(20px); padding: 12px 24px; border-radius: var(--radius-pill); box-shadow: var(--shadow-hover); border: 1px solid var(--border-subtle); font-family: var(--font); font-weight: 500; font-size: 0.85rem; color: var(--text-main); opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 9998; white-space: nowrap; }
+        .toast { position: fixed; bottom: 140px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); padding: 12px 24px; border-radius: var(--radius-pill); box-shadow: var(--shadow-hover); border: 1px solid rgba(255,255,255,0.3); font-family: var(--font); font-weight: 500; font-size: 0.85rem; color: var(--text-main); opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 9998; white-space: nowrap; }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
         /* UTILITY */
@@ -326,7 +271,6 @@
         .text-muted { color: var(--text-muted); }
         .text-center { text-align: center; }
 
-        /* RESPONSIVE */
         @media (min-width: 768px) {
             .bottom-nav, .floating-donate { display: none; }
             .navbar .nav-right .hamburger { display: none; }
@@ -340,6 +284,9 @@
     </style>
 </head>
 <body>
+
+    <!-- 3D CONTAINER -->
+    <div id="three-container"></div>
 
     <!-- LOADER -->
     <div id="loader">
@@ -358,304 +305,477 @@
         </div>
     </div>
 
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <div class="brand" id="logoHome">
-            <div class="logo">🔱</div>
-            <div class="name">
-                <span class="main">श्री कृष्ण</span>
-                <span class="sub">ग्राम भानपुर</span>
-            </div>
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a href="#hero" class="active">होम</a>
-            <a href="#donate">दान</a>
-            <a href="#gallery">गैलरी</a>
-            <a href="#timeline">कार्यक्रम</a>
-            <a href="#contact">संपर्क</a>
-        </div>
-        <div class="nav-right">
-            <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
-            <span class="hamburger" id="hamburger">☰</span>
-        </div>
-    </nav>
-
-    <!-- MOBILE NAV -->
-    <div class="nav-mobile" id="navMobile">
-        <div class="nav-item active" data-target="hero"><span class="icon">🏠</span> होम</div>
-        <div class="nav-item" data-target="donate"><span class="icon">🙏</span> दान</div>
-        <div class="nav-item" data-target="gallery"><span class="icon">🖼️</span> गैलरी</div>
-        <div class="nav-item" data-target="timeline"><span class="icon">📅</span> कार्यक्रम</div>
-        <div class="nav-item" data-target="contact"><span class="icon">📞</span> संपर्क</div>
-    </div>
-
-    <!-- HERO -->
-    <section class="hero app-card" id="hero">
-        <div class="hero-bg-wrapper">
-            <img class="hero-bg" src="/static/assets/images/hero-banner.jpg" alt="Krishna Janmashtami Banner" loading="lazy" onerror="this.style.display='none';" />
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-content">
-            <span class="village">📍 ग्राम भानपुर</span>
-            <h1>श्री कृष्ण <span class="highlight">जन्माष्टमी</span> महोत्सव 2026</h1>
-            <p class="tagline">"आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।"</p>
-            <div class="btn-group">
-                <button class="btn btn-primary" id="heroDonateBtn">🙏 दान करें</button>
-                <button class="btn btn-secondary" id="heroProgramBtn">📅 कार्यक्रम</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- COUNTDOWN -->
-    <section class="countdown-section app-card">
-        <div class="label">🕉️ जन्माष्टमी में शेष समय</div>
-        <div class="countdown-grid" id="countdown">
-            <div class="cd-item"><span class="num" id="days">00</span><span class="lbl">दिन</span></div>
-            <div class="cd-item"><span class="num" id="hours">00</span><span class="lbl">घंटे</span></div>
-            <div class="cd-item"><span class="num" id="minutes">00</span><span class="lbl">मिनट</span></div>
-            <div class="cd-item"><span class="num" id="seconds">00</span><span class="lbl">सेकंड</span></div>
-        </div>
-        <div class="server-status" id="serverStatus">
-            <span class="dot online" id="statusDot"></span>
-            <span id="statusText">सर्वर: ऑनलाइन</span>
-        </div>
-    </section>
-
-    <!-- STATS -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="num purple" id="statDonors">0</div>
-            <div class="lbl">🙏 दाता</div>
-        </div>
-        <div class="stat-card">
-            <div class="num purple" id="statCollection">₹0</div>
-            <div class="lbl">💰 संग्रह</div>
-        </div>
-        <div class="stat-card">
-            <div class="num purple" id="statTarget">₹20,000</div>
-            <div class="lbl">🎯 लक्ष्य</div>
-        </div>
-        <div class="stat-card">
-            <div class="num purple" id="statPercent">0%</div>
-            <div class="lbl">📊 प्रगति</div>
-        </div>
-    </div>
-
-    <!-- GOAL -->
-    <div class="goal-section">
-        <div class="goal-header">
-            <span>💰 संग्रह: <span class="gold" id="goalCollected">₹0</span></span>
-            <span>🎯 लक्ष्य: ₹20,000</span>
-        </div>
-        <div class="goal-bar">
-            <div class="fill" id="goalFill" style="width:0%;"></div>
-        </div>
-        <div class="goal-footer">
-            <span id="goalRemain">₹20,000 शेष</span>
-            <span id="goalPercentLabel">0%</span>
-        </div>
-    </div>
-
-    <!-- DONATE SECTION -->
-    <section class="donate-section" id="donate">
-        <h2 class="section-title">🙏 <span>दान</span> करें</h2>
-        <p class="section-sub">UPI QR स्कैन करें या "Pay with UPI" पर क्लिक करें</p>
-
-        <div class="donate-card">
-            <div class="qr-section">
-                <img class="qr-img" src="/static/assets/images/qr-code.png" alt="UPI QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fff%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FF3B4A%22 font-family=%22monospace%22%3EUPI: welovedoc374335.rzp@rxairtel%3C/text%3E%3C/svg%3E'" />
-                <div class="upi-box">
-                    <span class="upi-id">🔹 welovedoc374335.rzp@rxairtel</span>
-                    <button class="btn btn-secondary" id="copyUpiBtn">📋 कॉपी</button>
+    <!-- ============================================================
+    APP CONTENT
+    ============================================================ -->
+    <div id="app-content">
+        <!-- NAVBAR -->
+        <nav class="navbar" id="navbar">
+            <div class="brand" id="logoHome">
+                <div class="logo">🔱</div>
+                <div class="name">
+                    <span class="main">श्री कृष्ण</span>
+                    <span class="sub">ग्राम भानपुर</span>
                 </div>
-                <p style="font-size:0.75rem;color:var(--text-muted);">PhonePe / GPay / Paytm / BHIM से Scan करें</p>
             </div>
-
-            <div class="upi-pay-area text-center">
-                <button class="btn btn-primary" id="upiPayBtn" style="font-size:1rem; padding:16px 36px;">
-                    💳 Pay with UPI
-                </button>
-                <span style="font-size:0.7rem;color:var(--text-muted);display:block;margin-top:4px;">⚡ राशि आप UPI ऐप में खुद डालें</span>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="active">होम</a>
+                <a href="#donate">दान</a>
+                <a href="#gallery">गैलरी</a>
+                <a href="#timeline">कार्यक्रम</a>
+                <a href="#contact">संपर्क</a>
             </div>
-
-            <div style="margin:12px 0 6px;text-align:center;font-size:0.8rem;color:var(--text-muted);">← राशि चुनें (फॉर्म के लिए) →</div>
-            <div class="quick-donate" id="quickDonate">
-                <button class="amt" data-amount="51">₹51</button>
-                <button class="amt" data-amount="101">₹101</button>
-                <button class="amt active" data-amount="251">₹251</button>
-                <button class="amt" data-amount="501">₹501</button>
-                <button class="amt" data-amount="1100">₹1100</button>
-                <button class="amt" data-amount="2100">₹2100</button>
+            <div class="nav-right">
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+                <span class="hamburger" id="hamburger">☰</span>
             </div>
+        </nav>
 
-            <div class="payment-done-area text-center">
-                <button class="btn btn-secondary" id="showFormBtn" style="font-size:0.95rem; padding:14px 32px;">
-                    ✅ Payment Done
-                </button>
-                <div class="sub-text" style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Payment करने के बाद यहाँ Click करें और Form भरें</div>
+        <!-- MOBILE NAV -->
+        <div class="nav-mobile" id="navMobile">
+            <div class="nav-item active" data-target="hero"><span class="icon">🏠</span> होम</div>
+            <div class="nav-item" data-target="donate"><span class="icon">🙏</span> दान</div>
+            <div class="nav-item" data-target="gallery"><span class="icon">🖼️</span> गैलरी</div>
+            <div class="nav-item" data-target="timeline"><span class="icon">📅</span> कार्यक्रम</div>
+            <div class="nav-item" data-target="contact"><span class="icon">📞</span> संपर्क</div>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg-wrapper">
+                <img class="hero-bg" src="/static/assets/images/hero-banner.jpg" alt="Krishna Janmashtami Banner" loading="lazy" onerror="this.style.display='none';" />
+                <div class="hero-overlay"></div>
             </div>
+            <div class="hero-content">
+                <span class="village">📍 ग्राम भानपुर</span>
+                <h1>श्री कृष्ण <span class="highlight">जन्माष्टमी</span> महोत्सव 2026</h1>
+                <p class="tagline">"आइए, मिलकर भगवान श्रीकृष्ण के जन्मोत्सव को भव्य और दिव्य बनाएं।"</p>
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="heroDonateBtn">🙏 दान करें</button>
+                    <button class="btn btn-secondary" id="heroProgramBtn">📅 कार्यक्रम</button>
+                </div>
+            </div>
+        </section>
 
-            <div id="donationFormContainer" style="display:none; animation: slideUp 0.5s ease;">
-                <div style="text-align:center;margin-bottom:14px;color:var(--accent-red);font-weight:600;font-size:0.9rem;">🙏 कृपया अपनी Payment Details भरें</div>
-                <form class="donate-form" id="donateForm" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div>
-                            <input type="text" id="donorName" placeholder="पूरा नाम *" />
-                            <div class="form-error" id="nameError">कृपया नाम दर्ज करें</div>
-                        </div>
-                        <div>
-                            <input type="tel" id="donorMobile" placeholder="मोबाइल *" />
-                            <div class="form-error" id="mobileError">सही मोबाइल नंबर दर्ज करें</div>
-                        </div>
+        <!-- COUNTDOWN -->
+        <section class="countdown-section app-card">
+            <div class="label">🕉️ जन्माष्टमी में शेष समय</div>
+            <div class="countdown-grid" id="countdown">
+                <div class="cd-item"><span class="num" id="days">00</span><span class="lbl">दिन</span></div>
+                <div class="cd-item"><span class="num" id="hours">00</span><span class="lbl">घंटे</span></div>
+                <div class="cd-item"><span class="num" id="minutes">00</span><span class="lbl">मिनट</span></div>
+                <div class="cd-item"><span class="num" id="seconds">00</span><span class="lbl">सेकंड</span></div>
+            </div>
+            <div class="server-status" id="serverStatus">
+                <span class="dot online" id="statusDot"></span>
+                <span id="statusText">सर्वर: ऑनलाइन</span>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="num purple" id="statDonors">0</div>
+                <div class="lbl">🙏 दाता</div>
+            </div>
+            <div class="stat-card">
+                <div class="num purple" id="statCollection">₹0</div>
+                <div class="lbl">💰 संग्रह</div>
+            </div>
+            <div class="stat-card">
+                <div class="num purple" id="statTarget">₹20,000</div>
+                <div class="lbl">🎯 लक्ष्य</div>
+            </div>
+            <div class="stat-card">
+                <div class="num purple" id="statPercent">0%</div>
+                <div class="lbl">📊 प्रगति</div>
+            </div>
+        </div>
+
+        <!-- GOAL -->
+        <div class="goal-section">
+            <div class="goal-header">
+                <span>💰 संग्रह: <span class="gold" id="goalCollected">₹0</span></span>
+                <span>🎯 लक्ष्य: ₹20,000</span>
+            </div>
+            <div class="goal-bar">
+                <div class="fill" id="goalFill" style="width:0%;"></div>
+            </div>
+            <div class="goal-footer">
+                <span id="goalRemain">₹20,000 शेष</span>
+                <span id="goalPercentLabel">0%</span>
+            </div>
+        </div>
+
+        <!-- DONATE SECTION -->
+        <section class="donate-section" id="donate">
+            <h2 class="section-title">🙏 <span>दान</span> करें</h2>
+            <p class="section-sub">UPI QR स्कैन करें या "Pay with UPI" पर क्लिक करें</p>
+
+            <div class="donate-card">
+                <div class="qr-section">
+                    <img class="qr-img" src="/static/assets/images/qr-code.png" alt="UPI QR Code" id="qrImage" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23fff%22/%3E%3Ctext x=%2220%22 y=%22110%22 font-size=%2232%22 fill=%22%23FF3B4A%22 font-family=%22monospace%22%3EUPI: welovedoc374335.rzp@rxairtel%3C/text%3E%3C/svg%3E'" />
+                    <div class="upi-box">
+                        <span class="upi-id">🔹 welovedoc374335.rzp@rxairtel</span>
+                        <button class="btn btn-secondary" id="copyUpiBtn">📋 कॉपी</button>
                     </div>
-                    <input type="number" id="donorAmount" placeholder="₹ राशि *" />
-                    <div class="form-error" id="amountError">कृपया सही राशि दर्ज करें</div>
+                    <p style="font-size:0.75rem;color:var(--text-muted);">PhonePe / GPay / Paytm / BHIM से Scan करें</p>
+                </div>
 
-                    <div class="file-input-wrapper">
-                        <span class="file-label"><span class="icon">📷</span> स्क्रीनशॉट अपलोड करें (Optional)</span>
-                        <input type="file" id="screenshotUpload" accept="image/png,image/jpeg,image/gif,image/webp" />
-                        <span class="file-name" id="fileName">कोई फाइल नहीं</span>
-                    </div>
-                    <p style="font-size:0.65rem;color:var(--text-muted);margin-top:-6px;margin-bottom:12px;">⚡ PNG, JPG, JPEG, GIF, WEBP (Max 5MB)</p>
+                <div class="upi-pay-area text-center">
+                    <button class="btn btn-primary" id="upiPayBtn" style="font-size:1rem; padding:16px 36px;">
+                        💳 Pay with UPI
+                    </button>
+                    <span style="font-size:0.7rem;color:var(--text-muted);display:block;margin-top:4px;">⚡ राशि आप UPI ऐप में खुद डालें</span>
+                </div>
 
-                    <textarea id="donorMessage" placeholder="आपका संदेश (वैकल्पिक)"></textarea>
-                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">🙏 दान सबमिट करें</button>
-                    <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:8px;">⏳ आपका दान Admin द्वारा Approve होने के बाद दिखेगा</p>
-                </form>
+                <div style="margin:12px 0 6px;text-align:center;font-size:0.8rem;color:var(--text-muted);">← राशि चुनें (फॉर्म के लिए) →</div>
+                <div class="quick-donate" id="quickDonate">
+                    <button class="amt" data-amount="51">₹51</button>
+                    <button class="amt" data-amount="101">₹101</button>
+                    <button class="amt active" data-amount="251">₹251</button>
+                    <button class="amt" data-amount="501">₹501</button>
+                    <button class="amt" data-amount="1100">₹1100</button>
+                    <button class="amt" data-amount="2100">₹2100</button>
+                </div>
+
+                <div class="payment-done-area text-center">
+                    <button class="btn btn-secondary" id="showFormBtn" style="font-size:0.95rem; padding:14px 32px;">
+                        ✅ Payment Done
+                    </button>
+                    <div class="sub-text" style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Payment करने के बाद यहाँ Click करें और Form भरें</div>
+                </div>
+
+                <div id="donationFormContainer" style="display:none; animation: slideUp 0.5s ease;">
+                    <div style="text-align:center;margin-bottom:14px;color:var(--accent-red);font-weight:600;font-size:0.9rem;">🙏 कृपया अपनी Payment Details भरें</div>
+                    <form class="donate-form" id="donateForm" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div>
+                                <input type="text" id="donorName" placeholder="पूरा नाम *" />
+                                <div class="form-error" id="nameError">कृपया नाम दर्ज करें</div>
+                            </div>
+                            <div>
+                                <input type="tel" id="donorMobile" placeholder="मोबाइल *" />
+                                <div class="form-error" id="mobileError">सही मोबाइल नंबर दर्ज करें</div>
+                            </div>
+                        </div>
+                        <input type="number" id="donorAmount" placeholder="₹ राशि *" />
+                        <div class="form-error" id="amountError">कृपया सही राशि दर्ज करें</div>
+
+                        <div class="file-input-wrapper">
+                            <span class="file-label"><span class="icon">📷</span> स्क्रीनशॉट अपलोड करें (Optional)</span>
+                            <input type="file" id="screenshotUpload" accept="image/png,image/jpeg,image/gif,image/webp" />
+                            <span class="file-name" id="fileName">कोई फाइल नहीं</span>
+                        </div>
+                        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:-6px;margin-bottom:12px;">⚡ PNG, JPG, JPEG, GIF, WEBP (Max 5MB)</p>
+
+                        <textarea id="donorMessage" placeholder="आपका संदेश (वैकल्पिक)"></textarea>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">🙏 दान सबमिट करें</button>
+                        <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:8px;">⏳ आपका दान Admin द्वारा Approve होने के बाद दिखेगा</p>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DONOR WALL -->
-    <section class="donor-wall" id="donorWall">
-        <h2 class="section-title">👥 <span>दाता</span> सूची</h2>
-        <p class="section-sub">🙏 Approved दान यहाँ दिखेंगे</p>
-        <div id="donorList">
-            <div style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.85rem;">⏳ लोड हो रहा है...</div>
-        </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="timeline-section" id="timeline">
-        <h2 class="section-title">📅 <span>कार्यक्रम</span> सूची</h2>
-        <p class="section-sub">4-5 सितंबर 2026</p>
-        <div class="timeline-item">
-            <span class="icon">🌅</span>
-            <div class="info"><div class="title">श्री कृष्ण जन्माष्टमी</div><div class="time">4 सितंबर, शाम 7:00 बजे</div></div>
-            <span class="badge">मुख्य</span>
-        </div>
-        <div class="timeline-item">
-            <span class="icon">🌙</span>
-            <div class="info"><div class="title">भव्य रात्रि जागरण</div><div class="time">4 सितंबर, रात 9:00 बजे</div></div>
-            <span class="badge">जागरण</span>
-        </div>
-        <div class="timeline-item">
-            <span class="icon">🍛</span>
-            <div class="info"><div class="title">महाप्रसाद वितरण</div><div class="time">4 सितंबर, रात 11:00 बजे</div></div>
-            <span class="badge">प्रसाद</span>
-        </div>
-        <div class="timeline-item">
-            <span class="icon">🔥</span>
-            <div class="info"><div class="title">हवन / यज्ञ</div><div class="time">5 सितंबर, सुबह 8:00 बजे</div></div>
-            <span class="badge">यज्ञ</span>
-        </div>
-    </section>
-
-    <!-- ORGANIZERS -->
-    <section class="organizers-section" id="organizers">
-        <h2 class="section-title">🙌 <span>कार्यकर्ता</span></h2>
-        <p class="section-sub">आयोजन में विशेष योगदान</p>
-        <div class="organizer-card">
-            <div class="avatar">🌺</div>
-            <div class="info"><div class="name">श्री देव नारायण</div><div class="role">मुख्य आयोजक</div></div>
-        </div>
-        <div class="organizer-card">
-            <div class="avatar">🌹</div>
-            <div class="info"><div class="name">श्री यदुनाथ</div><div class="role">सह-आयोजक</div></div>
-        </div>
-        <div class="organizer-card">
-            <div class="avatar">🌸</div>
-            <div class="info"><div class="name">श्री सुनील सिंह</div><div class="role">सह-आयोजक</div></div>
-        </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="gallery-section" id="gallery">
-        <h2 class="section-title">🖼️ <span>गैलरी</span></h2>
-        <p class="section-sub">पिछले वर्षों के कुछ पल</p>
-        <div class="gallery-grid" id="galleryGrid"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title">📞 <span>संपर्क</span> करें</h2>
-        <p class="section-sub">किसी भी सहायता के लिए हमसे जुड़ें</p>
-        <div class="contact-card">
-            <div class="contact-item">
-                <span class="icon">📱</span>
-                <div class="info"><div class="label">फोन</div><div class="value"><a href="tel:+919984661580">+91 99846 61580</a></div></div>
-                <a href="tel:+919984661580" class="btn-link">📞 कॉल</a>
+        <!-- DONOR WALL -->
+        <section class="donor-wall" id="donorWall">
+            <h2 class="section-title">👥 <span>दाता</span> सूची</h2>
+            <p class="section-sub">🙏 Approved दान यहाँ दिखेंगे</p>
+            <div id="donorList">
+                <div style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.85rem;">⏳ लोड हो रहा है...</div>
             </div>
-            <div class="contact-item">
-                <span class="icon">💬</span>
-                <div class="info"><div class="label">WhatsApp</div><div class="value"><a href="https://wa.me/919984661580" target="_blank">+91 99846 61580</a></div></div>
-                <a href="https://wa.me/919984661580" target="_blank" class="btn-link">💬 चैट</a>
-            </div>
-            <div class="contact-item">
-                <span class="icon">📍</span>
-                <div class="info"><div class="label">पता</div><div class="value">ग्राम भानपुर, उत्तर प्रदेश</div></div>
-            </div>
-            <div class="contact-item">
-                <span class="icon">🗺️</span>
-                <div class="info"><div class="label">Google Maps</div><div class="value"><a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank">काली माँ मंदिर, भानपुर</a></div></div>
-                <a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank" class="btn-link">🗺️ खोलें</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="brand">श्री कृष्ण जन्माष्टमी महोत्सव</div>
-        <div class="sub">📍 ग्राम भानपुर · 2026</div>
-        <div class="love">Made with ❤️ by Gram Bhanpur Team</div>
-    </footer>
+        <!-- TIMELINE -->
+        <section class="timeline-section" id="timeline">
+            <h2 class="section-title">📅 <span>कार्यक्रम</span> सूची</h2>
+            <p class="section-sub">4-5 सितंबर 2026</p>
+            <div class="timeline-item">
+                <span class="icon">🌅</span>
+                <div class="info"><div class="title">श्री कृष्ण जन्माष्टमी</div><div class="time">4 सितंबर, शाम 7:00 बजे</div></div>
+                <span class="badge">मुख्य</span>
+            </div>
+            <div class="timeline-item">
+                <span class="icon">🌙</span>
+                <div class="info"><div class="title">भव्य रात्रि जागरण</div><div class="time">4 सितंबर, रात 9:00 बजे</div></div>
+                <span class="badge">जागरण</span>
+            </div>
+            <div class="timeline-item">
+                <span class="icon">🍛</span>
+                <div class="info"><div class="title">महाप्रसाद वितरण</div><div class="time">4 सितंबर, रात 11:00 बजे</div></div>
+                <span class="badge">प्रसाद</span>
+            </div>
+            <div class="timeline-item">
+                <span class="icon">🔥</span>
+                <div class="info"><div class="title">हवन / यज्ञ</div><div class="time">5 सितंबर, सुबह 8:00 बजे</div></div>
+                <span class="badge">यज्ञ</span>
+            </div>
+        </section>
 
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav" id="bottomNav">
-        <button class="nav-btn active" data-target="hero"><span class="icon">🏠</span> होम</button>
-        <button class="nav-btn" data-target="donate"><span class="icon">🙏</span> दान</button>
-        <button class="nav-btn" data-target="gallery"><span class="icon">🖼️</span> गैलरी</button>
-        <button class="nav-btn" data-target="timeline"><span class="icon">📅</span> कार्यक्रम</button>
-        <button class="nav-btn" data-target="contact"><span class="icon">📞</span> संपर्क</button>
-    </nav>
+        <!-- ORGANIZERS -->
+        <section class="organizers-section" id="organizers">
+            <h2 class="section-title">🙌 <span>कार्यकर्ता</span></h2>
+            <p class="section-sub">आयोजन में विशेष योगदान</p>
+            <div class="organizer-card">
+                <div class="avatar">🌺</div>
+                <div class="info"><div class="name">श्री देव नारायण</div><div class="role">मुख्य आयोजक</div></div>
+            </div>
+            <div class="organizer-card">
+                <div class="avatar">🌹</div>
+                <div class="info"><div class="name">श्री यदुनाथ</div><div class="role">सह-आयोजक</div></div>
+            </div>
+            <div class="organizer-card">
+                <div class="avatar">🌸</div>
+                <div class="info"><div class="name">श्री सुनील सिंह</div><div class="role">सह-आयोजक</div></div>
+            </div>
+        </section>
 
-    <!-- FLOATING DONATE -->
-    <button class="floating-donate" id="floatingDonateBtn" title="दान करें">🙏</button>
+        <!-- GALLERY -->
+        <section class="gallery-section" id="gallery">
+            <h2 class="section-title">🖼️ <span>गैलरी</span></h2>
+            <p class="section-sub">पिछले वर्षों के कुछ पल</p>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">📞 <span>संपर्क</span> करें</h2>
+            <p class="section-sub">किसी भी सहायता के लिए हमसे जुड़ें</p>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <div class="info"><div class="label">फोन</div><div class="value"><a href="tel:+919984661580">+91 99846 61580</a></div></div>
+                    <a href="tel:+919984661580" class="btn-link">📞 कॉल</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">💬</span>
+                    <div class="info"><div class="label">WhatsApp</div><div class="value"><a href="https://wa.me/919984661580" target="_blank">+91 99846 61580</a></div></div>
+                    <a href="https://wa.me/919984661580" target="_blank" class="btn-link">💬 चैट</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <div class="info"><div class="label">पता</div><div class="value">ग्राम भानपुर, उत्तर प्रदेश</div></div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🗺️</span>
+                    <div class="info"><div class="label">Google Maps</div><div class="value"><a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank">काली माँ मंदिर, भानपुर</a></div></div>
+                    <a href="https://maps.app.goo.gl/RYmTTywzgfs3q8BSA" target="_blank" class="btn-link">🗺️ खोलें</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="brand">श्री कृष्ण जन्माष्टमी महोत्सव</div>
+            <div class="sub">📍 ग्राम भानपुर · 2026</div>
+            <div class="love">Made with ❤️ by Gram Bhanpur Team</div>
+        </footer>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav" id="bottomNav">
+            <button class="nav-btn active" data-target="hero"><span class="icon">🏠</span> होम</button>
+            <button class="nav-btn" data-target="donate"><span class="icon">🙏</span> दान</button>
+            <button class="nav-btn" data-target="gallery"><span class="icon">🖼️</span> गैलरी</button>
+            <button class="nav-btn" data-target="timeline"><span class="icon">📅</span> कार्यक्रम</button>
+            <button class="nav-btn" data-target="contact"><span class="icon">📞</span> संपर्क</button>
+        </nav>
+
+        <!-- FLOATING DONATE -->
+        <button class="floating-donate" id="floatingDonateBtn" title="दान करें">🙏</button>
+    </div>
 
     <!-- ============================================================
-    SCRIPT.JS (Functionality Same as your original code)
+    SCRIPT.JS – Includes Three.js + Original Functionality
     ============================================================ -->
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
+        // ============================================================
+        // 1. THREE.JS 3D BACKGROUND SCENE SETUP
+        // ============================================================
+        (function init3DScene() {
+            const container = document.getElementById('three-container');
+            if (!container) return;
+
+            // Scene with Light Background to match the App
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf4f7f9); // Light grey as dashboard BG
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 15);
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            container.appendChild(renderer.domElement);
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            const dirLight = new THREE.DirectionalLight(0xff3b4a, 0.8);
+            dirLight.position.set(2, 5, 3);
+            scene.add(dirLight);
+
+            const backLight = new THREE.DirectionalLight(0xffd700, 0.4);
+            backLight.position.set(-3, -2, -4);
+            scene.add(backLight);
+
+            // ----- 3D OBJECTS -----
+            const geometries = [
+                new THREE.IcosahedronGeometry(1.2, 0),
+                new THREE.TorusKnotGeometry(0.8, 0.3, 64, 16),
+                new THREE.OctahedronGeometry(1),
+                new THREE.TorusGeometry(1.2, 0.4, 16, 32)
+            ];
+
+            const objects = [];
+            
+            // Material with Glass/Light effect
+            const colors = [0xff3b4a, 0xffd700, 0xffffff];
+            
+            for (let i = 0; i < 5; i++) {
+                const mat = new THREE.MeshPhysicalMaterial({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    metalness: 0.1,
+                    roughness: 0.2,
+                    transparent: true,
+                    opacity: 0.2 + (Math.random() * 0.3),
+                    clearcoat: 0.1,
+                    clearcoatRoughness: 0.4,
+                });
+                const mesh = new THREE.Mesh(geometries[Math.floor(Math.random() * geometries.length)], mat);
+                
+                // Random position in a sphere radius
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos((Math.random() * 2) - 1);
+                const r = 3 + Math.random() * 4;
+                
+                mesh.position.x = Math.sin(phi) * Math.cos(theta) * r;
+                mesh.position.y = Math.sin(phi) * Math.sin(theta) * r;
+                mesh.position.z = Math.cos(phi) * r * 0.5;
+                
+                mesh.rotation.x = Math.random() * Math.PI;
+                mesh.rotation.y = Math.random() * Math.PI;
+                
+                mesh.userData = {
+                    speed: 0.001 + Math.random() * 0.005,
+                    rotX: Math.random() * 0.01,
+                    rotY: Math.random() * 0.01
+                };
+                
+                scene.add(mesh);
+                objects.push(mesh);
+            }
+
+            // ----- PARTICLES (Stars/Floating Dust) -----
+            const particleCount = 400;
+            const posArray = new Float32Array(particleCount * 3);
+            for(let i=0; i<particleCount*3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 30;
+            }
+            const particleGeo = new THREE.BufferGeometry();
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particleMat = new THREE.PointsMaterial({
+                color: 0xff3b4a,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.3
+            });
+            const particleSystem = new THREE.Points(particleGeo, particleMat);
+            scene.add(particleSystem);
+
+            // ----- MOUSE PARALLAX -----
+            let mouseX = 0, mouseY = 0;
+            let targetX = 0, targetY = 0;
+            
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+
+            // ----- RESPONSIVE -----
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // ----- ANIMATION LOOP -----
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Smooth mouse tracking for camera
+                targetX += (mouseX - targetX) * 0.05;
+                targetY += (mouseY - targetY) * 0.05;
+                
+                camera.position.x = targetX * 1.5;
+                camera.position.y = targetY * 1.5;
+                camera.lookAt(0, 0, 0);
+
+                // Rotate objects
+                objects.forEach(obj => {
+                    obj.rotation.x += obj.userData.rotX;
+                    obj.rotation.y += obj.userData.rotY;
+                });
+
+                // Rotate particles slowly
+                particleSystem.rotation.y += 0.0002;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        })();
+
+
+        // ============================================================
+        // 2. 3D MOUSE TILT EFFECT FOR ALL CARDS
+        // ============================================================
+        (function init3DCards() {
+            const cards = document.querySelectorAll('.app-card, .stats-grid .stat-card, .goal-section, .donate-card, .contact-card, .donor-wall .donor-card, .timeline-item, .organizer-card, .gallery-item');
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8; // Max 8 deg tilt
+                    const rotateY = ((x - centerX) / centerX) * 8;  // Max 8 deg tilt
+
+                    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01) translateZ(10px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) scale(1) translateZ(0px)`;
+                    card.style.transition = 'transform 0.3s ease';
+                });
+            });
+        })();
+
+
+        // ============================================================
+        // 3. EXISTING BACKEND FUNCTIONALITY (Completely Preserved)
+        // ============================================================
         const API_BASE = window.location.origin + '/api';
         const UPI_ID = 'welovedoc374335.rzp@rxairtel';
-        const PHONE = '9984661580';
 
         // LOADER
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hide');
-            document.querySelectorAll('.app-card').forEach((el, i) => {
-                setTimeout(() => el.style.opacity = '1', 100 + i * 50);
-            });
             renderGallery();
             fetchDonors();
             updateStats();
             setInterval(fetchDonors, 30000);
             setInterval(updateStats, 30000);
-            
-            if (!sessionStorage.getItem('songPlayed')) {
-                const audio = document.getElementById('bgSong');
-                if (audio) { audio.play().catch(() => {}); sessionStorage.setItem('songPlayed', 'true'); }
-            }
         });
 
         // TOAST
@@ -721,8 +841,7 @@
         document.querySelectorAll('#navLinks a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = this.getAttribute('href').replace('#', '');
-                scrollToSection(target);
+                scrollToSection(this.getAttribute('href').replace('#', ''));
                 document.querySelectorAll('#navLinks a').forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
             });
@@ -755,12 +874,6 @@
             navMobile.classList.toggle('open'); });
         document.addEventListener('click', function(e) { if (!navMobile.contains(e.target) && e.target !== hamburger) navMobile.classList.remove('open'); });
 
-        // THEME TOGGLE (Just UI toggle)
-        const themeBtn = document.getElementById('themeToggle');
-        themeBtn.addEventListener('click', function() {
-            showToast("Theme dark/light manually not applicable in this UI", true);
-        });
-
         // FETCH DONORS
         async function fetchDonors() {
             try {
@@ -770,8 +883,7 @@
                 renderDonorWall(data);
                 updateStats(data);
             } catch (e) {
-                document.getElementById('donorList').innerHTML =
-                    `<div style="text-align:center;padding:24px;color:#ff3b4a;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया</div>`;
+                document.getElementById('donorList').innerHTML = `<div style="text-align:center;padding:24px;color:#ff3b4a;font-size:0.85rem;">⚠️ सर्वर से कनेक्ट नहीं हो पाया</div>`;
             }
         }
 
@@ -931,13 +1043,12 @@
             document.body.style.overflow = '';
         }
 
-        // CONFETTI
         function launchConfetti() {
             const container = document.createElement('div');
             container.className = 'confetti-container';
             document.body.appendChild(container);
-            const colors = ['#ff3b4a', '#FFD700', '#E91E63', '#00BCD4', '#7B2FBE', '#FF6B6B'];
-            const shapes = ['■', '●', '▲', '★', '♦'];
+            const colors = ['#ff3b4a', '#FFD700', '#E91E63', '#00BCD4'];
+            const shapes = ['■', '●', '▲', '★'];
             for (let i = 0; i < 70; i++) {
                 const el = document.createElement('div');
                 el.className = 'confetti';
@@ -953,8 +1064,7 @@
             setTimeout(() => container.remove(), 4000);
         }
 
-        console.log('🕉️ श्री कृष्ण जन्माष्टमी महोत्सव 2026 – Dashboard UI Loaded!');
+        console.log('🕉️ 3D श्री कृष्ण जन्माष्टमी महोत्सव 2026');
     </script>
-    <audio id="bgSong" loop><source src="/static/assets/audio/jai-shri-krishna.mp3" type="audio/mpeg"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
 </body>
 </html>
